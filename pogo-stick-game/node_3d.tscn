@@ -602,7 +602,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.539076, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_jsk3o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="platforms/StaticBody3D2" unique_id=142108084]
-transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 0, 0, 0)
+transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 39.74248, -18.985657, 0)
 mesh = SubResource("BoxMesh_6iypd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="platforms/StaticBody3D2" unique_id=474195932]
@@ -614,7 +614,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.704758, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_jsk3o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="platforms/StaticBody3D3" unique_id=804156583]
-transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 0, 0, 0)
+transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 37.010754, -9.697625, 0)
 mesh = SubResource("BoxMesh_6iypd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="platforms/StaticBody3D3" unique_id=1799817688]
