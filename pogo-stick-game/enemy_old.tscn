@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://82ln48nwukrv"]
+
+[ext_resource type="Script" uid="uid://dm857cwcsm76k" path="res://enemy.gd" id="1_qi2p4"]
+[ext_resource type="Texture2D" uid="uid://b2d4db1vfvdrv" path="res://watercolor-hand-painted-stone-texture_1100-70.png" id="2_iifgy"]
+[ext_resource type="Script" uid="uid://dtmgv1ti04e80" path="res://timer.gd" id="3_epg4t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhlwf"]
+albedo_color = Color(0.10635612, 0, 0.62050736, 1)
+albedo_texture = ExtResource("2_iifgy")
+
+[sub_resource type="BoxMesh" id="BoxMesh_hbmba"]
+material = SubResource("StandardMaterial3D_dhlwf")
+size = Vector3(1, 2.3510742, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s0gvp"]
+points = PackedVector3Array(-0.5, -1.1755371, -0.5, -0.5, -1.1755371, 0.5, -0.5, 1.175307, -0.5, 0.5, -1.1755371, -0.5, 0.5, -1.1755371, 0.5, -0.5, 1.175307, 0.5, 0.5, 1.175307, -0.5, 0.5, 1.175307, 0.5)
+
+[node name="enemy" type="CharacterBody3D" unique_id=1625413989]
+script = ExtResource("1_qi2p4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1461760700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09581375, -2.7468262, 0)
+mesh = SubResource("BoxMesh_hbmba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=72925608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09581375, -2.7468262, 0)
+shape = SubResource("ConvexPolygonShape3D_s0gvp")
+
+[node name="Timer" type="Timer" parent="." unique_id=986958527]
+autostart = true
+script = ExtResource("3_epg4t")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

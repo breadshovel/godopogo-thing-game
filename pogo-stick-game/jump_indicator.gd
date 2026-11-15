@@ -9,4 +9,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	position.y = (player.position.y * -1) + .5
 	visible = player.ready_to_jump

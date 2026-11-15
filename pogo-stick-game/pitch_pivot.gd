@@ -8,4 +8,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	#MOUSE INPUT:
+	rotation_degrees.x -= $"../..".delta_y
+	
+	#clamp so it cant spin forever
+	if rotation_degrees.x >= 11:
+		rotation_degrees.x = 11
+	if rotation_degrees.x <= -90:
+		rotation_degrees.x = -90
+	
+	#debug
+	#print(rotation_degrees.x)

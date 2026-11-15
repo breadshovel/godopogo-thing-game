@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	#center positon
-	position.y = (player.position.y * -1) + 4
+	position.y = (player.position.y * -1) + 2
 	
 	
 	#when i use arrow keys, rotate camera by 90 degrees
@@ -21,5 +21,5 @@ func _process(_delta: float) -> void:
 	#if Input.is_action_just_pressed("camera_right"):
 	#	rotation_degrees.y += 90
 	
-	print(rotation.y)
+	#print(rotation.y)
 	
