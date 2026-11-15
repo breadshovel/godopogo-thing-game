@@ -13,6 +13,9 @@ func _physics_process(delta: float) -> void:
 	#if die, die
 	if health <= 0:
 		die()
+		
+	if position.y <= -5:
+		die()
 	
 	#find player
 	var player = get_tree().current_scene.find_child("Player")

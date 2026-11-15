@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cowpxpiho4bie" path="res://bushes.gd" id="1_6iypd"]
 [ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://character_body_3d.gd" id="1_a202f"]
-[ext_resource type="Script" uid="uid://d3usddrck5lrl" path="res://SignalBus.gd" id="1_s0gvp"]
+[ext_resource type="Script" uid="uid://ctjk1r055yceo" path="res://node_3d.gd" id="1_j3e5s"]
 [ext_resource type="Script" uid="uid://dkbdg1tgjf0p1" path="res://camera_3d.gd" id="2_noarx"]
+[ext_resource type="AudioStream" uid="uid://con1n42pnjsi7" path="res://truman songa l ltruamn (2).wav" id="2_obt1j"]
 [ext_resource type="Script" uid="uid://clgpxba0d4svd" path="res://jump_indicator.gd" id="3_a0tk4"]
 [ext_resource type="Script" uid="uid://dkyuls2ppykp3" path="res://twist_pivot.gd" id="3_r3fl7"]
 [ext_resource type="Script" uid="uid://cc8i16rcxo27g" path="res://pitch_pivot.gd" id="4_i5arm"]
@@ -23,8 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://co44tntkdt2po" path="res://zapometer interior.png" id="15_jsnrv"]
 [ext_resource type="Script" uid="uid://cwd13p5i7gu3a" path="res://zapometer.gd" id="16_jsnrv"]
 [ext_resource type="Script" uid="uid://dcmi4vfr5w81q" path="res://laser.gd" id="16_tcnuu"]
-[ext_resource type="PackedScene" uid="uid://1rqdra754235" path="res://enemy.tscn" id="20_s0gvp"]
 [ext_resource type="Texture2D" uid="uid://cry5i3u537g5t" path="res://deathscreenframe1.png" id="22_5t8nk"]
+[ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="23_nu31w"]
+[ext_resource type="AudioStream" uid="uid://biqwy58va7ql6" path="res://shepard_tone_20000ms.wav" id="26_j3e5s"]
+[ext_resource type="AudioStream" uid="uid://dn3mxhjg6o5uy" path="res://universfield-impact-cinematic-boom-02-487858.mp3" id="27_nu31w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nswes"]
 
@@ -203,6 +206,7 @@ func _process(delta: float) -> void:
 		
 		#detect if dead
 		if Player.HEALTH <= 0:
+			$\"../../DeathSound\".playing = true
 			visible = true
 		
 		#flash death screen back and forth every frame
@@ -227,17 +231,46 @@ script/source = "extends Node
 
 const ENEMY = preload(\"res://enemy.tscn\")
 
+var enemy_amount := 0
+var game_start = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for i in range(10):
-		var enemy_clone = ENEMY.instantiate() # Replace with function body.
-		add_child(enemy_clone)
-		enemy_clone.position = Vector3(randf_range(-12.324, 89.245),3,randf_range(-59.235, 59.167))
-		print(\"hoi\")
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	enemy_amount = get_child_count()
+	print(enemy_amount)
+	if enemy_amount == 0 and game_start:
+		next_wave()
+	#print(enemy_amount)
+	#print($\"..\".game_start)
+	#print(game_start)
+	#print(round(2 ^ ($\"..\".wave - 1)))
+
+
+func _on_start_game_timer_timeout() -> void:
+	game_start = true
+	#use math to get exponential amount of enemy growth from wave
+	var enemy_spawn_count = ceil(1.5 ** ($\"..\".wave))
+	
+	for i in range(enemy_spawn_count):
+		var enemy_clone = ENEMY.instantiate() # Replace with function body.
+		add_child(enemy_clone)
+		enemy_clone.position = Vector3(randf_range(-12.324, 67.0),3,randf_range(-59.235, 59.167))
+		print(\"hoi\") # Replace with function body.
+		
+func next_wave() -> void:
+	$\"..\".wave += 1
+	$\"../Player\".start()
+	
+	$\"..\".start()
+	game_start = false
+	$\"../CanvasLayer/GAME START SCREEN\".visible = true
+	$\"../CanvasLayer/GAME START SCREEN/Label3\".visible = false
+	
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlxy5"]
@@ -255,7 +288,18 @@ height = 4.926758
 points = PackedVector3Array(-0.5, -2.463379, 0, -0.49765074, -2.463379, -0.049040705, -0.49765074, -2.463379, 0.048942864, -0.5, 2.4628968, 0, -0.4904072, -2.463379, -0.097592026, -0.49765074, 2.4628968, -0.049040705, -0.4904072, -2.463379, 0.097494125, -0.49765074, 2.4628968, 0.048942864, -0.47856304, -2.463379, -0.14516446, -0.4904072, 2.4628968, -0.097592026, -0.47856304, -2.463379, 0.14506656, -0.4904072, 2.4628968, 0.097494125, -0.46202037, -2.463379, -0.1913665, -0.47856304, 2.4628968, -0.14516446, -0.46202037, -2.463379, 0.19126862, -0.47856304, 2.4628968, 0.14506656, -0.44097495, -2.463379, -0.23570868, -0.46202037, 2.4628968, -0.1913665, -0.44097495, -2.463379, 0.23561078, -0.46202037, 2.4628968, 0.19126862, -0.41581833, -2.463379, -0.27779955, -0.44097495, 2.4628968, -0.23570868, -0.41581833, -2.463379, 0.27770162, -0.44097495, 2.4628968, 0.23561078, -0.38655052, -2.463379, -0.31724745, -0.41581833, 2.4628968, -0.27779955, -0.38655052, -2.463379, 0.31714958, -0.41581833, 2.4628968, 0.27770162, -0.35356304, -2.463379, -0.35356304, -0.38655052, 2.4628968, -0.31724745, -0.35356304, -2.463379, 0.35346514, -0.38655052, 2.4628968, 0.31714958, -0.31724745, -2.463379, -0.38655052, -0.35356304, 2.4628968, -0.35356304, -0.31724745, -2.463379, 0.38645262, -0.35356304, 2.4628968, 0.35346514, -0.27779955, -2.463379, -0.41581833, -0.31724745, 2.4628968, -0.38655052, -0.27779955, -2.463379, 0.41572046, -0.31724745, 2.4628968, 0.38645262, -0.23570868, -2.463379, -0.44097495, -0.27779955, 2.4628968, -0.41581833, -0.23570868, -2.463379, 0.44087708, -0.27779955, 2.4628968, 0.41572046, -0.1913665, -2.463379, -0.46202037, -0.23570868, 2.4628968, -0.44097495, -0.1913665, -2.463379, 0.46192247, -0.23570868, 2.4628968, 0.44087708, -0.14516446, -2.463379, -0.47856304, -0.1913665, 2.4628968, -0.46202037, -0.14516446, -2.463379, 0.47846514, -0.1913665, 2.4628968, 0.46192247, -0.097592026, -2.463379, -0.4904072, -0.14516446, 2.4628968, -0.47856304, -0.097592026, -2.463379, 0.4903093, -0.14516446, 2.4628968, 0.47846514, -0.049040705, -2.463379, -0.49765074, -0.097592026, 2.4628968, -0.4904072, -0.049040705, -2.463379, 0.49755287, -0.097592026, 2.4628968, 0.4903093, 0, -2.463379, -0.5, -0.049040705, 2.4628968, -0.49765074, 0, -2.463379, 0.5, -0.049040705, 2.4628968, 0.49755287, 0.048942864, -2.463379, -0.49765074, 0, 2.4628968, -0.5, 0.048942864, -2.463379, 0.49755287, 0, 2.4628968, 0.5, 0.097494125, -2.463379, -0.4904072, 0.048942864, 2.4628968, -0.49765074, 0.097494125, -2.463379, 0.4903093, 0.048942864, 2.4628968, 0.49755287, 0.14506656, -2.463379, -0.47856304, 0.097494125, 2.4628968, -0.4904072, 0.14506656, -2.463379, 0.47846514, 0.097494125, 2.4628968, 0.4903093, 0.19126862, -2.463379, -0.46202037, 0.14506656, 2.4628968, -0.47856304, 0.19126862, -2.463379, 0.46192247, 0.14506656, 2.4628968, 0.47846514, 0.23561078, -2.463379, -0.44097495, 0.19126862, 2.4628968, -0.46202037, 0.23561078, -2.463379, 0.44087708, 0.19126862, 2.4628968, 0.46192247, 0.27770162, -2.463379, -0.41581833, 0.23561078, 2.4628968, -0.44097495, 0.27770162, -2.463379, 0.41572046, 0.23561078, 2.4628968, 0.44087708, 0.31714958, -2.463379, -0.38655052, 0.27770162, 2.4628968, -0.41581833, 0.31714958, -2.463379, 0.38645262, 0.27770162, 2.4628968, 0.41572046, 0.35346514, -2.463379, -0.35356304, 0.31714958, 2.4628968, -0.38655052, 0.35346514, -2.463379, 0.35346514, 0.31714958, 2.4628968, 0.38645262, 0.38645262, -2.463379, -0.31724745, 0.35346514, 2.4628968, -0.35356304, 0.38645262, -2.463379, 0.31714958, 0.35346514, 2.4628968, 0.35346514, 0.41572046, -2.463379, -0.27779955, 0.38645262, 2.4628968, -0.31724745, 0.41572046, -2.463379, 0.27770162, 0.38645262, 2.4628968, 0.31714958, 0.44087708, -2.463379, -0.23570868, 0.41572046, 2.4628968, -0.27779955, 0.44087708, -2.463379, 0.23561078, 0.41572046, 2.4628968, 0.27770162, 0.46192247, -2.463379, -0.1913665, 0.44087708, 2.4628968, -0.23570868, 0.46192247, -2.463379, 0.19126862, 0.44087708, 2.4628968, 0.23561078, 0.47846514, -2.463379, -0.14516446, 0.46192247, 2.4628968, -0.1913665, 0.47846514, -2.463379, 0.14506656, 0.46192247, 2.4628968, 0.19126862, 0.4903093, -2.463379, -0.097592026, 0.47846514, 2.4628968, -0.14516446, 0.4903093, -2.463379, 0.097494125, 0.47846514, 2.4628968, 0.14506656, 0.49755287, -2.463379, -0.049040705, 0.4903093, 2.4628968, -0.097592026, 0.49755287, -2.463379, 0.048942864, 0.4903093, 2.4628968, 0.097494125, 0.5, -2.463379, 0, 0.49755287, 2.4628968, -0.049040705, 0.49755287, 2.4628968, 0.048942864, 0.5, 2.4628968, 0)
 
 [node name="Node3D" type="Node3D" unique_id=2115954773]
-script = ExtResource("1_s0gvp")
+script = ExtResource("1_j3e5s")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=893593339]
+stream = ExtResource("2_obt1j")
+mix_target = 2
+playback_type = 1
+
+[node name="START GAME TIMER" type="Timer" parent="." unique_id=333504621]
+wait_time = 4.0
+
+[node name="Timer" type="Timer" parent="START GAME TIMER" unique_id=546402087]
+autostart = true
 
 [node name="other crap" type="Node" parent="." unique_id=789940105]
 
@@ -266,7 +310,7 @@ mesh = SubResource("BoxMesh_nswes")
 skeleton = NodePath("../../lasers/laser")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="other crap" unique_id=373671169]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.17588, 1.8364086, 59.16742)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.0248, 1.8364048, 56.373688)
 visible = false
 mesh = SubResource("CapsuleMesh_hbmba")
 skeleton = NodePath("../..")
@@ -736,11 +780,46 @@ scale = Vector2(0.713, 0.535)
 texture = ExtResource("22_5t8nk")
 script = SubResource("GDScript_hbmba")
 
+[node name="GAME START SCREEN" type="Sprite2D" parent="CanvasLayer" unique_id=1480639186]
+position = Vector2(337, 211)
+texture = ExtResource("23_nu31w")
+
+[node name="Label3" type="Label" parent="CanvasLayer/GAME START SCREEN" unique_id=966371721]
+visible = false
+offset_left = -44.0
+offset_top = -25.0
+offset_right = 519.0
+offset_bottom = 263.0
+theme_override_fonts/font = ExtResource("8_jsk3o")
+theme_override_font_sizes/font_size = 64
+text = "WAVE 1
+
+"
+
+[node name="Label" type="Label" parent="CanvasLayer/GAME START SCREEN" unique_id=1373347292]
+visible = false
+offset_left = -197.0
+offset_top = -69.0
+offset_right = 366.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("8_jsk3o")
+theme_override_font_sizes/font_size = 64
+text = "YOU ARE AN EGG
+"
+
+[node name="Label2" type="Label" parent="CanvasLayer/GAME START SCREEN" unique_id=1813327254]
+visible = false
+offset_left = -170.0
+offset_top = 23.0
+offset_right = 393.0
+offset_bottom = 214.0
+theme_override_fonts/font = ExtResource("8_jsk3o")
+theme_override_font_sizes/font_size = 64
+text = "KILL THEM ALL
+"
+
 [node name="enemies" type="Node" parent="." unique_id=1690222008]
 script = SubResource("GDScript_5t8nk")
-
-[node name="enemy" parent="enemies" unique_id=1719601444 instance=ExtResource("20_s0gvp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12187, 5.460703, 0)
 
 [node name="lasers" type="Node" parent="." unique_id=1916592773]
 script = ExtResource("15_3v7ru")
@@ -757,5 +836,14 @@ mesh = SubResource("CylinderMesh_hbmba")
 transform = Transform3D(-8.482063e-09, 0.19404697, 0, -0.19404697, -8.482063e-09, 0, 0, 0, 0.19404697, -2.3988562e-07, -5.203978, 0)
 shape = SubResource("ConvexPolygonShape3D_tuemg")
 
+[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=1760716119]
+stream = ExtResource("26_j3e5s")
+
+[node name="Boom" type="AudioStreamPlayer" parent="." unique_id=2008667846]
+stream = ExtResource("27_nu31w")
+
+[connection signal="timeout" from="START GAME TIMER" to="." method="_on_start_game_timer_timeout"]
+[connection signal="timeout" from="START GAME TIMER" to="enemies" method="_on_start_game_timer_timeout"]
+[connection signal="timeout" from="START GAME TIMER/Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Player/Area3D" to="Player" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="lasers/laser" to="lasers/laser" method="_on_body_entered"]
