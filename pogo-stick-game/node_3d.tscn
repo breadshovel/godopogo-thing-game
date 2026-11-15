@@ -1,0 +1,168 @@
+[gd_scene load_steps=28 format=3 uid="uid://bk7f8e5ug1xvj"]
+
+[ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://character_body_3d.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://dkbdg1tgjf0p1" path="res://camera_3d.gd" id="2_noarx"]
+[ext_resource type="Script" uid="uid://clgpxba0d4svd" path="res://jump_indicator.gd" id="3_a0tk4"]
+[ext_resource type="Script" uid="uid://dkyuls2ppykp3" path="res://twist_pivot.gd" id="3_r3fl7"]
+[ext_resource type="Script" uid="uid://cc8i16rcxo27g" path="res://pitch_pivot.gd" id="4_i5arm"]
+[ext_resource type="Texture2D" uid="uid://dgwgba13ktgxy" path="res://360_F_40583023_P4n0Mmo2dWfiuU2oy1AVbP7PytKFPHSf.jpg" id="5_jka67"]
+[ext_resource type="Texture2D" uid="uid://b2d4db1vfvdrv" path="res://watercolor-hand-painted-stone-texture_1100-70.png" id="7_wc5p8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_noarx"]
+sky_material = SubResource("ProceduralSkyMaterial_a202f")
+
+[sub_resource type="Environment" id="Environment_a0tk4"]
+background_mode = 1
+background_color = Color(0.4865288, 0.36608982, 1, 1)
+sky = SubResource("Sky_noarx")
+tonemap_mode = 3
+tonemap_exposure = 1.78
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_a0tk4"]
+height = 2.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+albedo_color = Color(0.49424607, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a0tk4"]
+material = SubResource("StandardMaterial3D_noarx")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a202f"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i5arm"]
+load_path = "res://.godot/imported/360_F_40583023_P4n0Mmo2dWfiuU2oy1AVbP7PytKFPHSf.jpg-f87c3afe6f35945fb4c9331b110560b7.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
+albedo_texture = SubResource("CompressedTexture2D_i5arm")
+uv1_scale = Vector3(7.115, 7.115, 7.115)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jka67"]
+material = SubResource("StandardMaterial3D_wc5p8")
+size = Vector3(9.5, 1, 5.755)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_noarx"]
+points = PackedVector3Array(-4.75, -0.5, -2.8775, -4.75, 0.5, -2.8775, 4.75, -0.5, -2.8775, -4.75, -0.5, 2.8775, -4.75, 0.5, 2.8775, 4.75, 0.5, -2.8775, 4.75, -0.5, 2.8775, 4.75, 0.5, 2.8775)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jsk3o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
+albedo_texture = ExtResource("5_jka67")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6iypd"]
+material = SubResource("StandardMaterial3D_4arys")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tereu"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.5529412)
+
+[sub_resource type="TorusMesh" id="TorusMesh_i5arm"]
+material = SubResource("StandardMaterial3D_jka67")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
+albedo_color = Color(0.55163884, 0.55163884, 0.55163884, 1)
+albedo_texture = ExtResource("7_wc5p8")
+
+[sub_resource type="PrismMesh" id="PrismMesh_wc5p8"]
+material = SubResource("StandardMaterial3D_i5arm")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a0tk4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.082206145, -0.19738297, -0.9768737, 0.46476638, -0.85948765, 0.21277553, -0.88160896, -0.47150946, 0.021081766, 0, 6.2975717, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4773941, 0)
+script = ExtResource("1_a202f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("SphereMesh_a0tk4")
+
+[node name="JumpIndicator" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1.2, 0, 0, 0, 0.085320264, 0, 0, 0, 1.2, 0, -0.6458521, 0)
+mesh = SubResource("CylinderMesh_a0tk4")
+script = ExtResource("3_a0tk4")
+
+[node name="TwistPivot" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("3_r3fl7")
+
+[node name="PitchPivot" type="Node3D" parent="CharacterBody3D/TwistPivot"]
+script = ExtResource("4_i5arm")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/TwistPivot/PitchPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.92050487, 0.39073113, 0, -0.39073113, 0.92050487, 0, 0, 4.166)
+script = ExtResource("2_noarx")
+
+[node name="platforms" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="platforms"]
+transform = Transform3D(4.6932983, 0, 0, 0, 1, 0, 0, 0, 5.3339906, 45.74253, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_a202f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="platforms/StaticBody3D"]
+transform = Transform3D(2.642764, 0, 0, 0, 1, 0, 0, 0, 3.9106584, 0, 0, 0)
+mesh = SubResource("BoxMesh_jka67")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platforms/StaticBody3D"]
+transform = Transform3D(2.642764, 0, 0, 0, 1, 0, 0, 0, 3.9106584, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_noarx")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.539076, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_jsk3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="platforms/StaticBody3D2"]
+transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 0, 0, 0)
+mesh = SubResource("BoxMesh_6iypd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platforms/StaticBody3D2"]
+transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_tereu")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.704758, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_jsk3o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="platforms/StaticBody3D3"]
+transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 0, 0, 0)
+mesh = SubResource("BoxMesh_6iypd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platforms/StaticBody3D3"]
+transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_tereu")
+
+[node name="mountains" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mountains"]
+transform = Transform3D(30, 0, 0, 0, 13.542, 0, 0, 0, 30, 99.16871, 81.80401, -4.600931)
+mesh = SubResource("TorusMesh_i5arm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="mountains"]
+transform = Transform3D(5.4731064, 0, -44.518635, 0, 45.2209, 0, 53.704624, 0, 4.5369544, 93.37414, 22.379068, 34.736763)
+mesh = SubResource("PrismMesh_wc5p8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="mountains"]
+transform = Transform3D(-16.184412, 0, -42.690754, 0, 75.148346, 0, 51.499584, 0, -13.416124, 106.17046, 33.985138, -1.9582214)
+mesh = SubResource("PrismMesh_wc5p8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="mountains"]
+transform = Transform3D(9.776436, 0, -44.00926, 0, 45.2209, 0, 53.090145, 0, 8.104207, 98.8668, 22.048502, -40.67395)
+mesh = SubResource("PrismMesh_wc5p8")
