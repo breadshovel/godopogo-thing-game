@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://character_body_3d.gd" id="1_a202f"]
 [ext_resource type="Script" uid="uid://ctjk1r055yceo" path="res://node_3d.gd" id="1_j3e5s"]
 [ext_resource type="Script" uid="uid://dkbdg1tgjf0p1" path="res://camera_3d.gd" id="2_noarx"]
-[ext_resource type="AudioStream" uid="uid://con1n42pnjsi7" path="res://truman songa l ltruamn (2).wav" id="2_obt1j"]
 [ext_resource type="Script" uid="uid://clgpxba0d4svd" path="res://jump_indicator.gd" id="3_a0tk4"]
 [ext_resource type="Script" uid="uid://dkyuls2ppykp3" path="res://twist_pivot.gd" id="3_r3fl7"]
 [ext_resource type="Script" uid="uid://cc8i16rcxo27g" path="res://pitch_pivot.gd" id="4_i5arm"]
@@ -291,7 +290,6 @@ points = PackedVector3Array(-0.5, -2.463379, 0, -0.49765074, -2.463379, -0.04904
 script = ExtResource("1_j3e5s")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=893593339]
-stream = ExtResource("2_obt1j")
 mix_target = 2
 playback_type = 1
 

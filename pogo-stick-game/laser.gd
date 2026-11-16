@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	#increment every frame, after a while, despawn
 	tick += delta
 	
-	if tick >= 100:
+	if tick >= 10000:
 		queue_free()
 
 
