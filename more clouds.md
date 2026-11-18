@@ -46,6 +46,12 @@ INCLUDE ASSETS THAT WE COULDNT GET IN IN TIME AT THE GAME JAM
 
 
 
+add titlescreen
+
+add pause
+
+
+
 make it so you can groundpound when standing ontop of enemy
 
 make it so enemies cant spawn ontop of players
