@@ -1,3 +1,11 @@
+&#x09;	      TODO LIST:
+
+\------------------------------------------------------
+
+
+
+
+
 ~~more clouds~~
 
 ~~if fall in void die~~
@@ -30,9 +38,15 @@
 
 ~~add groundpound~~
 
-make wave system that clones enemies
+~~make wave system that clones enemies~~
 
 
+
+INCLUDE ASSETS THAT WE COULDNT GET IN IN TIME AT THE GAME JAM
+
+
+
+make it so you can groundpound when standing ontop of enemy
 
 make it so enemies cant spawn ontop of players
 
@@ -53,6 +67,18 @@ add enemy varients \& bosses
 
 
 
+
+
+
+
+
+
+
+
+
+&#x09;	      IDEA LIST:
+
+\------------------------------------------------------
 
 
 
@@ -89,9 +115,50 @@ include soft bodys somehow
 
 
 YOU ARE AN EGG
+
 KILL THEM
 
 
 
 have pizzas inside houses/pizza places?
+
+
+
+
+
+rogue like more openm world
+
+
+
+seamless transition between waves
+
+
+
+
+
+
+
+
+
+
+
+MULTIPLAYER??????????????/
+
+
+
+
+
+
+
+
+
+have limited ammo, need to refill
+
+
+
+large procedural world with pizza places and ammo refills, seamless transition between waves, maybe with a countdown to refill on health \& ammo
+
+
+
+maybe finite time to complete a wave, and time remaining gets added to health
 
