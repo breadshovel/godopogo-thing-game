@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://1rqdra754235"]
+
+[ext_resource type="Script" uid="uid://dm857cwcsm76k" path="res://enemy.gd" id="1_qi2p4"]
+[ext_resource type="Texture2D" uid="uid://b2d4db1vfvdrv" path="res://watercolor-hand-painted-stone-texture_1100-70.png" id="2_iifgy"]
+[ext_resource type="Script" uid="uid://dtmgv1ti04e80" path="res://timer.gd" id="3_epg4t"]
+[ext_resource type="Texture2D" uid="uid://bqkd5j5rxbrda" path="res://healthbar.png" id="4_epg4t"]
+[ext_resource type="Texture2D" uid="uid://br65hft7wa0lw" path="res://healthbar interirori.png" id="5_3yqyl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wujgv"]
+albedo_color = Color(0.10635612, 0, 0.62050736, 1)
+albedo_texture = ExtResource("2_iifgy")
+
+[sub_resource type="BoxMesh" id="BoxMesh_hbmba"]
+material = SubResource("StandardMaterial3D_wujgv")
+size = Vector3(1, 2.3510742, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s0gvp"]
+points = PackedVector3Array(-0.5, -1.1755371, -0.5, -0.5, -1.1755371, 0.5, -0.5, 1.175307, -0.5, 0.5, -1.1755371, -0.5, 0.5, -1.1755371, 0.5, -0.5, 1.175307, 0.5, 0.5, 1.175307, -0.5, 0.5, 1.175307, 0.5)
+
+[sub_resource type="GDScript" id="GDScript_epg4t"]
+script/source = "extends Sprite3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	texture = $SubViewport.get_texture() # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_nswes"]
+script/source = "extends TextureProgressBar
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	value = $\"../../..\".health
+"
+
+[node name="enemy" type="CharacterBody3D" unique_id=1719601444]
+script = ExtResource("1_qi2p4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=671430204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09581375, -2.7468262, 0)
+mesh = SubResource("BoxMesh_hbmba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=921471628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09581375, -2.7468262, 0)
+shape = SubResource("ConvexPolygonShape3D_s0gvp")
+
+[node name="Timer" type="Timer" parent="." unique_id=184319387]
+autostart = true
+script = ExtResource("3_epg4t")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=426741294]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 1, 0)
+billboard = 1
+script = SubResource("GDScript_epg4t")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1454542260]
+transparent_bg = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="Sprite3D/SubViewport" unique_id=1116763081]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+texture_over = ExtResource("4_epg4t")
+texture_progress = ExtResource("5_3yqyl")
+tint_progress = Color(18.892157, 0, 0, 1)
+script = SubResource("GDScript_nswes")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

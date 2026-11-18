@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2xip2j2d386j"
+path="res://.godot/imported/truman songa l ltruamn - Copy.wav-524532e34b165f093f57ff0433cd124a.sample"
+
+[deps]
+
+source_file="res://truman songa l ltruamn - Copy.wav"
+dest_files=["res://.godot/imported/truman songa l ltruamn - Copy.wav-524532e34b165f093f57ff0433cd124a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
