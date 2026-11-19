@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cqps4u7kcuywx"]
+
+[ext_resource type="Texture2D" uid="uid://cj84wye11quwd" path="res://titlescreen.png" id="1_cjnew"]
+
+[node name="Titlescreen" type="Node2D" unique_id=1757010949]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=403822266]
+
+[node name="Titlescreen" type="Sprite2D" parent="." unique_id=950656952]
+texture_filter = 1
+position = Vector2(427, 240)
+texture = ExtResource("1_cjnew")

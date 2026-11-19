@@ -77,8 +77,7 @@ func _physics_process(delta: float) -> void:
 		#	rotation_degrees.y -= 90 * delta
 		
 		#MOUSE INPUT:
-		rotation_degrees.y -= delta_x
-		delta_y_but_it_works = delta_y
+		rotation_degrees.y -= delta_x * delta * 50
 		delta_x = 0
 		delta_y = 0
 		
@@ -90,6 +89,7 @@ func _physics_process(delta: float) -> void:
 		
 		#if in a big jump and ground pound button pressed; initiate ground pound
 		if Input.is_action_just_pressed("ground_pound") and on_high_jump:
+			$"../GroundPoundSound".play(.22)
 			ground_pound = true
 			on_high_jump = false
 		
@@ -118,6 +118,9 @@ func _physics_process(delta: float) -> void:
 				
 				#if max jump, then reset chargeometer
 				if ready_to_jump:
+					var pitchscale = randf_range(.75, 2)
+					$"../BounceSound".pitch_scale = pitchscale
+					$"../BounceSound".play(.05 * pitchscale)
 					$"../CanvasLayer/Chargeometer".value_float = 0
 					on_high_jump = true
 			

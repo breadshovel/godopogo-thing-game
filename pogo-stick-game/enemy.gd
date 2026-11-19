@@ -100,9 +100,11 @@ func _on_timer_timeout() -> void:
 		
 
 func take_damage() -> void:
+	$"../../EnemyDamageSound".play()
 	health -= 25
 
 func die() -> void:
+	$"../../EnemyDieSound".play(.17)
 	queue_free() # Replace with function body.
 	
 func knockback() -> void:

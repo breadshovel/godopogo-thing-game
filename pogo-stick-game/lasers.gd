@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	#if shoot pressed, copy laser, make visible, make go forward until BLANK
-		if Input.is_action_just_pressed("shoot") and zapometer.value >= 100:
+		if Input.is_action_just_pressed("shoot") and zapometer.value >= 100 and $"..".game_start:
 			var new_laser = $laser.duplicate()
 			new_laser.position = player.position
 			new_laser.rotation_degrees.y = player.rotation_degrees.y + 90

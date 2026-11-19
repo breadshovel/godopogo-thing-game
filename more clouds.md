@@ -42,13 +42,17 @@
 
 
 
-INCLUDE ASSETS THAT WE COULDNT GET IN IN TIME AT THE GAME JAM
+~~INCLUDE ASSETS THAT WE COULDNT GET IN IN TIME AT THE GAME JAM~~
 
 
 
 add titlescreen
 
 add pause
+
+
+
+polish up the gui ie add sparkles when the meter is done filling
 
 
 
@@ -167,4 +171,12 @@ large procedural world with pizza places and ammo refills, seamless transition b
 
 
 maybe finite time to complete a wave, and time remaining gets added to health
+
+
+
+
+
+
+
+ART STYLE: will be just simple shapes, with floating textures, like a sphere for a head with a floating simple face texture infront of it
 

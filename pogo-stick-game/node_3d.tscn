@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://cowpxpiho4bie" path="res://bushes.gd" id="1_6iypd"]
 [ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://character_body_3d.gd" id="1_a202f"]
 [ext_resource type="Script" uid="uid://ctjk1r055yceo" path="res://node_3d.gd" id="1_j3e5s"]
+[ext_resource type="AudioStream" uid="uid://oki08105pc28" path="res://07 Tromboing.mp3" id="2_id0nj"]
 [ext_resource type="Script" uid="uid://dkbdg1tgjf0p1" path="res://camera_3d.gd" id="2_noarx"]
+[ext_resource type="AudioStream" uid="uid://da0uftb1v6bsx" path="res://laserShoot.wav" id="2_obt1j"]
+[ext_resource type="AudioStream" uid="uid://drw53xj47lqhu" path="res://83 Thunk.mp3" id="3_1q667"]
 [ext_resource type="Script" uid="uid://clgpxba0d4svd" path="res://jump_indicator.gd" id="3_a0tk4"]
 [ext_resource type="Script" uid="uid://dkyuls2ppykp3" path="res://twist_pivot.gd" id="3_r3fl7"]
 [ext_resource type="Script" uid="uid://cc8i16rcxo27g" path="res://pitch_pivot.gd" id="4_i5arm"]
@@ -11,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://b2d4db1vfvdrv" path="res://watercolor-hand-painted-stone-texture_1100-70.png" id="7_wc5p8"]
 [ext_resource type="Texture2D" uid="uid://c001wthgwb32k" path="res://360_F_228578425_hCRziwFdpPWjqmxSdHqD1fWinLaIorAM.jpg" id="8_4arys"]
 [ext_resource type="FontFile" uid="uid://cvtpu8548y1kk" path="res://Jokerman.otf" id="8_jsk3o"]
-[ext_resource type="ArrayMesh" uid="uid://chj60m1q2n557" path="res://Part Studio 1.obj" id="8_tuemg"]
 [ext_resource type="Texture2D" uid="uid://cguntu1h4jwcd" path="res://progress bar empty.png" id="10_cdqbm"]
+[ext_resource type="ArrayMesh" uid="uid://r2lkxr50v502" path="res://Meshes/Pogo Stick.obj" id="11_2yde8"]
 [ext_resource type="Texture2D" uid="uid://cu7421isym660" path="res://progress bar interior3.png" id="11_wlxy5"]
 [ext_resource type="Script" uid="uid://sfnrenisbofo" path="res://texture_progress_bar.gd" id="12_3v7ru"]
 [ext_resource type="Texture2D" uid="uid://bpqj1fg3xnbqm" path="res://player healthbar exteriroir.png" id="12_dhlwf"]
@@ -27,6 +30,28 @@
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="23_nu31w"]
 [ext_resource type="AudioStream" uid="uid://biqwy58va7ql6" path="res://shepard_tone_20000ms.wav" id="26_j3e5s"]
 [ext_resource type="AudioStream" uid="uid://dn3mxhjg6o5uy" path="res://universfield-impact-cinematic-boom-02-487858.mp3" id="27_nu31w"]
+[ext_resource type="AudioStream" uid="uid://clcno6odks05x" path="res://Bite.wav" id="29_2yde8"]
+[ext_resource type="AudioStream" uid="uid://pfv1xhcjupt6" path="res://universfield-dramatic-death-collapse-352720.mp3" id="30_id0nj"]
+
+[sub_resource type="FontFile" id="FontFile_2yde8"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="TextMesh" id="TextMesh_3yqyl"]
+text = "wgat"
+font = SubResource("FontFile_2yde8")
 
 [sub_resource type="BoxMesh" id="BoxMesh_nswes"]
 
@@ -59,6 +84,7 @@ sky_material = SubResource("ProceduralSkyMaterial_a202f")
 background_mode = 1
 background_color = Color(0.4865288, 0.36608982, 1, 1)
 sky = SubResource("Sky_noarx")
+ambient_light_color = Color(1, 0, 1, 1)
 tonemap_mode = 3
 tonemap_exposure = 1.78
 
@@ -289,8 +315,24 @@ points = PackedVector3Array(-0.5, -2.463379, 0, -0.49765074, -2.463379, -0.04904
 [node name="Node3D" type="Node3D" unique_id=2115954773]
 script = ExtResource("1_j3e5s")
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=893593339]
+[node name="BounceSound" type="AudioStreamPlayer" parent="." unique_id=990074797]
+stream = ExtResource("2_id0nj")
+pitch_scale = 1.99
+
+[node name="GroundPoundSound" type="AudioStreamPlayer" parent="." unique_id=116424890]
+stream = ExtResource("3_1q667")
+
+[node name="wgat" type="MeshInstance3D" parent="." unique_id=1506991097]
+transform = Transform3D(-6.5018244, -23.852425, -193.15051, -1.9493947, 104.87076, -50.02838, 94.37704, -5.803446, -12.914619, 116.22942, 73.48063, 29.01202)
+mesh = SubResource("TextMesh_3yqyl")
+skeleton = NodePath("../platforms/StaticBody3D")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="." unique_id=893593339]
+stream = ExtResource("2_obt1j")
+volume_db = -3.649
+pitch_scale = 4.0
 mix_target = 2
+max_polyphony = 12
 playback_type = 1
 
 [node name="START GAME TIMER" type="Timer" parent="." unique_id=333504621]
@@ -551,7 +593,7 @@ script = ExtResource("2_noarx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Player" unique_id=132042052]
 transform = Transform3D(-7.311443, -6.391866e-07, -2.7939736e-14, 0, -3.195933e-07, 7.311443, -6.391866e-07, 7.311443, 3.195933e-07, 0.0036411276, -1.2654097, -0.62455595)
-mesh = ExtResource("8_tuemg")
+mesh = ExtResource("11_2yde8")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_j3e5s")
 surface_material_override/1 = SubResource("StandardMaterial3D_j3e5s")
@@ -839,6 +881,15 @@ stream = ExtResource("26_j3e5s")
 
 [node name="Boom" type="AudioStreamPlayer" parent="." unique_id=2008667846]
 stream = ExtResource("27_nu31w")
+
+[node name="EnemyDieSound" type="AudioStreamPlayer" parent="." unique_id=727958593]
+stream = ExtResource("30_id0nj")
+pitch_scale = 2.01
+max_polyphony = 36
+
+[node name="EnemyDamageSound" type="AudioStreamPlayer" parent="." unique_id=839053517]
+stream = ExtResource("29_2yde8")
+max_polyphony = 9
 
 [connection signal="timeout" from="START GAME TIMER" to="." method="_on_start_game_timer_timeout"]
 [connection signal="timeout" from="START GAME TIMER" to="enemies" method="_on_start_game_timer_timeout"]
