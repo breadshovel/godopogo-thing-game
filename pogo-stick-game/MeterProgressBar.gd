@@ -6,9 +6,11 @@ enum MeterType {
 	Zap
 }
 
+const CHARGE_INCREASE: float = 20
+const CHARGE_DECREASE: float = 40
+
 @export var Type: MeterType
 
-var uppy: bool = false
 var value_float: float = 0
 
 func _init():
@@ -23,11 +25,10 @@ func update_progressive_zap(deltaTime: float):
 	value_float += 500*deltaTime;
 	value = ceil(value_float)
 
-func update_progressive_charge(deltaTime: float):
-	if not uppy:
-		value_float += 20 * deltaTime
-	
-	#switch direcrion when maxed out on either side
-	
-	#round value_float into value
+func update_progressive_charge(increase: bool, deltaTime: float):
+	if (increase):
+		value_float += CHARGE_INCREASE * deltaTime
+	else:
+		value_float = maxf(0.0, value_float - CHARGE_DECREASE*deltaTime)
+		
 	value = round(value_float)

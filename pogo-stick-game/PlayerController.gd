@@ -11,6 +11,7 @@ class Constants:
 	static var REGULAR_JUMP_VELOCITY: float = 4.5
 	
 	static var MOUSE_SENSITIVITY: float = 0.03
+	static var CHARGE_HOLD_THRESHOLD: float = 0.0
 	
 var health: int
 var collision_shape: CollisionShape3D
@@ -47,10 +48,19 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		#print(body.name)
 		body.knockback()
 
+var space_hold: float = 0.0
 func input_update(deltaTime: float):
 	meters[MeterProgressBar.MeterType.Health].update_bar(health)
 	meters[MeterProgressBar.MeterType.Zap].update_progressive_zap(deltaTime)
-	meters[MeterProgressBar.MeterType.Charge].update_progressive_charge(deltaTime)
+		
+	if space_hold >= Constants.CHARGE_HOLD_THRESHOLD && Input.is_action_pressed("ui_accept"):
+		meters[MeterProgressBar.MeterType.Charge].update_progressive_charge(true, deltaTime)
+		space_hold = 0
+	elif Input.is_action_just_pressed("ui_accept"):
+		space_hold += deltaTime
+	else:
+		space_hold = 0
+		meters[MeterProgressBar.MeterType.Charge].update_progressive_charge(false, deltaTime)
 	
 	#R toggles mouse capture
 	if Input.is_action_just_pressed(Constants.CENTER_MOUSE):
