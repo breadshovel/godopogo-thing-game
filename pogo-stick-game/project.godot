@@ -22,12 +22,17 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*uid://d3usddrck5lrl"
+SoundSystem="*uid://bctp1mxra4rbf"
 
 [display]
 
 window/size/viewport_width=854
 window/size/viewport_height=480
 window/stretch/mode="viewport"
+
+[global_group]
+
+PlayerMeters="Meter/progress bars visible to the player"
 
 [input]
 
