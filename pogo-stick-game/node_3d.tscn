@@ -1,30 +1,30 @@
 [gd_scene format=3 uid="uid://bk7f8e5ug1xvj"]
 
 [ext_resource type="Script" uid="uid://cowpxpiho4bie" path="res://bushes.gd" id="1_6iypd"]
-[ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://character_body_3d.gd" id="1_a202f"]
 [ext_resource type="Script" uid="uid://ctjk1r055yceo" path="res://node_3d.gd" id="1_j3e5s"]
-[ext_resource type="Script" uid="uid://dkbdg1tgjf0p1" path="res://camera_3d.gd" id="2_noarx"]
+[ext_resource type="AudioStream" uid="uid://b66a0fvdo84l8" path="res://09 Kabong.mp3" id="2_nu31w"]
 [ext_resource type="Script" uid="uid://clgpxba0d4svd" path="res://jump_indicator.gd" id="3_a0tk4"]
-[ext_resource type="Script" uid="uid://dkyuls2ppykp3" path="res://twist_pivot.gd" id="3_r3fl7"]
-[ext_resource type="Script" uid="uid://cc8i16rcxo27g" path="res://pitch_pivot.gd" id="4_i5arm"]
+[ext_resource type="AudioStream" uid="uid://d2xip2j2d386j" path="res://truman songa l ltruamn - Copy.wav" id="3_nu31w"]
 [ext_resource type="Texture2D" uid="uid://dgwgba13ktgxy" path="res://360_F_40583023_P4n0Mmo2dWfiuU2oy1AVbP7PytKFPHSf.jpg" id="5_jka67"]
 [ext_resource type="Texture2D" uid="uid://b2d4db1vfvdrv" path="res://watercolor-hand-painted-stone-texture_1100-70.png" id="7_wc5p8"]
 [ext_resource type="Texture2D" uid="uid://c001wthgwb32k" path="res://360_F_228578425_hCRziwFdpPWjqmxSdHqD1fWinLaIorAM.jpg" id="8_4arys"]
+[ext_resource type="Script" uid="uid://dco1ks8toegli" path="res://MeterProgressBar.gd" id="8_dhlwf"]
 [ext_resource type="FontFile" uid="uid://cvtpu8548y1kk" path="res://Jokerman.otf" id="8_jsk3o"]
 [ext_resource type="ArrayMesh" uid="uid://chj60m1q2n557" path="res://Part Studio 1.obj" id="8_tuemg"]
 [ext_resource type="Texture2D" uid="uid://cguntu1h4jwcd" path="res://progress bar empty.png" id="10_cdqbm"]
 [ext_resource type="Texture2D" uid="uid://cu7421isym660" path="res://progress bar interior3.png" id="11_wlxy5"]
-[ext_resource type="Script" uid="uid://sfnrenisbofo" path="res://texture_progress_bar.gd" id="12_3v7ru"]
 [ext_resource type="Texture2D" uid="uid://bpqj1fg3xnbqm" path="res://player healthbar exteriroir.png" id="12_dhlwf"]
 [ext_resource type="FontFile" uid="uid://o1c7nd8ddp4x" path="res://Papyrus-Condensed.ttf" id="12_imku0"]
 [ext_resource type="Texture2D" uid="uid://ufloqm520eh4" path="res://player healthbar interior.png" id="13_5t8nk"]
 [ext_resource type="Texture2D" uid="uid://cdxqqqw0153pa" path="res://zapometer exterior.png" id="14_ealrb"]
 [ext_resource type="Script" uid="uid://c60gcoyew4rnj" path="res://lasers.gd" id="15_3v7ru"]
 [ext_resource type="Texture2D" uid="uid://co44tntkdt2po" path="res://zapometer interior.png" id="15_jsnrv"]
-[ext_resource type="Script" uid="uid://cwd13p5i7gu3a" path="res://zapometer.gd" id="16_jsnrv"]
 [ext_resource type="Script" uid="uid://dcmi4vfr5w81q" path="res://laser.gd" id="16_tcnuu"]
 [ext_resource type="Texture2D" uid="uid://cry5i3u537g5t" path="res://deathscreenframe1.png" id="22_5t8nk"]
+[ext_resource type="Script" uid="uid://cevwbuxjysr5s" path="res://PlayerController.gd" id="22_dhlwf"]
+[ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://Player.gd" id="22_j3e5s"]
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="23_nu31w"]
+[ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="AudioStream" uid="uid://biqwy58va7ql6" path="res://shepard_tone_20000ms.wav" id="26_j3e5s"]
 [ext_resource type="AudioStream" uid="uid://dn3mxhjg6o5uy" path="res://universfield-impact-cinematic-boom-02-487858.mp3" id="27_nu31w"]
 
@@ -61,56 +61,6 @@ background_color = Color(0.4865288, 0.36608982, 1, 1)
 sky = SubResource("Sky_noarx")
 tonemap_mode = 3
 tonemap_exposure = 1.78
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_hbmba"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5t8nk"]
-albedo_color = Color(2.042989, 1.1453491, 0, 1)
-albedo_texture = ExtResource("7_wc5p8")
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 0.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_nuxcn"]
-material = SubResource("StandardMaterial3D_5t8nk")
-is_hemisphere = true
-
-[sub_resource type="GDScript" id="GDScript_j3e5s"]
-script/source = "extends MeshInstance3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if $\"..\".ground_pound:
-		visible = true
-	else:
-		visible = false
-"
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
-height = 2.2145996
-
-[sub_resource type="SphereMesh" id="SphereMesh_a0tk4"]
-height = 2.01
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
-shading_mode = 0
-albedo_color = Color(0.49424607, 0, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_a0tk4"]
-material = SubResource("StandardMaterial3D_noarx")
-top_radius = 0.2475586
-bottom_radius = 0.2475586
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3e5s"]
-albedo_color = Color(0.2566668, 0.2566668, 0.2566668, 1)
-metallic = 0.33
-metallic_specular = 0.55
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a202f"]
 
@@ -169,61 +119,6 @@ points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tcnuu"]
 points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="GDScript" id="GDScript_dhlwf"]
-script/source = "extends TextureProgressBar
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	value = $\"../../Player\".HEALTH
-"
-
-[sub_resource type="GDScript" id="GDScript_hbmba"]
-script/source = "extends Sprite2D
-
-@onready var Player = $\"../../Player\"
-var tick := 0.0
-var tick2 := 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	visible = false # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	if Player.HEALTH <= 0:
-		tick += 1 * delta
-		tick2 += 1 * delta
-		
-		#detect if dead
-		if Player.HEALTH <= 0:
-			$\"../../DeathSound\".playing = true
-			visible = true
-		
-		#flash death screen back and forth every frame
-		print(tick)
-		if tick >= .05:
-			if texture.resource_path == \"res://deathscreenframe1.png\":
-				texture = load(\"res://deathscreenframe2.png\")
-			else:
-				texture = load(\"res://deathscreenframe1.png\")
-				
-			tick = 0
-			if !visible: tick2 = 0
-			
-		#reset game
-		if tick2 >= .7:
-			get_tree().reload_current_scene()
-	
-"
 
 [sub_resource type="GDScript" id="GDScript_5t8nk"]
 script/source = "extends Node
@@ -286,10 +181,64 @@ height = 4.926758
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tuemg"]
 points = PackedVector3Array(-0.5, -2.463379, 0, -0.49765074, -2.463379, -0.049040705, -0.49765074, -2.463379, 0.048942864, -0.5, 2.4628968, 0, -0.4904072, -2.463379, -0.097592026, -0.49765074, 2.4628968, -0.049040705, -0.4904072, -2.463379, 0.097494125, -0.49765074, 2.4628968, 0.048942864, -0.47856304, -2.463379, -0.14516446, -0.4904072, 2.4628968, -0.097592026, -0.47856304, -2.463379, 0.14506656, -0.4904072, 2.4628968, 0.097494125, -0.46202037, -2.463379, -0.1913665, -0.47856304, 2.4628968, -0.14516446, -0.46202037, -2.463379, 0.19126862, -0.47856304, 2.4628968, 0.14506656, -0.44097495, -2.463379, -0.23570868, -0.46202037, 2.4628968, -0.1913665, -0.44097495, -2.463379, 0.23561078, -0.46202037, 2.4628968, 0.19126862, -0.41581833, -2.463379, -0.27779955, -0.44097495, 2.4628968, -0.23570868, -0.41581833, -2.463379, 0.27770162, -0.44097495, 2.4628968, 0.23561078, -0.38655052, -2.463379, -0.31724745, -0.41581833, 2.4628968, -0.27779955, -0.38655052, -2.463379, 0.31714958, -0.41581833, 2.4628968, 0.27770162, -0.35356304, -2.463379, -0.35356304, -0.38655052, 2.4628968, -0.31724745, -0.35356304, -2.463379, 0.35346514, -0.38655052, 2.4628968, 0.31714958, -0.31724745, -2.463379, -0.38655052, -0.35356304, 2.4628968, -0.35356304, -0.31724745, -2.463379, 0.38645262, -0.35356304, 2.4628968, 0.35346514, -0.27779955, -2.463379, -0.41581833, -0.31724745, 2.4628968, -0.38655052, -0.27779955, -2.463379, 0.41572046, -0.31724745, 2.4628968, 0.38645262, -0.23570868, -2.463379, -0.44097495, -0.27779955, 2.4628968, -0.41581833, -0.23570868, -2.463379, 0.44087708, -0.27779955, 2.4628968, 0.41572046, -0.1913665, -2.463379, -0.46202037, -0.23570868, 2.4628968, -0.44097495, -0.1913665, -2.463379, 0.46192247, -0.23570868, 2.4628968, 0.44087708, -0.14516446, -2.463379, -0.47856304, -0.1913665, 2.4628968, -0.46202037, -0.14516446, -2.463379, 0.47846514, -0.1913665, 2.4628968, 0.46192247, -0.097592026, -2.463379, -0.4904072, -0.14516446, 2.4628968, -0.47856304, -0.097592026, -2.463379, 0.4903093, -0.14516446, 2.4628968, 0.47846514, -0.049040705, -2.463379, -0.49765074, -0.097592026, 2.4628968, -0.4904072, -0.049040705, -2.463379, 0.49755287, -0.097592026, 2.4628968, 0.4903093, 0, -2.463379, -0.5, -0.049040705, 2.4628968, -0.49765074, 0, -2.463379, 0.5, -0.049040705, 2.4628968, 0.49755287, 0.048942864, -2.463379, -0.49765074, 0, 2.4628968, -0.5, 0.048942864, -2.463379, 0.49755287, 0, 2.4628968, 0.5, 0.097494125, -2.463379, -0.4904072, 0.048942864, 2.4628968, -0.49765074, 0.097494125, -2.463379, 0.4903093, 0.048942864, 2.4628968, 0.49755287, 0.14506656, -2.463379, -0.47856304, 0.097494125, 2.4628968, -0.4904072, 0.14506656, -2.463379, 0.47846514, 0.097494125, 2.4628968, 0.4903093, 0.19126862, -2.463379, -0.46202037, 0.14506656, 2.4628968, -0.47856304, 0.19126862, -2.463379, 0.46192247, 0.14506656, 2.4628968, 0.47846514, 0.23561078, -2.463379, -0.44097495, 0.19126862, 2.4628968, -0.46202037, 0.23561078, -2.463379, 0.44087708, 0.19126862, 2.4628968, 0.46192247, 0.27770162, -2.463379, -0.41581833, 0.23561078, 2.4628968, -0.44097495, 0.27770162, -2.463379, 0.41572046, 0.23561078, 2.4628968, 0.44087708, 0.31714958, -2.463379, -0.38655052, 0.27770162, 2.4628968, -0.41581833, 0.31714958, -2.463379, 0.38645262, 0.27770162, 2.4628968, 0.41572046, 0.35346514, -2.463379, -0.35356304, 0.31714958, 2.4628968, -0.38655052, 0.35346514, -2.463379, 0.35346514, 0.31714958, 2.4628968, 0.38645262, 0.38645262, -2.463379, -0.31724745, 0.35346514, 2.4628968, -0.35356304, 0.38645262, -2.463379, 0.31714958, 0.35346514, 2.4628968, 0.35346514, 0.41572046, -2.463379, -0.27779955, 0.38645262, 2.4628968, -0.31724745, 0.41572046, -2.463379, 0.27770162, 0.38645262, 2.4628968, 0.31714958, 0.44087708, -2.463379, -0.23570868, 0.41572046, 2.4628968, -0.27779955, 0.44087708, -2.463379, 0.23561078, 0.41572046, 2.4628968, 0.27770162, 0.46192247, -2.463379, -0.1913665, 0.44087708, 2.4628968, -0.23570868, 0.46192247, -2.463379, 0.19126862, 0.44087708, 2.4628968, 0.23561078, 0.47846514, -2.463379, -0.14516446, 0.46192247, 2.4628968, -0.1913665, 0.47846514, -2.463379, 0.14506656, 0.46192247, 2.4628968, 0.19126862, 0.4903093, -2.463379, -0.097592026, 0.47846514, 2.4628968, -0.14516446, 0.4903093, -2.463379, 0.097494125, 0.47846514, 2.4628968, 0.14506656, 0.49755287, -2.463379, -0.049040705, 0.4903093, 2.4628968, -0.097592026, 0.49755287, -2.463379, 0.048942864, 0.4903093, 2.4628968, 0.097494125, 0.5, -2.463379, 0, 0.49755287, 2.4628968, -0.049040705, 0.49755287, 2.4628968, 0.048942864, 0.5, 2.4628968, 0)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hbmba"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5t8nk"]
+albedo_color = Color(2.042989, 1.1453491, 0, 1)
+albedo_texture = ExtResource("7_wc5p8")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_nuxcn"]
+material = SubResource("StandardMaterial3D_5t8nk")
+is_hemisphere = true
+
+[sub_resource type="GDScript" id="GDScript_j3e5s"]
+script/source = "extends MeshInstance3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if $\"..\".ground_pound:
+		visible = true
+	else:
+		visible = false
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
+height = 2.2145996
+
+[sub_resource type="SphereMesh" id="SphereMesh_a0tk4"]
+height = 2.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3e5s"]
+albedo_color = Color(0.2566668, 0.2566668, 0.2566668, 1)
+metallic = 0.33
+metallic_specular = 0.55
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+shading_mode = 0
+albedo_color = Color(0.49424607, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a0tk4"]
+material = SubResource("StandardMaterial3D_noarx")
+top_radius = 0.2475586
+bottom_radius = 0.2475586
+
 [node name="Node3D" type="Node3D" unique_id=2115954773]
 script = ExtResource("1_j3e5s")
 
+[node name="09Kabong" type="AudioStreamPlayer" parent="." unique_id=353255704]
+stream = ExtResource("2_nu31w")
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=893593339]
+stream = ExtResource("3_nu31w")
 mix_target = 2
 playback_type = 1
 
@@ -509,77 +458,6 @@ environment = SubResource("Environment_a0tk4")
 transform = Transform3D(0.082206145, -0.19738297, -0.9768737, 0.46476638, -0.85948765, 0.21277553, -0.88160896, -0.47150946, 0.021081766, 0, 6.2975717, 0)
 shadow_enabled = true
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=1438843858]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 31.499142, 1.477, 0)
-script = ExtResource("1_a202f")
-
-[node name="Area3D" type="Area3D" parent="Player" unique_id=1597042505]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D" unique_id=1138473915]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-shape = SubResource("CylinderShape3D_hbmba")
-
-[node name="GroundPoundEffect" type="MeshInstance3D" parent="Player" unique_id=1947538852]
-transform = Transform3D(-2, 7.54979e-08, 0, -3.019916e-07, -0.5, 0, 0, 0, 2, 5.3513986e-08, -0.61212915, 0)
-mesh = SubResource("SphereMesh_nuxcn")
-script = SubResource("GDScript_j3e5s")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1746111810]
-transform = Transform3D(3, 0, 1.4921444e-13, 0, 3, 0, -1.4921444e-13, 0, 3, 0, 0.107299805, 0)
-shape = SubResource("CapsuleShape3D_noarx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1989997791]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16056156, -0.012448549)
-mesh = SubResource("SphereMesh_a0tk4")
-
-[node name="JumpIndicator" type="MeshInstance3D" parent="Player" unique_id=1060216931]
-transform = Transform3D(4.966547, 0, 0, 0, -0.008329882, 0, 0, 0, 4.966547, 0.0031144973, -1.0766677, -0.15813074)
-mesh = SubResource("CylinderMesh_a0tk4")
-script = ExtResource("3_a0tk4")
-
-[node name="TwistPivot" type="Node3D" parent="Player" unique_id=163225931]
-script = ExtResource("3_r3fl7")
-
-[node name="PitchPivot" type="Node3D" parent="Player/TwistPivot" unique_id=196136923]
-script = ExtResource("4_i5arm")
-
-[node name="Camera3D" type="Camera3D" parent="Player/TwistPivot/PitchPivot" unique_id=1290339716]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
-visible = false
-script = ExtResource("2_noarx")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player" unique_id=132042052]
-transform = Transform3D(-7.311443, -6.391866e-07, -2.7939736e-14, 0, -3.195933e-07, 7.311443, -6.391866e-07, 7.311443, 3.195933e-07, 0.0036411276, -1.2654097, -0.62455595)
-mesh = ExtResource("8_tuemg")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/1 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/2 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/3 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/4 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/5 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/6 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/7 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/8 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/9 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/10 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/11 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/12 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/13 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/14 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/15 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/16 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/17 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/18 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/19 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/20 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/21 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/22 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/23 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/24 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/25 = SubResource("StandardMaterial3D_j3e5s")
-
 [node name="platforms" type="Node" parent="." unique_id=622843449]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="platforms" unique_id=566741738]
@@ -672,7 +550,7 @@ shape = SubResource("ConvexPolygonShape3D_tcnuu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1782508791]
 
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=2051626923]
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=2051626923 groups=["PlayerMeters"]]
 texture_filter = 1
 offset_left = 205.0
 offset_top = 6.0
@@ -683,9 +561,9 @@ texture_over = ExtResource("12_dhlwf")
 texture_progress = ExtResource("13_5t8nk")
 tint_over = Color(1, 1, 1, 0.50980395)
 tint_progress = Color(1, 1, 1, 0.50980395)
-script = SubResource("GDScript_dhlwf")
+script = ExtResource("8_dhlwf")
 
-[node name="Chargeometer" type="TextureProgressBar" parent="CanvasLayer" unique_id=996571010]
+[node name="Chargeometer" type="TextureProgressBar" parent="CanvasLayer" unique_id=996571010 groups=["PlayerMeters"]]
 texture_filter = 1
 offset_left = 729.00006
 offset_top = 87.00001
@@ -698,9 +576,10 @@ fill_mode = 2
 stretch_margin_bottom = 500
 texture_over = ExtResource("10_cdqbm")
 texture_progress = ExtResource("11_wlxy5")
-script = ExtResource("12_3v7ru")
+script = ExtResource("8_dhlwf")
+Type = 1
 
-[node name="Zapometer" type="TextureProgressBar" parent="CanvasLayer" unique_id=889797761]
+[node name="Zapometer" type="TextureProgressBar" parent="CanvasLayer" unique_id=889797761 groups=["PlayerMeters"]]
 texture_filter = 1
 offset_left = 746.0
 offset_top = 427.99997
@@ -711,7 +590,8 @@ scale = Vector2(0.215, 0.215)
 fill_mode = 2
 texture_over = ExtResource("14_ealrb")
 texture_progress = ExtResource("15_jsnrv")
-script = ExtResource("16_jsnrv")
+script = ExtResource("8_dhlwf")
+Type = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1883429521]
 offset_right = 275.0
@@ -776,7 +656,6 @@ texture_filter = 1
 position = Vector2(427, 240.00002)
 scale = Vector2(0.713, 0.535)
 texture = ExtResource("22_5t8nk")
-script = SubResource("GDScript_hbmba")
 
 [node name="GAME START SCREEN" type="Sprite2D" parent="CanvasLayer" unique_id=1480639186]
 position = Vector2(337, 211)
@@ -840,8 +719,79 @@ stream = ExtResource("26_j3e5s")
 [node name="Boom" type="AudioStreamPlayer" parent="." unique_id=2008667846]
 stream = ExtResource("27_nu31w")
 
+[node name="Player" type="Node3D" parent="." unique_id=1517487422]
+script = ExtResource("22_j3e5s")
+
+[node name="Body" type="CharacterBody3D" parent="Player" unique_id=1438843858]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 31.499, 1.477, 0)
+script = ExtResource("22_dhlwf")
+
+[node name="Area3D" type="Area3D" parent="Player/Body" unique_id=1597042505]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body/Area3D" unique_id=1138473915]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("CylinderShape3D_hbmba")
+
+[node name="GroundPoundEffect" type="MeshInstance3D" parent="Player/Body" unique_id=1947538852]
+transform = Transform3D(-2, 7.54979e-08, 0, -3.019916e-07, -0.5, 0, 0, 0, 2, 5.3513986e-08, -0.61212915, 0)
+mesh = SubResource("SphereMesh_nuxcn")
+script = SubResource("GDScript_j3e5s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body" unique_id=1746111810]
+transform = Transform3D(3, 0, 1.4921444e-13, 0, 3, 0, -1.4921444e-13, 0, 3, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Body" unique_id=1989997791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16056156, -0.012448549)
+mesh = SubResource("SphereMesh_a0tk4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/Body" unique_id=132042052]
+transform = Transform3D(-7.311443, -6.391866e-07, -2.7939736e-14, 0, -3.195933e-07, 7.311443, -6.391866e-07, 7.311443, 3.195933e-07, 0.0036411276, -1.2654097, -0.62455595)
+mesh = ExtResource("8_tuemg")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/1 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/2 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/3 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/4 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/5 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/6 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/7 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/8 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/9 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/10 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/11 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/12 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/13 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/14 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/15 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/16 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/17 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/18 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/19 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/20 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/21 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/22 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/23 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/24 = SubResource("StandardMaterial3D_j3e5s")
+surface_material_override/25 = SubResource("StandardMaterial3D_j3e5s")
+
+[node name="JumpIndicator" type="MeshInstance3D" parent="Player/Body" unique_id=1060216931]
+transform = Transform3D(4.9665465, 0, -1.4210855e-14, 0, -0.008329882, 0, 1.4210855e-14, 0, 4.9665465, 0.0031144973, -1.0766677, -0.15813065)
+mesh = SubResource("CylinderMesh_a0tk4")
+script = ExtResource("3_a0tk4")
+
+[node name="CameraPivot" type="Node3D" parent="Player/Body" unique_id=83937468]
+
+[node name="Camera3D" type="Camera3D" parent="Player/Body/CameraPivot" unique_id=1290339716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.252776e-12, 0, 5.999859)
+visible = false
+current = true
+script = ExtResource("25_5t8nk")
+
 [connection signal="timeout" from="START GAME TIMER" to="." method="_on_start_game_timer_timeout"]
 [connection signal="timeout" from="START GAME TIMER" to="enemies" method="_on_start_game_timer_timeout"]
 [connection signal="timeout" from="START GAME TIMER/Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Player/Area3D" to="Player" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="lasers/laser" to="lasers/laser" method="_on_body_entered"]
+[connection signal="body_entered" from="Player/Body/Area3D" to="Player/Body" method="_on_area_3d_body_entered"]
