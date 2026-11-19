@@ -9,7 +9,7 @@ enum MeterType {
 @export var Type: MeterType
 
 var uppy: bool = false
-var value_float: float = 100.0
+var value_float: float = 0
 
 func _init():
 	pass
@@ -17,6 +17,7 @@ func _init():
 # class methods
 func update_bar(newValue: float):
 	value = newValue
+	value_float = newValue
 
 func update_progressive_zap(deltaTime: float):
 	value_float += 500*deltaTime;
@@ -25,14 +26,8 @@ func update_progressive_zap(deltaTime: float):
 func update_progressive_charge(deltaTime: float):
 	if not uppy:
 		value_float += 20 * deltaTime
-	elif uppy:
-		pass #value_float -= 40 * delta
 	
 	#switch direcrion when maxed out on either side
-	if value == 0:
-		uppy = false
-	if value == 100:
-		uppy = true
 	
 	#round value_float into value
 	value = round(value_float)
