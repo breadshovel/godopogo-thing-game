@@ -2,14 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cowpxpiho4bie" path="res://bushes.gd" id="1_6iypd"]
 [ext_resource type="Script" uid="uid://ctjk1r055yceo" path="res://node_3d.gd" id="1_j3e5s"]
-<<<<<<< HEAD
-[ext_resource type="AudioStream" uid="uid://oki08105pc28" path="res://07 Tromboing.mp3" id="2_id0nj"]
-[ext_resource type="Script" uid="uid://dkbdg1tgjf0p1" path="res://camera_3d.gd" id="2_noarx"]
-[ext_resource type="AudioStream" uid="uid://da0uftb1v6bsx" path="res://laserShoot.wav" id="2_obt1j"]
-[ext_resource type="AudioStream" uid="uid://drw53xj47lqhu" path="res://83 Thunk.mp3" id="3_1q667"]
-=======
 [ext_resource type="AudioStream" uid="uid://b66a0fvdo84l8" path="res://09 Kabong.mp3" id="2_nu31w"]
->>>>>>> refactor
 [ext_resource type="Script" uid="uid://clgpxba0d4svd" path="res://jump_indicator.gd" id="3_a0tk4"]
 [ext_resource type="AudioStream" uid="uid://d2xip2j2d386j" path="res://truman songa l ltruamn - Copy.wav" id="3_nu31w"]
 [ext_resource type="Texture2D" uid="uid://dgwgba13ktgxy" path="res://360_F_40583023_P4n0Mmo2dWfiuU2oy1AVbP7PytKFPHSf.jpg" id="5_jka67"]
@@ -17,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c001wthgwb32k" path="res://360_F_228578425_hCRziwFdpPWjqmxSdHqD1fWinLaIorAM.jpg" id="8_4arys"]
 [ext_resource type="Script" uid="uid://dco1ks8toegli" path="res://MeterProgressBar.gd" id="8_dhlwf"]
 [ext_resource type="FontFile" uid="uid://cvtpu8548y1kk" path="res://Jokerman.otf" id="8_jsk3o"]
+[ext_resource type="ArrayMesh" uid="uid://chj60m1q2n557" path="res://Part Studio 1.obj" id="8_tuemg"]
 [ext_resource type="Texture2D" uid="uid://cguntu1h4jwcd" path="res://progress bar empty.png" id="10_cdqbm"]
-[ext_resource type="ArrayMesh" uid="uid://r2lkxr50v502" path="res://Meshes/Pogo Stick.obj" id="11_2yde8"]
 [ext_resource type="Texture2D" uid="uid://cu7421isym660" path="res://progress bar interior3.png" id="11_wlxy5"]
 [ext_resource type="Texture2D" uid="uid://bpqj1fg3xnbqm" path="res://player healthbar exteriroir.png" id="12_dhlwf"]
 [ext_resource type="FontFile" uid="uid://o1c7nd8ddp4x" path="res://Papyrus-Condensed.ttf" id="12_imku0"]
@@ -34,28 +27,6 @@
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="AudioStream" uid="uid://biqwy58va7ql6" path="res://shepard_tone_20000ms.wav" id="26_j3e5s"]
 [ext_resource type="AudioStream" uid="uid://dn3mxhjg6o5uy" path="res://universfield-impact-cinematic-boom-02-487858.mp3" id="27_nu31w"]
-[ext_resource type="AudioStream" uid="uid://clcno6odks05x" path="res://Bite.wav" id="29_2yde8"]
-[ext_resource type="AudioStream" uid="uid://pfv1xhcjupt6" path="res://universfield-dramatic-death-collapse-352720.mp3" id="30_id0nj"]
-
-[sub_resource type="FontFile" id="FontFile_2yde8"]
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
-[sub_resource type="TextMesh" id="TextMesh_3yqyl"]
-text = "wgat"
-font = SubResource("FontFile_2yde8")
 
 [sub_resource type="BoxMesh" id="BoxMesh_nswes"]
 
@@ -88,7 +59,6 @@ sky_material = SubResource("ProceduralSkyMaterial_a202f")
 background_mode = 1
 background_color = Color(0.4865288, 0.36608982, 1, 1)
 sky = SubResource("Sky_noarx")
-ambient_light_color = Color(1, 0, 1, 1)
 tonemap_mode = 3
 tonemap_exposure = 1.78
 
@@ -264,32 +234,12 @@ bottom_radius = 0.2475586
 [node name="Node3D" type="Node3D" unique_id=2115954773]
 script = ExtResource("1_j3e5s")
 
-<<<<<<< HEAD
-[node name="BounceSound" type="AudioStreamPlayer" parent="." unique_id=990074797]
-stream = ExtResource("2_id0nj")
-pitch_scale = 1.99
-
-[node name="GroundPoundSound" type="AudioStreamPlayer" parent="." unique_id=116424890]
-stream = ExtResource("3_1q667")
-
-[node name="wgat" type="MeshInstance3D" parent="." unique_id=1506991097]
-transform = Transform3D(-6.5018244, -23.852425, -193.15051, -1.9493947, 104.87076, -50.02838, 94.37704, -5.803446, -12.914619, 116.22942, 73.48063, 29.01202)
-mesh = SubResource("TextMesh_3yqyl")
-skeleton = NodePath("../platforms/StaticBody3D")
-
-[node name="ShootSound" type="AudioStreamPlayer" parent="." unique_id=893593339]
-stream = ExtResource("2_obt1j")
-volume_db = -3.649
-pitch_scale = 4.0
-=======
 [node name="09Kabong" type="AudioStreamPlayer" parent="." unique_id=353255704]
 stream = ExtResource("2_nu31w")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=893593339]
 stream = ExtResource("3_nu31w")
->>>>>>> refactor
 mix_target = 2
-max_polyphony = 12
 playback_type = 1
 
 [node name="START GAME TIMER" type="Timer" parent="." unique_id=333504621]
@@ -508,80 +458,6 @@ environment = SubResource("Environment_a0tk4")
 transform = Transform3D(0.082206145, -0.19738297, -0.9768737, 0.46476638, -0.85948765, 0.21277553, -0.88160896, -0.47150946, 0.021081766, 0, 6.2975717, 0)
 shadow_enabled = true
 
-<<<<<<< HEAD
-[node name="Player" type="CharacterBody3D" parent="." unique_id=1438843858]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 31.499142, 1.477, 0)
-script = ExtResource("1_a202f")
-
-[node name="Area3D" type="Area3D" parent="Player" unique_id=1597042505]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D" unique_id=1138473915]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
-shape = SubResource("CylinderShape3D_hbmba")
-
-[node name="GroundPoundEffect" type="MeshInstance3D" parent="Player" unique_id=1947538852]
-transform = Transform3D(-2, 7.54979e-08, 0, -3.019916e-07, -0.5, 0, 0, 0, 2, 5.3513986e-08, -0.61212915, 0)
-mesh = SubResource("SphereMesh_nuxcn")
-script = SubResource("GDScript_j3e5s")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1746111810]
-transform = Transform3D(3, 0, 1.4921444e-13, 0, 3, 0, -1.4921444e-13, 0, 3, 0, 0.107299805, 0)
-shape = SubResource("CapsuleShape3D_noarx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1989997791]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16056156, -0.012448549)
-mesh = SubResource("SphereMesh_a0tk4")
-
-[node name="JumpIndicator" type="MeshInstance3D" parent="Player" unique_id=1060216931]
-transform = Transform3D(4.966547, 0, 0, 0, -0.008329882, 0, 0, 0, 4.966547, 0.0031144973, -1.0766677, -0.15813074)
-mesh = SubResource("CylinderMesh_a0tk4")
-script = ExtResource("3_a0tk4")
-
-[node name="TwistPivot" type="Node3D" parent="Player" unique_id=163225931]
-script = ExtResource("3_r3fl7")
-
-[node name="PitchPivot" type="Node3D" parent="Player/TwistPivot" unique_id=196136923]
-script = ExtResource("4_i5arm")
-
-[node name="Camera3D" type="Camera3D" parent="Player/TwistPivot/PitchPivot" unique_id=1290339716]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
-visible = false
-script = ExtResource("2_noarx")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player" unique_id=132042052]
-transform = Transform3D(-7.311443, -6.391866e-07, -2.7939736e-14, 0, -3.195933e-07, 7.311443, -6.391866e-07, 7.311443, 3.195933e-07, 0.0036411276, -1.2654097, -0.62455595)
-mesh = ExtResource("11_2yde8")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/1 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/2 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/3 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/4 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/5 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/6 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/7 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/8 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/9 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/10 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/11 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/12 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/13 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/14 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/15 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/16 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/17 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/18 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/19 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/20 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/21 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/22 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/23 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/24 = SubResource("StandardMaterial3D_j3e5s")
-surface_material_override/25 = SubResource("StandardMaterial3D_j3e5s")
-
-=======
->>>>>>> refactor
 [node name="platforms" type="Node" parent="." unique_id=622843449]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="platforms" unique_id=566741738]
@@ -843,16 +719,6 @@ stream = ExtResource("26_j3e5s")
 [node name="Boom" type="AudioStreamPlayer" parent="." unique_id=2008667846]
 stream = ExtResource("27_nu31w")
 
-<<<<<<< HEAD
-[node name="EnemyDieSound" type="AudioStreamPlayer" parent="." unique_id=727958593]
-stream = ExtResource("30_id0nj")
-pitch_scale = 2.01
-max_polyphony = 36
-
-[node name="EnemyDamageSound" type="AudioStreamPlayer" parent="." unique_id=839053517]
-stream = ExtResource("29_2yde8")
-max_polyphony = 9
-=======
 [node name="Player" type="Node3D" parent="." unique_id=1517487422]
 script = ExtResource("22_j3e5s")
 
@@ -923,7 +789,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.252776e-12, 0, 5.999859)
 visible = false
 current = true
 script = ExtResource("25_5t8nk")
->>>>>>> refactor
 
 [connection signal="timeout" from="START GAME TIMER" to="." method="_on_start_game_timer_timeout"]
 [connection signal="timeout" from="START GAME TIMER" to="enemies" method="_on_start_game_timer_timeout"]
