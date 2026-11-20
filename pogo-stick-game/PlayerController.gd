@@ -71,6 +71,7 @@ func input_update(deltaTime: float):
 	if Input.is_action_just_pressed(Constants.GROUND_POUND) && on_high_jump:
 		ground_pound = true
 		on_high_jump = false
+		SoundSystem.play_groundpound_sound()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (event is InputEventMouseMotion):

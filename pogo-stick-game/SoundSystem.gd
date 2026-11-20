@@ -6,6 +6,7 @@ var tromboing: Resource = preload("res://07 Tromboing.mp3")
 var boom: Resource = preload("res://universfield-impact-cinematic-boom-02-487858.mp3")
 var shoot: Resource = preload("res://laserShoot.wav")
 var death: Resource = preload("res://universfield-dramatic-death-collapse-352720.mp3")
+var thunk: Resource = preload("res://83 Thunk.mp3")
 
 func _ready():
 	player = AudioStreamPlayer.new()
@@ -13,19 +14,28 @@ func _ready():
 
 func play_tromboing():
 	player.stream = tromboing
+	player.pitch_scale = randf_range(0.75, 2)
 	player.play()
 
 func play_shoot_sound():
 	player.stream = shoot
+	player.pitch_scale = 1
 	player.play()
 
 func play_boom_sound():
 	player.stream = boom
+	player.pitch_scale = 1
 	player.play()
 
 func play_death_sound():
 	player.stream = death
+	player.pitch_scale = 1
 	player.play()
+	
+func play_groundpound_sound():
+	player.stream = thunk
+	player.pitch_scale = 1
+	player.play(0.28)
 
 # does death sequence
 var tick := 0.0
