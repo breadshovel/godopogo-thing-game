@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://dcmi4vfr5w81q" path="res://laser.gd" id="16_tcnuu"]
 [ext_resource type="Texture2D" uid="uid://cry5i3u537g5t" path="res://deathscreenframe1.png" id="22_5t8nk"]
 [ext_resource type="Script" uid="uid://cevwbuxjysr5s" path="res://PlayerController.gd" id="22_dhlwf"]
-[ext_resource type="Script" uid="uid://henryv5ri2i5" path="res://Player.gd" id="22_j3e5s"]
+[ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://Player.gd" id="22_j3e5s"]
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="23_nu31w"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="AudioStream" uid="uid://biqwy58va7ql6" path="res://shepard_tone_20000ms.wav" id="26_j3e5s"]
