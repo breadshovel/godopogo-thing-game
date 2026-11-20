@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://jryjwirhfmyc"
-path="res://.godot/imported/Boss.obj-ab48914822c282552240394f18352904.mesh"
+path="res://.godot/imported/Boss.obj-87e5c8ebe8bc883ef1267a15850e1215.mesh"
 
 [deps]
 
-files=["res://.godot/imported/Boss.obj-ab48914822c282552240394f18352904.mesh"]
+files=["res://.godot/imported/Boss.obj-87e5c8ebe8bc883ef1267a15850e1215.mesh"]
 
-source_file="res://meshes/Boss.obj"
-dest_files=["res://.godot/imported/Boss.obj-ab48914822c282552240394f18352904.mesh", "res://.godot/imported/Boss.obj-ab48914822c282552240394f18352904.mesh"]
+source_file="res://Meshes/Boss.obj"
+dest_files=["res://.godot/imported/Boss.obj-87e5c8ebe8bc883ef1267a15850e1215.mesh", "res://.godot/imported/Boss.obj-87e5c8ebe8bc883ef1267a15850e1215.mesh"]
 
 [params]
 

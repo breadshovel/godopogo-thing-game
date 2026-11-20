@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://b3g7yf0h33dw6"
-path="res://.godot/imported/Pizza.obj-a0388a456dc56e91b8383c17deac5718.mesh"
+path="res://.godot/imported/Pizza.obj-d3bc7876b24d493c4d8020cdcfde1837.mesh"
 
 [deps]
 
-files=["res://.godot/imported/Pizza.obj-a0388a456dc56e91b8383c17deac5718.mesh"]
+files=["res://.godot/imported/Pizza.obj-d3bc7876b24d493c4d8020cdcfde1837.mesh"]
 
-source_file="res://meshes/Pizza.obj"
-dest_files=["res://.godot/imported/Pizza.obj-a0388a456dc56e91b8383c17deac5718.mesh", "res://.godot/imported/Pizza.obj-a0388a456dc56e91b8383c17deac5718.mesh"]
+source_file="res://Meshes/Pizza.obj"
+dest_files=["res://.godot/imported/Pizza.obj-d3bc7876b24d493c4d8020cdcfde1837.mesh", "res://.godot/imported/Pizza.obj-d3bc7876b24d493c4d8020cdcfde1837.mesh"]
 
 [params]
 

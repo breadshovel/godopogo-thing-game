@@ -1,12 +1,47 @@
 [gd_scene format=3 uid="uid://cqps4u7kcuywx"]
 
 [ext_resource type="Texture2D" uid="uid://cj84wye11quwd" path="res://titlescreen.png" id="1_cjnew"]
+[ext_resource type="Texture2D" uid="uid://e6mrwg3yhlgi" path="res://play buitton3.png" id="2_8pdex"]
+[ext_resource type="Texture2D" uid="uid://bjob4ba6d3ums" path="res://play buitton.png" id="2_goadl"]
+[ext_resource type="Texture2D" uid="uid://d1t328c2yss07" path="res://play buitton4.png" id="3_hxypl"]
+[ext_resource type="AudioStream" uid="uid://dn021x00s32jo" path="res://Sounds/truman songa l ltruamn.wav" id="5_hxypl"]
+
+[sub_resource type="GDScript" id="GDScript_ype4i"]
+script/source = "extends Node2D
+
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE #sets mouse to be unlocked
+"
+
+[sub_resource type="GDScript" id="GDScript_hxypl"]
+script/source = "extends TextureButton
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://node_3d.tscn\") # changes to main game when pressed
+"
 
 [node name="Titlescreen" type="Node2D" unique_id=1757010949]
+script = SubResource("GDScript_ype4i")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=403822266]
+[node name="PlayButton" type="TextureButton" parent="." unique_id=542921238]
+z_index = 1
+texture_filter = 1
+offset_left = 344.0
+offset_top = 360.0
+offset_right = 694.0
+offset_bottom = 472.0
+texture_normal = ExtResource("2_goadl")
+texture_pressed = ExtResource("3_hxypl")
+texture_hover = ExtResource("2_8pdex")
+script = SubResource("GDScript_hxypl")
 
-[node name="Titlescreen" type="Sprite2D" parent="." unique_id=950656952]
+[node name="TitlescreenBackground" type="Sprite2D" parent="." unique_id=950656952]
 texture_filter = 1
 position = Vector2(427, 240)
 texture = ExtResource("1_cjnew")
+
+[node name="TitlescreenMusic" type="AudioStreamPlayer" parent="." unique_id=1851608929]
+stream = ExtResource("5_hxypl")
+autoplay = true
+
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]

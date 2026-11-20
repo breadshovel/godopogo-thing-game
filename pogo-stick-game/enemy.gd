@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		die()
 	
 	#find player
-	var player = get_tree().current_scene.find_child("Body")
+	var player = get_tree().current_scene.find_child("Player")
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -73,9 +73,9 @@ func _physics_process(delta: float) -> void:
 		#print(collider.name)
 		
 		#if thing im colliding with is in enemy folder, take damage as player
-		if collider.name == "Body":
+		if collider.name == "Player":
 			if not collider.ground_pound:
-				collider.health -= 1
+				collider.HEALTH -= 1
 			#if randf_range(0, 10) < 1:
 				#HEALTH -= 10
 
@@ -100,9 +100,11 @@ func _on_timer_timeout() -> void:
 		
 
 func take_damage() -> void:
+	$"../../EnemyDamageSound".play()
 	health -= 25
 
 func die() -> void:
+	$"../../EnemyDieSound".play(.17)
 	queue_free() # Replace with function body.
 	
 func knockback() -> void:
