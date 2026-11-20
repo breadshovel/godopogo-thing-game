@@ -251,6 +251,7 @@ script = ExtResource("1_j3e5s")
 
 [node name="09Kabong" type="AudioStreamPlayer" parent="." unique_id=353255704]
 stream = ExtResource("2_nu31w")
+volume_db = -24.265
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=893593339]
 stream = ExtResource("3_nu31w")
