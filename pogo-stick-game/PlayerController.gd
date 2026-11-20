@@ -10,7 +10,7 @@ class Constants:
 	static var HIGH_JUMP_VELOCITY: float = 15.0
 	static var REGULAR_JUMP_VELOCITY: float = 4.5
 	
-	static var MOUSE_SENSITIVITY: float = 0.03
+	static var MOUSE_SENSITIVITY: float = 0.001
 	static var CHARGE_HOLD_THRESHOLD: float = 0.0
 	
 var health: int
@@ -60,7 +60,7 @@ func input_update(deltaTime: float):
 		space_hold += deltaTime
 	else:
 		space_hold = 0
-		meters[MeterProgressBar.MeterType.Charge].update_progressive_charge(false, deltaTime)
+		meters[MeterProgressBar.MeterType.Charge].update_progressive_charge(true, deltaTime)
 	
 	#R toggles mouse capture
 	if Input.is_action_just_pressed(Constants.CENTER_MOUSE):

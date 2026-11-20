@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://dcmi4vfr5w81q" path="res://laser.gd" id="16_tcnuu"]
 [ext_resource type="Texture2D" uid="uid://cry5i3u537g5t" path="res://deathscreenframe1.png" id="22_5t8nk"]
 [ext_resource type="Script" uid="uid://cevwbuxjysr5s" path="res://PlayerController.gd" id="22_dhlwf"]
-[ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://Player.gd" id="22_j3e5s"]
+[ext_resource type="Script" uid="uid://henryv5ri2i5" path="res://Player.gd" id="22_j3e5s"]
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="23_nu31w"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="AudioStream" uid="uid://biqwy58va7ql6" path="res://shepard_tone_20000ms.wav" id="26_j3e5s"]
@@ -230,6 +230,21 @@ albedo_color = Color(0.49424607, 0, 0, 1)
 material = SubResource("StandardMaterial3D_noarx")
 top_radius = 0.2475586
 bottom_radius = 0.2475586
+
+[sub_resource type="GDScript" id="GDScript_4vnpt"]
+resource_name = "CameraPivot"
+script/source = "extends Node3D
+
+#variables
+@onready var player_body = $\"..\"
+var camera_ypos: float
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	
+	camera_ypos = 0 - player_body.position.y + .5 # subtracts player pos from relative camera pivot pos, basically keeping it in the same place
+	position.y = camera_ypos # applies to position
+"
 
 [node name="Node3D" type="Node3D" unique_id=2115954773]
 script = ExtResource("1_j3e5s")
@@ -782,6 +797,7 @@ mesh = SubResource("CylinderMesh_a0tk4")
 script = ExtResource("3_a0tk4")
 
 [node name="CameraPivot" type="Node3D" parent="Player/Body" unique_id=83937468]
+script = SubResource("GDScript_4vnpt")
 
 [node name="Camera3D" type="Camera3D" parent="Player/Body/CameraPivot" unique_id=1290339716]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.252776e-12, 0, 5.999859)

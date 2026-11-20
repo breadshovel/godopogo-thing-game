@@ -13,8 +13,12 @@ const CHARGE_DECREASE: float = 40
 
 var value_float: float = 0
 
-func _init():
-	pass
+func _ready() -> void:
+	if Type == MeterType.Charge:
+		value_float = 100
+		print("hi")
+	else:
+		print("idiot")
 
 # class methods
 func update_bar(newValue: float):
