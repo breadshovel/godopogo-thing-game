@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+var damage_sound: AudioStream = preload("res://Sounds/Bite.wav")
+var death_sound: AudioStream = preload("res://universfield-dramatic-death-collapse-352720.mp3")
 
 var SPEED = randf_range(3, 15)#5.0
 var speed_backup = SPEED
@@ -9,7 +11,6 @@ var movement_decision: Vector2
 var health = 100
 
 func _physics_process(delta: float) -> void:
-	
 	#if die, die
 	if health <= 0:
 		die()
@@ -18,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		die()
 	
 	#find player
-	var player = get_tree().current_scene.find_child("Player")
+	var player = get_tree().current_scene.find_child("Player").controller
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -73,9 +74,9 @@ func _physics_process(delta: float) -> void:
 		#print(collider.name)
 		
 		#if thing im colliding with is in enemy folder, take damage as player
-		if collider.name == "Player":
+		if collider.name == "Body":
 			if not collider.ground_pound:
-				collider.HEALTH -= 1
+				collider.health -= 1
 			#if randf_range(0, 10) < 1:
 				#HEALTH -= 10
 
@@ -98,13 +99,12 @@ func _on_timer_timeout() -> void:
 	else:
 		movement_decision = Vector2(0, -1)
 		
-
 func take_damage() -> void:
-	$"../../EnemyDamageSound".play()
+	SoundSystem.play_audiostream(damage_sound)
 	health -= 25
 
 func die() -> void:
-	$"../../EnemyDieSound".play(.17)
+	SoundSystem.play_audiostream(death_sound, .17)
 	queue_free() # Replace with function body.
 	
 func knockback() -> void:

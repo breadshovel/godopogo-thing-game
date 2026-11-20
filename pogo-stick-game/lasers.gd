@@ -1,6 +1,6 @@
 extends Node
 
-@onready var player = $"../Player"
+@onready var player = $"../Player/Body"
 @onready var zapometer = $"../CanvasLayer/Zapometer"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	#if shoot pressed, copy laser, make visible, make go forward until BLANK
 		if Input.is_action_just_pressed("shoot") and zapometer.value >= 100 and $"..".game_start:
 			var new_laser = $laser.duplicate()
-			new_laser.position = player.position
+			new_laser.position = player.global_position
 			new_laser.rotation_degrees.y = player.rotation_degrees.y + 90
 			new_laser.visible = true
 			new_laser.position.y += 5.5

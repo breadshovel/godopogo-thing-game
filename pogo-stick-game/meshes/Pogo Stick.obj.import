@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://r2lkxr50v502"
-path="res://.godot/imported/Pogo Stick.obj-3e9383206c0d74d26442b58d63c66fef.mesh"
+path="res://.godot/imported/Pogo Stick.obj-9253e29faa20b9ddc7f56204775bec46.mesh"
 
 [deps]
 
-files=["res://.godot/imported/Pogo Stick.obj-3e9383206c0d74d26442b58d63c66fef.mesh"]
+files=["res://.godot/imported/Pogo Stick.obj-9253e29faa20b9ddc7f56204775bec46.mesh"]
 
-source_file="res://Meshes/Pogo Stick.obj"
-dest_files=["res://.godot/imported/Pogo Stick.obj-3e9383206c0d74d26442b58d63c66fef.mesh", "res://.godot/imported/Pogo Stick.obj-3e9383206c0d74d26442b58d63c66fef.mesh"]
+source_file="res://meshes/Pogo Stick.obj"
+dest_files=["res://.godot/imported/Pogo Stick.obj-9253e29faa20b9ddc7f56204775bec46.mesh", "res://.godot/imported/Pogo Stick.obj-9253e29faa20b9ddc7f56204775bec46.mesh"]
 
 [params]
 

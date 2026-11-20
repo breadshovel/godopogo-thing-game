@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cowpxpiho4bie" path="res://bushes.gd" id="1_6iypd"]
 [ext_resource type="Script" uid="uid://ctjk1r055yceo" path="res://node_3d.gd" id="1_j3e5s"]
-[ext_resource type="AudioStream" uid="uid://b66a0fvdo84l8" path="res://09 Kabong.mp3" id="2_nu31w"]
 [ext_resource type="Script" uid="uid://clgpxba0d4svd" path="res://jump_indicator.gd" id="3_a0tk4"]
 [ext_resource type="AudioStream" uid="uid://d2xip2j2d386j" path="res://truman songa l ltruamn - Copy.wav" id="3_nu31w"]
 [ext_resource type="Texture2D" uid="uid://dgwgba13ktgxy" path="res://360_F_40583023_P4n0Mmo2dWfiuU2oy1AVbP7PytKFPHSf.jpg" id="5_jka67"]
@@ -22,11 +21,9 @@
 [ext_resource type="Script" uid="uid://dcmi4vfr5w81q" path="res://laser.gd" id="16_tcnuu"]
 [ext_resource type="Texture2D" uid="uid://cry5i3u537g5t" path="res://deathscreenframe1.png" id="22_5t8nk"]
 [ext_resource type="Script" uid="uid://cevwbuxjysr5s" path="res://PlayerController.gd" id="22_dhlwf"]
-[ext_resource type="Script" uid="uid://henryv5ri2i5" path="res://Player.gd" id="22_j3e5s"]
+[ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://Player.gd" id="22_j3e5s"]
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="23_nu31w"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
-[ext_resource type="AudioStream" uid="uid://biqwy58va7ql6" path="res://shepard_tone_20000ms.wav" id="26_j3e5s"]
-[ext_resource type="AudioStream" uid="uid://dn3mxhjg6o5uy" path="res://universfield-impact-cinematic-boom-02-487858.mp3" id="27_nu31w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nswes"]
 
@@ -197,11 +194,9 @@ is_hemisphere = true
 [sub_resource type="GDScript" id="GDScript_j3e5s"]
 script/source = "extends MeshInstance3D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -248,9 +243,6 @@ func _process(delta: float) -> void:
 
 [node name="Node3D" type="Node3D" unique_id=2115954773]
 script = ExtResource("1_j3e5s")
-
-[node name="09Kabong" type="AudioStreamPlayer" parent="." unique_id=353255704]
-stream = ExtResource("2_nu31w")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=893593339]
 stream = ExtResource("3_nu31w")
@@ -726,12 +718,6 @@ mesh = SubResource("CylinderMesh_hbmba")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="lasers/laser" unique_id=733155636]
 transform = Transform3D(-8.482063e-09, 0.19404697, 0, -0.19404697, -8.482063e-09, 0, 0, 0, 0.19404697, -2.3988562e-07, -5.203978, 0)
 shape = SubResource("ConvexPolygonShape3D_tuemg")
-
-[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=1760716119]
-stream = ExtResource("26_j3e5s")
-
-[node name="Boom" type="AudioStreamPlayer" parent="." unique_id=2008667846]
-stream = ExtResource("27_nu31w")
 
 [node name="Player" type="Node3D" parent="." unique_id=1517487422]
 script = ExtResource("22_j3e5s")

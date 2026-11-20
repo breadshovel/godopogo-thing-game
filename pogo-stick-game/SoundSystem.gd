@@ -1,27 +1,19 @@
 extends Node
 
 var player: AudioStreamPlayer
-
-var tromboing: Resource = preload("res://07 Tromboing.mp3")
-var boom: Resource = preload("res://universfield-impact-cinematic-boom-02-487858.mp3")
-var shoot: Resource = preload("res://laserShoot.wav")
-var death: Resource = preload("res://universfield-dramatic-death-collapse-352720.mp3")
+var death: AudioStream = preload("res://shepard_tone_20000ms.wav")
 
 func _ready():
 	player = AudioStreamPlayer.new()
 	add_child(player)
 
-func play_tromboing():
-	player.stream = tromboing
-	player.play()
+func load_audiostream(path: StringName):
+	return load(path)
 
-func play_shoot_sound():
-	player.stream = shoot
-	player.play()
-
-func play_boom_sound():
-	player.stream = boom
-	player.play()
+func play_audiostream(stream: AudioStream, fromPosition: float = 0.0, pitch_scale: float = 1.0):
+	player.stream = stream
+	player.pitch_scale = pitch_scale
+	player.play(fromPosition)
 
 func play_death_sound():
 	player.stream = death
@@ -30,15 +22,16 @@ func play_death_sound():
 # does death sequence
 var tick := 0.0
 var tick2 := 0.0
+const DEATH_SEQ_LENGTH: float = 2.4
 
-func check_death_sequence(player: Player, deathScreen: Sprite2D, delta: float):
-	if player.controller.health <= 0:
-		tick += 1 * delta
-		tick2 += 1 * delta
+func check_death_sequence(plr: Player, deathScreen: Sprite2D, delta: float):
+	if plr.controller.health <= 0:
+		tick += delta
+		tick2 += delta
 		
 		#detect if dead
-		if player.controller.health <= 0:
-			play_death_sound()
+		if plr.controller.health <= 0:
+			if !player.playing: play_death_sound()
 			deathScreen.visible = true
 		
 		#flash death screen back and forth every frame
@@ -53,5 +46,5 @@ func check_death_sequence(player: Player, deathScreen: Sprite2D, delta: float):
 			if !deathScreen.visible: tick2 = 0
 			
 		#reset game
-		if tick2 >= .7:
+		if tick2 >= DEATH_SEQ_LENGTH:
 			get_tree().reload_current_scene()
