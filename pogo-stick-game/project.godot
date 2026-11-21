@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="pogo stick game"
-run/main_scene="res://node_3d.tscn"
+run/main_scene="uid://cqps4u7kcuywx"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

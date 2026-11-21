@@ -182,3 +182,26 @@ ART STYLE: will be just simple shapes, with floating textures, like a sphere for
 
 OTHER FEATURS: stock market, fishing, TONYS BOWLING
 
+
+
+MUSIC DYNAMICALLY CHANGE BASED ON ENEMY DANGER
+low health distorts music
+
+Card upgrades or item upgrades ur thinking
+
+Like abilities vs buffs
+
+Probably both?
+
+
+
+
+
+perhaps a way to switch weapons
+
+like from a laser to a dodgeball like object
+
+and you could combo the two
+
+and also ground pound on the thrown dodgeballs to launch them at enemies
+

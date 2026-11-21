@@ -17,12 +17,12 @@ func play_audiostream(stream: AudioStream, fromPosition: float = 0.0, pitch_scal
 
 func play_death_sound():
 	player.stream = death
-	player.play()
+	player.play(.5)
 
 # does death sequence
 var tick := 0.0
 var tick2 := 0.0
-const DEATH_SEQ_LENGTH: float = 2.4
+const DEATH_SEQ_LENGTH: float = 1
 
 func check_death_sequence(plr: Player, deathScreen: Sprite2D, delta: float):
 	if plr.controller.health <= 0:
@@ -31,7 +31,7 @@ func check_death_sequence(plr: Player, deathScreen: Sprite2D, delta: float):
 		
 		#detect if dead
 		if plr.controller.health <= 0:
-			if !player.playing: play_death_sound()
+			play_death_sound()
 			deathScreen.visible = true
 		
 		#flash death screen back and forth every frame
@@ -47,4 +47,5 @@ func check_death_sequence(plr: Player, deathScreen: Sprite2D, delta: float):
 			
 		#reset game
 		if tick2 >= DEATH_SEQ_LENGTH:
-			get_tree().reload_current_scene()
+			get_tree().change_scene_to_file("res://titlescreen.tscn")
+			player.stop()
