@@ -180,3 +180,5 @@ maybe finite time to complete a wave, and time remaining gets added to health
 
 ART STYLE: will be just simple shapes, with floating textures, like a sphere for a head with a floating simple face texture infront of it
 
+OTHER FEATURS: stock market, fishing, TONYS BOWLING
+

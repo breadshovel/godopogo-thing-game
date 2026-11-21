@@ -1,5 +1,7 @@
 extends Node3D
 
+var boom_sound: AudioStream = preload("res://universfield-impact-cinematic-boom-02-487858.mp3")
+
 @onready var timer = $"START GAME TIMER"
 var game_start
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +18,6 @@ var wave := 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	if timer.time_left <= 3 and timer.time_left >= 2:
 		$"CanvasLayer/GAME START SCREEN/Label".visible = true
 		$"CanvasLayer/GAME START SCREEN/Label3".visible = false
@@ -45,6 +46,6 @@ func _on_start_game_timer_timeout() -> void:
 
 func _on_timer_timeout() -> void:
 	if !game_start and timer.time_left >= .1:
-		$Boom.play()
+		SoundSystem.play_audiostream(boom_sound)
 	else:
 		$"START GAME TIMER/Timer".stop() # Replace with function body.

@@ -6,8 +6,7 @@ extends MeshInstance3D
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	position.y = (player.position.y * -1) + .5
+	position.y = (player.global_position.y * -1) + .5
 	visible = player.ready_to_jump

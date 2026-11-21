@@ -3,13 +3,17 @@ class_name PlayerController extends CharacterBody3D
 # written by: zmopd 11/18/26
 
 class Constants:
-	static var CENTER_MOUSE: StringName = "center_mouse"
-	static var GROUND_POUND: StringName = "ground_pound"
+	#sound
+	static var TROMBOING: AudioStream = preload("res://07 Tromboing.mp3")
+	static var THUNK: AudioStream = preload("res://83 Thunk.mp3")
 	
+	# velocity
 	static var SPEED: float = 10.0
 	static var HIGH_JUMP_VELOCITY: float = 15.0
 	static var REGULAR_JUMP_VELOCITY: float = 4.5
-	
+	# input
+	static var CENTER_MOUSE: StringName = "center_mouse"
+	static var GROUND_POUND: StringName = "ground_pound"
 	static var MOUSE_SENSITIVITY: float = 0.001
 	static var CHARGE_HOLD_THRESHOLD: float = 0.0
 	
@@ -71,7 +75,7 @@ func input_update(deltaTime: float):
 	if Input.is_action_just_pressed(Constants.GROUND_POUND) && on_high_jump:
 		ground_pound = true
 		on_high_jump = false
-		SoundSystem.play_groundpound_sound()
+		SoundSystem.play_audiostream(Constants.THUNK, 0.28)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (event is InputEventMouseMotion):
@@ -119,7 +123,7 @@ func physics_control(delta: float):
 			#if max jump, then reset chargeometer
 			if ready_to_jump:
 				meters[MeterProgressBar.MeterType.Charge].update_bar(0)
-				SoundSystem.play_tromboing()
+				SoundSystem.play_audiostream(Constants.TROMBOING, 0, randf_range(0.75, 2))
 				on_high_jump = true
 		
 		
