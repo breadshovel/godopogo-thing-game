@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dg5t0qado25bd"]
+
+[ext_resource type="Script" uid="uid://b20shbcyu41pw" path="res://pizza.gd" id="1_i514n"]
+[ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="2_ycrcj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a2uvh"]
+size = Vector3(3.1825256, 1, 1.7783813)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obt1j"]
+albedo_texture = ExtResource("2_ycrcj")
+
+[sub_resource type="PrismMesh" id="PrismMesh_ex85l"]
+material = SubResource("StandardMaterial3D_obt1j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8b2m"]
+albedo_color = Color(0.5019608, 0.26666668, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v6if3"]
+material = SubResource("StandardMaterial3D_q8b2m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nu31w"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.56078434)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2uvh"]
+albedo_color = Color(0.5, 0.26666668, 0, 1)
+normal_scale = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x74lp"]
+albedo_color = Color(0.5019608, 0.26666668, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ype4i"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nswes"]
+material = SubResource("StandardMaterial3D_ype4i")
+height = 8.159668
+
+[node name="Pizza" type="Area3D" unique_id=159552378]
+script = ExtResource("1_i514n")
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="." unique_id=285657869]
+transform = Transform3D(1, 0, 0, 0, 1.2412437, 0, 0, 0, 1, -0.32447457, -0.8265877, -1.4649048)
+shape = SubResource("BoxShape3D_a2uvh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=285834944]
+transform = Transform3D(-0.5657512, 0.961777, 4.9459534e-09, 0, -5.94544e-08, 0.1600186, 0.5657512, 0.96177703, 4.945954e-09, -0.3544256, -0.15849113, -1.449089)
+mesh = SubResource("PrismMesh_ex85l")
+
+[node name="shadow" type="CSGMesh3D" parent="." unique_id=1567444220]
+transform = Transform3D(3.1116824, 0, 0, 0, 1.1691796, 0, 0, 0, 1.7000643, -0.3176539, -0.83524895, -1.4979782)
+mesh = SubResource("BoxMesh_v6if3")
+material = SubResource("StandardMaterial3D_nu31w")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1994584761]
+transform = Transform3D(3.1233056, 0, 0, 0, 1.1735468, 0, 0, 0, 1.7064146, -0.3176539, -0.83524895, -1.4979782)
+mesh = SubResource("BoxMesh_v6if3")
+material = SubResource("StandardMaterial3D_a2uvh")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGMesh3D" unique_id=1492361222]
+transform = Transform3D(2.2542465, 0, 0, 0, 0.8881763, 0, 0, 0, 0.6450944, 0, -0.114935756, 0)
+operation = 2
+mesh = SubResource("BoxMesh_v6if3")
+material = SubResource("StandardMaterial3D_x74lp")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGMesh3D" unique_id=2129108518]
+transform = Transform3D(0.78855884, 0, 0, 0, 0.8881763, 0, 0, 0, 1.9388043, 0, -0.114935756, 0)
+operation = 2
+mesh = SubResource("BoxMesh_v6if3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1897990574]
+transform = Transform3D(1.5455759, 0, 0, 0, 0.0035803798, 0, 0, 0, 1.5455759, -0.40668344, -0.23000908, -1.4941788)
+mesh = SubResource("CylinderMesh_nswes")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

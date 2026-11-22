@@ -253,3 +253,31 @@ then pan through 4 shots of the game
 on beat drop:
 
 name falls down from the ceiling, when it lands the screen flashes white for a second and then immediately fades to the titlesscreen, with the title maybe hovering up and down and tilting a little bit, and the background being a zoom out of the game rotating from a pivot point, like the yoshis island titlescreen
+
+
+
+each wave have special effects, rogue liek upgrades are disposable in an inventory system
+
+pizzarias can have 1 or 2 pizza slices, at random, RARELY a full pizza, maybe those will be a special one with a harder challenge inside
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pizza places will only be open for a certain amount of time, so they should have a progress bar or timer above them to indicate how much longer they will be there
+
+pizza add 75 health, if that goes above your health at 100, then it goes into a special extra healthbar, like golden hearts in Minecraft
+
+
+a 2 day gamejam mode where you play the original version

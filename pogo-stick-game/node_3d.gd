@@ -14,6 +14,10 @@ func start() -> void:
 	timer.wait_time = 4.0
 	timer.start() # Replace with function body.
 	
+	#stupid way of getting chargometer to refill every wave
+	$CanvasLayer/Chargeometer.start()
+	
+	
 var wave := 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

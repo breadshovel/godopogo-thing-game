@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="23_nu31w"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="27_nu31w"]
+[ext_resource type="Script" uid="uid://br2lmh6bg5rsr" path="res://pizzas.gd" id="29_ype4i"]
+[ext_resource type="Script" uid="uid://c7u51xvyv5xvp" path="res://pizza_spawn_timer.gd" id="30_riyl1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nswes"]
 
@@ -42,15 +44,6 @@ albedo_color = Color(0.48439777, 0.48439825, 0.48439813, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6wmi"]
 albedo_color = Color(0.4862745, 0.4862745, 0.4862745, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nswes"]
-albedo_color = Color(0, 0.6048547, 0.20760599, 1)
-albedo_texture = ExtResource("5_jka67")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ex85l"]
-material = SubResource("StandardMaterial3D_nswes")
-is_hemisphere = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuxcn"]
 transparency = 1
@@ -161,11 +154,7 @@ func _on_start_game_timer_timeout() -> void:
 	#use math to get exponential amount of enemy growth from wave
 	var enemy_spawn_count = ceil(1.5 ** ($\"..\".wave))
 	
-	for i in range(enemy_spawn_count):
-		var enemy_clone = ENEMY.instantiate() # Replace with function body.
-		add_child(enemy_clone)
-		enemy_clone.position = Vector3(randf_range(-12.324, 67.0),3,randf_range(-59.235, 59.167))
-		print(\"hoi\") # Replace with function body.
+	SpawnSystem.spawn_objects(ENEMY, enemy_spawn_count, $\".\", 3, false)
 		
 func next_wave() -> void:
 	$\"..\".wave += 1
@@ -221,7 +210,8 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
-height = 2.2145996
+radius = 0.3310547
+height = 1.914917
 
 [sub_resource type="SphereMesh" id="SphereMesh_a0tk4"]
 height = 2.01
@@ -316,21 +306,6 @@ normal_scale = 16.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x74lp"]
 albedo_color = Color(0.5019608, 0.26666668, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_a2uvh"]
-size = Vector3(3.1825256, 1, 1.7783813)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obt1j"]
-albedo_texture = ExtResource("27_nu31w")
-
-[sub_resource type="PrismMesh" id="PrismMesh_ex85l"]
-material = SubResource("StandardMaterial3D_obt1j")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ype4i"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_nswes"]
-material = SubResource("StandardMaterial3D_ype4i")
-height = 8.159668
-
 [node name="Node3D" type="Node3D" unique_id=2115954773]
 script = ExtResource("1_j3e5s")
 
@@ -354,7 +329,7 @@ mesh = SubResource("BoxMesh_nswes")
 skeleton = NodePath("../../lasers/laser")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="other crap" unique_id=373671169]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.0248, 1.8364048, 56.373688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.259285, 1.8364048, 56.373688)
 visible = false
 mesh = SubResource("CapsuleMesh_hbmba")
 skeleton = NodePath("../..")
@@ -379,10 +354,6 @@ material = SubResource("StandardMaterial3D_r6wmi")
 
 [node name="bushes" type="Node" parent="." unique_id=1515019826]
 script = ExtResource("1_6iypd")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="bushes" unique_id=98704873]
-transform = Transform3D(1.5216315, 0, 0, 0, 0.9114594, 0, 0, 0, 1.5216315, 7.4224806, 0.4325406, -30.992)
-mesh = SubResource("SphereMesh_ex85l")
 
 [node name="standard clouds" type="Node" parent="." unique_id=396242408]
 
@@ -590,26 +561,32 @@ shape = SubResource("ConvexPolygonShape3D_noarx")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="platforms" unique_id=1472008617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.539076, 0, 0)
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_jsk3o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="platforms/StaticBody3D2" unique_id=142108084]
 transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 39.74248, -18.985657, 0)
+visible = false
 mesh = SubResource("BoxMesh_6iypd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="platforms/StaticBody3D2" unique_id=474195932]
-transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 0, 0, 0)
+transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 30.401005, -12.8029995, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_tereu")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="platforms" unique_id=113537662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.704758, 0, 0)
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_jsk3o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="platforms/StaticBody3D3" unique_id=804156583]
 transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 37.010754, -9.697625, 0)
+visible = false
 mesh = SubResource("BoxMesh_6iypd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="platforms/StaticBody3D3" unique_id=1799817688]
-transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 0, 0, 0)
+transform = Transform3D(2.800891, 0, 0, 0, 1, 0, 0, 0, 3.2972457, 30.401005, -12.8029995, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_tereu")
 
 [node name="mountains" type="Node" parent="." unique_id=1580486573]
@@ -853,7 +830,7 @@ script = ExtResource("22_dhlwf")
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body/Area3D" unique_id=1138473915]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, 0.38982338, 0, 0, 0, 5, 0, -0.6141877, 0)
 shape = SubResource("CylinderShape3D_hbmba")
 
 [node name="GroundPoundEffect" type="MeshInstance3D" parent="Player/Body" unique_id=1947538852]
@@ -862,7 +839,7 @@ mesh = SubResource("SphereMesh_nuxcn")
 script = SubResource("GDScript_j3e5s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body" unique_id=1746111810]
-transform = Transform3D(3, 0, 1.4921444e-13, 0, 3, 0, -1.4921444e-13, 0, 3, 0, 0, 0)
+transform = Transform3D(1.999981, 0, 4.0500936e-13, 0, 1.5, 0, -4.0500936e-13, 0, 1.999981, 0, -0.22476196, 0)
 shape = SubResource("CapsuleShape3D_noarx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Body" unique_id=1989997791]
@@ -914,86 +891,58 @@ visible = false
 current = true
 script = ExtResource("25_5t8nk")
 
-[node name="Pizzaria" type="StaticBody3D" parent="." unique_id=1374365571]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=476251150]
+
+[node name="pizzas" type="Node" parent="." unique_id=298163770]
+script = ExtResource("29_ype4i")
+
+[node name="PizzaSpawnTimer" type="Timer" parent="pizzas" unique_id=1444040311]
+script = ExtResource("30_riyl1")
+
+[node name="WIP" type="Node" parent="." unique_id=1760926785]
+
+[node name="Pizzaria" type="StaticBody3D" parent="WIP" unique_id=1374365571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70.42159, -29.60711)
 visible = false
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Pizzaria" unique_id=803277167]
+[node name="SpotLight3D" type="SpotLight3D" parent="WIP/Pizzaria" unique_id=803277167]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 32.127613, 5.5036526, 1.2837296)
 spot_range = 19.289
 spot_attenuation = -2.96
 spot_angle = 137.22
 spot_angle_attenuation = 28164.318
 
-[node name="shadow" type="CSGMesh3D" parent="Pizzaria" unique_id=238495149]
+[node name="shadow" type="CSGMesh3D" parent="WIP/Pizzaria" unique_id=238495149]
 transform = Transform3D(3.1116824, 0, 0, 0, 1.1691796, 0, 0, 0, 1.7000643, 31.542, -7.8171644, -2.7462006)
 mesh = SubResource("BoxMesh_v6if3")
 material = SubResource("StandardMaterial3D_nu31w")
 
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Pizzaria" unique_id=2090482103]
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="WIP/Pizzaria" unique_id=2090482103]
 transform = Transform3D(22.320246, 0, 0, 0, 14.633815, 0, 0, 0, 14.540083, 31.541702, -1.4902663, 0.8770504)
 shape = SubResource("ConcavePolygonShape3D_j3e5s")
 
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Pizzaria" unique_id=41398231]
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="WIP/Pizzaria" unique_id=41398231]
 transform = Transform3D(22.320246, 0, 0, 0, 14.633815, 0, 0, 0, 14.540083, 31.541702, -1.3989425, 0.8770504)
 mesh = SubResource("ArrayMesh_nu31w")
 surface_material_override/0 = SubResource("StandardMaterial3D_2yde8")
 surface_material_override/1 = SubResource("StandardMaterial3D_id0nj")
 surface_material_override/2 = SubResource("StandardMaterial3D_1q667")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Pizzaria" unique_id=1400767752]
+[node name="CSGMesh3D" type="CSGMesh3D" parent="WIP/Pizzaria" unique_id=1400767752]
 transform = Transform3D(3.1233056, 0, 0, 0, 1.1735468, 0, 0, 0, 1.7064146, 31.542, -7.8171644, -2.7462006)
 mesh = SubResource("BoxMesh_v6if3")
 material = SubResource("StandardMaterial3D_a2uvh")
 
-[node name="CSGMesh3D2" type="CSGMesh3D" parent="Pizzaria/CSGMesh3D" unique_id=928309638]
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="WIP/Pizzaria/CSGMesh3D" unique_id=928309638]
 transform = Transform3D(2.2542465, 0, 0, 0, 0.8881763, 0, 0, 0, 0.6450944, 0, -0.114935756, 0)
 operation = 2
 mesh = SubResource("BoxMesh_v6if3")
 material = SubResource("StandardMaterial3D_x74lp")
 
-[node name="CSGMesh3D3" type="CSGMesh3D" parent="Pizzaria/CSGMesh3D" unique_id=429896047]
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="WIP/Pizzaria/CSGMesh3D" unique_id=429896047]
 transform = Transform3D(0.78855884, 0, 0, 0, 0.8881763, 0, 0, 0, 1.9388043, 0, -0.114935756, 0)
 operation = 2
 mesh = SubResource("BoxMesh_v6if3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=476251150]
-
-[node name="Pizza" type="Area3D" parent="." unique_id=625582140]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9104385, -46.04381)
-
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Pizza" unique_id=1923722611]
-transform = Transform3D(1, 0, 0, 0, 1.2412437, 0, 0, 0, 1, -0.32447457, -0.8265877, -1.4649048)
-shape = SubResource("BoxShape3D_a2uvh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pizza" unique_id=47951924]
-transform = Transform3D(-0.5657512, 0.961777, 4.9459534e-09, 0, -5.94544e-08, 0.1600186, 0.5657512, 0.96177703, 4.945954e-09, -0.3544256, -0.15849113, -1.449089)
-mesh = SubResource("PrismMesh_ex85l")
-
-[node name="shadow" type="CSGMesh3D" parent="Pizza" unique_id=1049123352]
-transform = Transform3D(3.1116824, 0, 0, 0, 1.1691796, 0, 0, 0, 1.7000643, -0.3176539, -0.83524895, -1.4979782)
-mesh = SubResource("BoxMesh_v6if3")
-material = SubResource("StandardMaterial3D_nu31w")
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Pizza" unique_id=1479094503]
-transform = Transform3D(3.1233056, 0, 0, 0, 1.1735468, 0, 0, 0, 1.7064146, -0.3176539, -0.83524895, -1.4979782)
-mesh = SubResource("BoxMesh_v6if3")
-material = SubResource("StandardMaterial3D_a2uvh")
-
-[node name="CSGMesh3D2" type="CSGMesh3D" parent="Pizza/CSGMesh3D" unique_id=2092693779]
-transform = Transform3D(2.2542465, 0, 0, 0, 0.8881763, 0, 0, 0, 0.6450944, 0, -0.114935756, 0)
-operation = 2
-mesh = SubResource("BoxMesh_v6if3")
-material = SubResource("StandardMaterial3D_x74lp")
-
-[node name="CSGMesh3D3" type="CSGMesh3D" parent="Pizza/CSGMesh3D" unique_id=1921185655]
-transform = Transform3D(0.78855884, 0, 0, 0, 0.8881763, 0, 0, 0, 1.9388043, 0, -0.114935756, 0)
-operation = 2
-mesh = SubResource("BoxMesh_v6if3")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pizza" unique_id=2053599702]
-transform = Transform3D(1.5455759, 0, 0, 0, 0.0035803798, 0, 0, 0, 1.5455759, -0.40668344, -0.23000908, -1.4941788)
-mesh = SubResource("CylinderMesh_nswes")
 
 [connection signal="timeout" from="START GAME TIMER" to="." method="_on_start_game_timer_timeout"]
 [connection signal="timeout" from="START GAME TIMER" to="enemies" method="_on_start_game_timer_timeout"]
@@ -1001,3 +950,4 @@ mesh = SubResource("CylinderMesh_nswes")
 [connection signal="timeout" from="CanvasLayer/PauseScreen/PauseTimer" to="CanvasLayer/PauseScreen" method="_on_pause_timer_timeout"]
 [connection signal="body_entered" from="lasers/laser" to="lasers/laser" method="_on_body_entered"]
 [connection signal="body_entered" from="Player/Body/Area3D" to="Player/Body" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="pizzas/PizzaSpawnTimer" to="pizzas" method="_on_pizza_spawn_timer_timeout"]

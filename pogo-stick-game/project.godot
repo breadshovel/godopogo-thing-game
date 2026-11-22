@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 SignalBus="*uid://d3usddrck5lrl"
 SoundSystem="*uid://bctp1mxra4rbf"
 PauseController="*uid://14dvlljt06lu"
+SpawnSystem="*uid://cg3d0peuavbiq"
 
 [display]
 

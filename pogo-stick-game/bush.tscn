@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ouxk1o4qx3de"]
+
+[ext_resource type="Texture2D" uid="uid://dgwgba13ktgxy" path="res://360_F_40583023_P4n0Mmo2dWfiuU2oy1AVbP7PytKFPHSf.jpg" id="1_8cy4n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nswes"]
+albedo_color = Color(0, 0.6048547, 0.20760599, 1)
+albedo_texture = ExtResource("1_8cy4n")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ex85l"]
+material = SubResource("StandardMaterial3D_nswes")
+is_hemisphere = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=2130991438]
+transform = Transform3D(1.5216315, 0, 0, 0, 0.9114594, 0, 0, 0, 1.5216315, 0, 0, 0)
+mesh = SubResource("SphereMesh_ex85l")
