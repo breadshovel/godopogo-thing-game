@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bk7f8e5ug1xvj"]
+[gd_scene format=4 uid="uid://bk7f8e5ug1xvj"]
 
 [ext_resource type="Script" uid="uid://cowpxpiho4bie" path="res://bushes.gd" id="1_6iypd"]
 [ext_resource type="Script" uid="uid://ctjk1r055yceo" path="res://node_3d.gd" id="1_j3e5s"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://Player.gd" id="22_j3e5s"]
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="23_nu31w"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
+[ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="27_nu31w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nswes"]
 
@@ -242,6 +243,31 @@ func _process(delta: float) -> void:
 	camera_ypos = 0 - player_body.position.y + .5 # subtracts player pos from relative camera pivot pos, basically keeping it in the same place
 	position.y = camera_ypos # applies to position
 "
+
+[sub_resource type="BoxMesh" id="BoxMesh_hbmba"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nuxcn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a2uvh"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nu31w"]
+data = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.13935804, 0.091724694, 0.5, -0.13935804, -0.4448532, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.13935804, -0.4448532, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.13935804, 0.091724694, 0.5, -0.5, 0.5, 0.5, 0.13935804, 0.091724694, 0.5, -0.13935804, 0.091724694, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.13935804, -0.4448532, 0.5, 0.13935804, -0.4448532, 0.5, 0.5, -0.5, 0.5, 0.13935804, -0.4448532, 0.5, 0.13935804, 0.091724694, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.13935804, 0.091724694, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.13935804, 0.091724694, 0.5, 0.5, 0.5, 0.5, -0.47016847, -0.4654717, -0.47272977, -0.47016847, 0.4654717, -0.47272977, 0.47016847, -0.4654717, -0.47272977, -0.47016847, -0.4654717, -0.47272977, -0.47016847, -0.4654717, 0.47272977, -0.47016847, 0.4654717, 0.47272977, -0.47016847, -0.4654717, -0.47272977, 0.47016847, -0.4654717, 0.47272977, -0.47016847, -0.4654717, 0.47272977, -0.47016847, -0.4654717, 0.47272977, -0.13935804, -0.4448532, 0.47272977, -0.13935804, 0.091724694, 0.47272977, -0.47016847, -0.4654717, 0.47272977, 0.47016847, -0.4654717, 0.47272977, -0.13935804, -0.4448532, 0.47272977, -0.47016847, -0.4654717, -0.47272977, -0.47016847, 0.4654717, 0.47272977, -0.47016847, 0.4654717, -0.47272977, -0.47016847, 0.4654717, -0.47272977, -0.47016847, 0.4654717, 0.47272977, 0.47016847, 0.4654717, -0.47272977, -0.47016847, -0.4654717, 0.47272977, -0.13935804, 0.091724694, 0.47272977, -0.47016847, 0.4654717, 0.47272977, -0.47016847, 0.4654717, 0.47272977, -0.13935804, 0.091724694, 0.47272977, 0.13935804, 0.091724694, 0.47272977, -0.47016847, -0.4654717, -0.47272977, 0.47016847, -0.4654717, -0.47272977, 0.47016847, -0.4654717, 0.47272977, 0.47016847, -0.4654717, -0.47272977, 0.47016847, 0.4654717, -0.47272977, 0.47016847, -0.4654717, 0.47272977, -0.13935804, -0.4448532, 0.47272977, 0.47016847, -0.4654717, 0.47272977, 0.13935804, -0.4448532, 0.47272977, 0.13935804, -0.4448532, 0.47272977, 0.47016847, -0.4654717, 0.47272977, 0.13935804, 0.091724694, 0.47272977, -0.47016847, 0.4654717, -0.47272977, 0.47016847, 0.4654717, -0.47272977, 0.47016847, -0.4654717, -0.47272977, -0.47016847, 0.4654717, 0.47272977, 0.47016847, 0.4654717, 0.47272977, 0.47016847, 0.4654717, -0.47272977, -0.47016847, 0.4654717, 0.47272977, 0.13935804, 0.091724694, 0.47272977, 0.47016847, 0.4654717, 0.47272977, 0.47016847, -0.4654717, 0.47272977, 0.47016847, 0.4654717, -0.47272977, 0.47016847, 0.4654717, 0.47272977, 0.47016847, -0.4654717, 0.47272977, 0.47016847, 0.4654717, 0.47272977, 0.13935804, 0.091724694, 0.47272977, -0.13935804, -0.4448532, 0.47272977, -0.13935804, -0.4448532, 0.5, -0.13935804, 0.091724694, 0.5, -0.13935804, -0.4448532, 0.47272977, 0.13935804, -0.4448532, 0.47272977, -0.13935804, -0.4448532, 0.5, -0.13935804, -0.4448532, 0.47272977, -0.13935804, 0.091724694, 0.5, -0.13935804, 0.091724694, 0.47272977, -0.13935804, 0.091724694, 0.47272977, -0.13935804, 0.091724694, 0.5, 0.13935804, 0.091724694, 0.5, 0.13935804, -0.4448532, 0.47272977, 0.13935804, -0.4448532, 0.5, -0.13935804, -0.4448532, 0.5, 0.13935804, -0.4448532, 0.47272977, 0.13935804, 0.091724694, 0.47272977, 0.13935804, -0.4448532, 0.5, 0.13935804, 0.091724694, 0.47272977, 0.13935804, 0.091724694, 0.5, 0.13935804, -0.4448532, 0.5, -0.13935804, 0.091724694, 0.47272977, 0.13935804, 0.091724694, 0.5, 0.13935804, 0.091724694, 0.47272977)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obt1j"]
+albedo_texture = ExtResource("27_nu31w")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j3e5s"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("AACAPwAAAD+rqio/AAAAPwAAgD8AAAAAAAAAAAAAAD/AMvY9dglRPsAy9j3m4fE+AAAAAAAAgD+rqqo+AAAAP6uqqj4AAIA/q6oqPwAAgD+rqio/AAAAPwAAgD8AAAA/AAAAAAAAAD/AMvY95uHxPquqqj4AAAA/AAAAAAAAgD8AAAAAAAAAP6uqqj4AAAA/q6oqPwAAgD+rqqo+AACAP6uqKj8AAAA/AAAAAAAAAD8AAAAAAAAAAMAy9j12CVE+AAAAAAAAAAD2O1o+dglRPsAy9j12CVE+q6oqPwAAgD8AAIA/AAAAPwAAgD8AAIA/q6oqPwAAAD+rqqo+AAAAP6uqKj8AAAAAq6qqPgAAAD/AMvY95uHxPvY7Wj7m4fE+q6qqPgAAAD/2O1o+5uHxPvY7Wj52CVE+AACAPwAAAACrqio/AAAAP6uqKj8AAAAAq6oqPwAAAD+rqqo+AACAP6uqqj4AAAA/AAAAAAAAAACrqqo+AAAAAPY7Wj52CVE+q6qqPgAAAD+rqqo+AAAAAKuqKj8AAAAAq6qqPgAAAD/2O1o+dglRPquqqj4AAAAAAACAPwAAAD8AAIA/AAAAAKuqKj8AAAA/AAAAAAAAgD+rqqo+AACAP6uqqj4AAAA/q6oqPwAAgD8AAIA/AAAAP6uqKj8AAAA/AAAAAAAAAD99KfA9glT6Pn0p8D2kjU0+AAAAAAAAAD+rqqo+AAAAP30p8D2CVPo+AAAAAAAAgD+rqqo+AAAAPwAAAAAAAAA/q6oqPwAAgD+rqio/AAAAP6uqqj4AAIA/AAAAAAAAAD99KfA9pI1NPgAAAAAAAAAAAAAAAAAAAAB9KfA9pI1NPphAXT6kjU0+q6oqPwAAgD8AAIA/AACAPwAAgD8AAAA/q6oqPwAAAD+rqio/AAAAAKuqqj4AAAA/fSnwPYJU+j6rqqo+AAAAP5hAXT6CVPo+mEBdPoJU+j6rqqo+AAAAP5hAXT6kjU0+AACAPwAAAACrqio/AAAAAKuqKj8AAAA/q6oqPwAAAD+rqqo+AAAAP6uqqj4AAIA/AAAAAAAAAACYQF0+pI1NPquqqj4AAAAAq6qqPgAAAD+rqio/AAAAAKuqqj4AAAAAq6qqPgAAAD+rqqo+AAAAAJhAXT6kjU0+NEdbPgAAgD96ymc+AACAP3rKZz4AAAA/q6oqP03FLT8AAIA/TcUtP6uqKj8SFCk/NEdbPgAAgD96ymc+AAAAPzRHWz4AAAA/q6oqP03FLT+rqio/EhQpP6uqqj4SFCk/AACAP03FLT8AAIA/EhQpP6uqKj8SFCk/vLHnPgAAAD+8sec+AAAAABlw4T4AAAA/vLHnPgAAAAAZcOE+AAAAABlw4T4AAAA/q6oqP03FLT+rqqo+EhQpP6uqqj5NxS0/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 132,
+"vertex_data": PackedByteArray("AAAAvwAAAL8AAAC/AAAAPwAAAL8AAAC/AAAAvwAAAD8AAAC/AAAAvwAAAL8AAAA/4LMOvijauz0AAAA/4LMOvszD474AAAA/AAAAvwAAAL8AAAC/AAAAvwAAAD8AAAA/AAAAvwAAAL8AAAA/AAAAvwAAAL8AAAC/AAAAvwAAAL8AAAA/AAAAPwAAAL8AAAA/AAAAvwAAAL8AAAA/4LMOvszD474AAAA/AAAAPwAAAL8AAAA/AAAAvwAAAL8AAAC/AAAAvwAAAD8AAAC/AAAAvwAAAD8AAAA/AAAAvwAAAD8AAAC/AAAAPwAAAD8AAAC/AAAAvwAAAD8AAAA/AAAAvwAAAL8AAAA/AAAAvwAAAD8AAAA/4LMOvijauz0AAAA/AAAAvwAAAD8AAAA/4LMOPijauz0AAAA/4LMOvijauz0AAAA/AAAAvwAAAL8AAAC/AAAAPwAAAL8AAAA/AAAAPwAAAL8AAAC/AAAAPwAAAL8AAAC/AAAAPwAAAL8AAAA/AAAAPwAAAD8AAAC/AAAAPwAAAL8AAAA/4LMOvszD474AAAA/4LMOPszD474AAAA/AAAAPwAAAL8AAAA/4LMOPszD474AAAA/4LMOPijauz0AAAA/AAAAvwAAAD8AAAC/AAAAPwAAAL8AAAC/AAAAPwAAAD8AAAC/AAAAvwAAAD8AAAA/AAAAPwAAAD8AAAC/AAAAPwAAAD8AAAA/AAAAvwAAAD8AAAA/AAAAPwAAAD8AAAA/4LMOPijauz0AAAA/AAAAPwAAAL8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAC/AAAAPwAAAL8AAAA/4LMOPijauz0AAAA/AAAAPwAAAD8AAAA/7Lnwvk9S7r6jCfK+7Lnwvk9S7j6jCfK+7LnwPk9S7r6jCfK+7Lnwvk9S7r6jCfK+7Lnwvk9S7r6jCfI+7Lnwvk9S7j6jCfI+7Lnwvk9S7r6jCfK+7LnwPk9S7r6jCfI+7Lnwvk9S7r6jCfI+7Lnwvk9S7r6jCfI+4LMOvszD476jCfI+4LMOvijauz2jCfI+7Lnwvk9S7r6jCfI+7LnwPk9S7r6jCfI+4LMOvszD476jCfI+7Lnwvk9S7r6jCfK+7Lnwvk9S7j6jCfI+7Lnwvk9S7j6jCfK+7Lnwvk9S7j6jCfK+7Lnwvk9S7j6jCfI+7LnwPk9S7j6jCfK+7Lnwvk9S7r6jCfI+4LMOvijauz2jCfI+7Lnwvk9S7j6jCfI+7Lnwvk9S7j6jCfI+4LMOvijauz2jCfI+4LMOPijauz2jCfI+7Lnwvk9S7r6jCfK+7LnwPk9S7r6jCfK+7LnwPk9S7r6jCfI+7LnwPk9S7r6jCfK+7LnwPk9S7j6jCfK+7LnwPk9S7r6jCfI+4LMOvszD476jCfI+7LnwPk9S7r6jCfI+4LMOPszD476jCfI+4LMOPszD476jCfI+7LnwPk9S7r6jCfI+4LMOPijauz2jCfI+7Lnwvk9S7j6jCfK+7LnwPk9S7j6jCfK+7LnwPk9S7r6jCfK+7Lnwvk9S7j6jCfI+7LnwPk9S7j6jCfI+7LnwPk9S7j6jCfK+7Lnwvk9S7j6jCfI+4LMOPijauz2jCfI+7LnwPk9S7j6jCfI+7LnwPk9S7r6jCfI+7LnwPk9S7j6jCfK+7LnwPk9S7j6jCfI+7LnwPk9S7r6jCfI+7LnwPk9S7j6jCfI+4LMOPijauz2jCfI+4LMOvszD476jCfI+4LMOvszD474AAAA/4LMOvijauz0AAAA/4LMOvszD476jCfI+4LMOPszD476jCfI+4LMOvszD474AAAA/4LMOvszD476jCfI+4LMOvijauz0AAAA/4LMOvijauz2jCfI+4LMOvijauz2jCfI+4LMOvijauz0AAAA/4LMOPijauz0AAAA/4LMOPszD476jCfI+4LMOPszD474AAAA/4LMOvszD474AAAA/4LMOPszD476jCfI+4LMOPijauz2jCfI+4LMOPszD474AAAA/4LMOPijauz2jCfI+4LMOPijauz0AAAA/4LMOPszD474AAAA/4LMOvijauz2jCfI+4LMOPijauz0AAAA/4LMOPijauz2jCfI+/////wAA/7//////AAD/v/////8AAP+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+//38AAP///7//fwAA////v/9/AAD///+//3//f////7//f/9/////v/9//3////+/AAD/f/9//78AAP9//3//vwAA/3//f/+//3///wAA/7//f///AAD/v/9///8AAP+//3//f////7//f/9/////v/9//3////+//3//f////7//f/9/////v/9//3////+//38AAP///7//fwAA////v/9/AAD///+/////f/////////9//////////3///////3//f////7//f/9/////v/9//3////+//3//f////7//f/9/////v/9//3////+//////wAA/7//////AAD/v/////8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3//f////7//f/9/////v/9//3////+/////f/////////9//////////3///////3//f////7//f/9/////v/9//3////+//3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//z////9//3//P////3//f/8//3///////z//f///////P/9///////8//////////z//////////P/////////8//////////z//////////P/////////8/////f/9//z////9//3//P////3//f/8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8//////////z//////////P/////////8//////////z//////////P/////////8//3///////z//f///////P/9///////8/AAD/f///AAAAAP9///8AAAAA/3///wAA/////////z//////////P/////////8//////////z//////////P/////////8//3//fwAA/z//f/9/AAD/P/9//38AAP8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8//////////z//////////P/////////8/AAD/f///AAAAAP9///8AAAAA/3///wAA/////////z//////////P/////////8/////f/9//z////9//3//P////3//f/8//3///////z//f///////P/9///////8/////f/9//z////9//3//P////3//f/8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8//3///////z//f///////P/9///////8/AAD/f///AAAAAP9///8AAAAA/3///wAAAAD/f///AAAAAP9///8AAAAA/3///wAA/38AAAAA/z//fwAAAAD/P/9/AAAAAP8/")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nu31w"]
 
 [node name="Node3D" type="Node3D" unique_id=2115954773]
 script = ExtResource("1_j3e5s")
@@ -807,6 +833,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.252776e-12, 0, 5.999859)
 visible = false
 current = true
 script = ExtResource("25_5t8nk")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=2132199311]
+transform = Transform3D(13.2470455, 0, 0, 0, 9.071143, 0, 0, 0, 8.615622, 4.7139015, 51.32801, -48.849163)
+mesh = SubResource("BoxMesh_hbmba")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGMesh3D" unique_id=1394904396]
+transform = Transform3D(0.94033694, 0, 0, 0, 0.9309434, 0, 0, 0, 0.94545954, 0, 0, 0)
+operation = 2
+mesh = SubResource("BoxMesh_nuxcn")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGMesh3D" unique_id=2144166011]
+transform = Transform3D(0.2787161, 0, 0, 0, 0.5365779, 0, 0, 0, 0.74389803, 0, -0.17656425, 0.36678648)
+operation = 2
+mesh = SubResource("BoxMesh_a2uvh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1155551107]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=384232099]
+transform = Transform3D(13.2470455, 0, 0, 0, 9.071142, 0, 0, 0, 8.615622, 4.7139015, 4.9193716, -48.849163)
+shape = SubResource("ConcavePolygonShape3D_nu31w")
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1757140040]
+transform = Transform3D(13.2470455, 0, 0, 0, 9.071143, 0, 0, 0, 8.615622, 4.7139015, 4.9193716, -48.849163)
+material_override = SubResource("StandardMaterial3D_obt1j")
+mesh = SubResource("ArrayMesh_j3e5s")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nu31w")
 
 [connection signal="timeout" from="START GAME TIMER" to="." method="_on_start_game_timer_timeout"]
 [connection signal="timeout" from="START GAME TIMER" to="enemies" method="_on_start_game_timer_timeout"]
