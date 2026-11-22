@@ -29,8 +29,7 @@ func _process(delta: float) -> void:
 		$"CanvasLayer/GAME START SCREEN/Label2".visible = false
 		$"CanvasLayer/GAME START SCREEN/Label3".visible = true
 	print($"START GAME TIMER".time_left)
-
-
+	
 func _on_start_game_timer_timeout() -> void:
 	$"CanvasLayer/GAME START SCREEN".visible = false
 	$"CanvasLayer/GAME START SCREEN/Label".visible = false
