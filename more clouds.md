@@ -222,3 +222,7 @@ movement tutorial, when a picture of muffin with mouth photosiohopepd  rapidly o
 
 
 
+
+
+make game faster to align better with the music
+
