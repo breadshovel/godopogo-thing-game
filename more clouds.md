@@ -226,3 +226,30 @@ movement tutorial, when a picture of muffin with mouth photosiohopepd  rapidly o
 
 make game faster to align better with the music
 
+
+
+game could be called Omnipotence
+
+
+
+
+
+opening to game would be: to song 5
+
+
+
+to the first 4 beats
+
+
+
+my name, my contributions, fades to black 
+zack, his contributions, fades to black
+simon, his contributions, fades to black
+"GAME NAME" or PRESENTS"
+
+next 4 beats
+then pan through 4 shots of the game 
+
+on beat drop:
+
+name falls down from the ceiling, when it lands the screen flashes white for a second and then immediately fades to the titlesscreen,
