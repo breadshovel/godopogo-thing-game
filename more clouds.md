@@ -46,9 +46,9 @@
 
 
 
-add titlescreen
+~~add titlescreen~~
 
-add pause
+~~add pause~~
 
 
 
@@ -204,4 +204,21 @@ like from a laser to a dodgeball like object
 and you could combo the two
 
 and also ground pound on the thrown dodgeballs to launch them at enemies
+
+
+
+sparatically, pizzarias will get built, and they will only be there for a limited time, you need to get to them and do some basic parkour inside to get the pizza before it disappears
+
+
+
+boss alert with alarm that syncs to the rhythm
+
+
+
+"THE PIZZARIA HAS OPENED"
+"THE PIZZARIA HAS CLOSED"
+
+movement tutorial, when a picture of muffin with mouth photosiohopepd  rapidly opening and closing teaches you how to move consisely
+
+
 

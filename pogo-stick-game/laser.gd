@@ -8,7 +8,7 @@ var shoot_sound: AudioStream = preload("res://laserShoot.wav")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SoundSystem.play_audiostream(shoot_sound)
+	SoundSystem.play_audiostream(shoot_sound, 0, 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
