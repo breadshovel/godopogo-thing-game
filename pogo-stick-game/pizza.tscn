@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b20shbcyu41pw" path="res://pizza.gd" id="1_i514n"]
 [ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="2_ycrcj"]
+[ext_resource type="Texture2D" uid="uid://bqkd5j5rxbrda" path="res://healthbar.png" id="3_glui1"]
+[ext_resource type="Texture2D" uid="uid://br65hft7wa0lw" path="res://healthbar interirori.png" id="4_fhxex"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a2uvh"]
 size = Vector3(3.1825256, 1, 1.7783813)
@@ -35,6 +37,35 @@ albedo_color = Color(0.5019608, 0.26666668, 0, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_nswes"]
 material = SubResource("StandardMaterial3D_ype4i")
 height = 8.159668
+
+[sub_resource type="GDScript" id="GDScript_wboqb"]
+script/source = "extends Sprite3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	texture = $SubViewport.get_texture() # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_l3bwu"]
+script/source = "extends TextureProgressBar
+
+@onready var despawn_timer = $\"../../../DespawnTimer\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	value = round(despawn_timer.time_left * 5)
+"
 
 [node name="Pizza" type="Area3D" unique_id=159552378]
 script = ExtResource("1_i514n")
@@ -72,4 +103,32 @@ mesh = SubResource("BoxMesh_v6if3")
 transform = Transform3D(1.5455759, 0, 0, 0, 0.0035803798, 0, 0, 0, 1.5455759, -0.40668344, -0.23000908, -1.4941788)
 mesh = SubResource("CylinderMesh_nswes")
 
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=110710820]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.39553294, 3.5973892, -1.5067439)
+billboard = 1
+script = SubResource("GDScript_wboqb")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=295096442]
+transparent_bg = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="Sprite3D/SubViewport" unique_id=2124546770]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+texture_over = ExtResource("3_glui1")
+texture_progress = ExtResource("4_fhxex")
+tint_progress = Color(0, 12.506515, 5.633054, 1)
+script = SubResource("GDScript_l3bwu")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=229104870]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

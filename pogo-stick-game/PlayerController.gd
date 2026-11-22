@@ -4,8 +4,8 @@ class_name PlayerController extends CharacterBody3D
 
 class Constants:
 	#sound
-	static var TROMBOING: AudioStream = preload("res://07 Tromboing.mp3")
-	static var THUNK: AudioStream = preload("res://83 Thunk.mp3")
+	static var TROMBOING: AudioStream = preload("res://Sounds/07 Tromboing.mp3")
+	static var THUNK: AudioStream = preload("res://Sounds/83 Thunk.mp3")
 	
 	# velocity
 	static var SPEED: float = 10.0
@@ -29,6 +29,8 @@ var ready_to_jump: bool
 
 var charge: float
 var jump_velocity: float
+var extra_health_bar
+var extra_health: float
 
 func init(hitpoints: int, cs3D: CollisionShape3D):
 	self.health = hitpoints
@@ -56,6 +58,16 @@ var space_hold: float = 0.0
 func input_update(deltaTime: float):
 	meters[MeterProgressBar.MeterType.Health].update_bar(health)
 	meters[MeterProgressBar.MeterType.Zap].update_progressive_zap(deltaTime)
+
+	extra_health_bar = $"../../CanvasLayer/PlayerExtraHealthBar"
+	
+	if health > 100:
+		extra_health = health - 100
+		
+		extra_health_bar.visible = true
+		extra_health_bar.update_bar(extra_health)
+	else:
+		extra_health_bar.visible = false
 		
 	if space_hold >= Constants.CHARGE_HOLD_THRESHOLD && Input.is_action_pressed("ui_accept"):
 		meters[MeterProgressBar.MeterType.Charge].update_progressive_charge(true, deltaTime)

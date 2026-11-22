@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 			SoundSystem.check_death_sequence(self, $"../CanvasLayer/DeathScreen", delta)
 			return
 			
-		controller.input_update(delta)
+	controller.input_update(delta)
 
 func _physics_process(delta: float) -> void:
 	if $"..":

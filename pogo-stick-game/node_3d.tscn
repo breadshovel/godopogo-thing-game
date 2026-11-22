@@ -5,11 +5,13 @@
 [ext_resource type="Script" uid="uid://clgpxba0d4svd" path="res://jump_indicator.gd" id="3_a0tk4"]
 [ext_resource type="AudioStream" uid="uid://d2xip2j2d386j" path="res://truman songa l ltruamn - Copy.wav" id="3_nu31w"]
 [ext_resource type="Texture2D" uid="uid://dgwgba13ktgxy" path="res://360_F_40583023_P4n0Mmo2dWfiuU2oy1AVbP7PytKFPHSf.jpg" id="5_jka67"]
+[ext_resource type="Texture2D" uid="uid://bf32gvghb5t1c" path="res://Textures/player healthbar 2.png" id="7_1q667"]
 [ext_resource type="Texture2D" uid="uid://b2d4db1vfvdrv" path="res://watercolor-hand-painted-stone-texture_1100-70.png" id="7_wc5p8"]
 [ext_resource type="Texture2D" uid="uid://c001wthgwb32k" path="res://360_F_228578425_hCRziwFdpPWjqmxSdHqD1fWinLaIorAM.jpg" id="8_4arys"]
 [ext_resource type="Script" uid="uid://dco1ks8toegli" path="res://MeterProgressBar.gd" id="8_dhlwf"]
 [ext_resource type="FontFile" uid="uid://cvtpu8548y1kk" path="res://Jokerman.otf" id="8_jsk3o"]
 [ext_resource type="ArrayMesh" uid="uid://chj60m1q2n557" path="res://Part Studio 1.obj" id="8_tuemg"]
+[ext_resource type="Texture2D" uid="uid://eqs0fliwhlms" path="res://Textures/player healthbar interior 2.png" id="8_ype4i"]
 [ext_resource type="Texture2D" uid="uid://cguntu1h4jwcd" path="res://progress bar empty.png" id="10_cdqbm"]
 [ext_resource type="Texture2D" uid="uid://cu7421isym660" path="res://progress bar interior3.png" id="11_wlxy5"]
 [ext_resource type="Texture2D" uid="uid://bpqj1fg3xnbqm" path="res://player healthbar exteriroir.png" id="12_dhlwf"]
@@ -642,6 +644,19 @@ shape = SubResource("ConvexPolygonShape3D_tcnuu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1782508791]
 
+[node name="PlayerExtraHealthBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=894187129 groups=["PlayerMeters"]]
+texture_filter = 1
+offset_left = 335.0
+offset_top = 102.0
+offset_right = 1335.0
+offset_bottom = 602.00006
+scale = Vector2(0.22241478, 0.0952536)
+texture_over = ExtResource("7_1q667")
+texture_progress = ExtResource("8_ype4i")
+tint_over = Color(1, 1, 1, 0.50980395)
+tint_progress = Color(1, 1, 1, 0.50980395)
+script = ExtResource("8_dhlwf")
+
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=2051626923 groups=["PlayerMeters"]]
 texture_filter = 1
 offset_left = 205.0
@@ -835,7 +850,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body/Area3D" unique_id=1138473915]
-transform = Transform3D(5, 0, 0, 0, 0.38982338, 0, 0, 0, 5, 0, -0.6141877, 0)
+transform = Transform3D(5, 0, 0, 0, 0.38982338, 0, 0, 0, 5, 0, -0.98921764, 0)
 shape = SubResource("CylinderShape3D_hbmba")
 
 [node name="GroundPoundEffect" type="MeshInstance3D" parent="Player/Body" unique_id=1947538852]

@@ -15,5 +15,5 @@ func _process(delta: float) -> void:
 func _on_pizza_spawn_timer_timeout() -> void:
 	if get_child_count() == 1:
 		SpawnSystem.spawn_objects(PIZZA, 1, $".", 1.91, false)
-	$PizzaSpawnTimer.start(randf_range(2, 15))
+	$PizzaSpawnTimer.start_pizza_timer()
 #	pizza # Replace with function body.
