@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	jump = true # Replace with function body.
 	$Timer.wait_time = randf_range(0, 3)
-	
+	set_collision_mask_value(2, true)
 	#reset speed if got ground pounded
 	SPEED = speed_backup
 	
@@ -109,6 +109,7 @@ func die() -> void:
 	
 func knockback() -> void:
 	health -= 50
+	set_collision_mask_value(2, false)
 	movement_decision = Vector2(0, 1)
 	$Timer.start(3)
 	SPEED = 20

@@ -19,12 +19,12 @@
 [ext_resource type="Script" uid="uid://c60gcoyew4rnj" path="res://lasers.gd" id="15_3v7ru"]
 [ext_resource type="Texture2D" uid="uid://co44tntkdt2po" path="res://zapometer interior.png" id="15_jsnrv"]
 [ext_resource type="Script" uid="uid://dcmi4vfr5w81q" path="res://laser.gd" id="16_tcnuu"]
+[ext_resource type="LabelSettings" uid="uid://cadc6ahbkmgnh" path="res://Fonts & Text Presets/new_label_settings.tres" id="17_2yde8"]
 [ext_resource type="Texture2D" uid="uid://c0xmtfona2s0u" path="res://Textures/paused1.png" id="18_j3e5s"]
 [ext_resource type="Script" uid="uid://del8u1mjrlcx4" path="res://pause_screen.gd" id="19_nu31w"]
 [ext_resource type="Texture2D" uid="uid://cry5i3u537g5t" path="res://deathscreenframe1.png" id="22_5t8nk"]
 [ext_resource type="Script" uid="uid://cevwbuxjysr5s" path="res://PlayerController.gd" id="22_dhlwf"]
 [ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://Player.gd" id="22_j3e5s"]
-[ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="23_nu31w"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="27_nu31w"]
 [ext_resource type="Script" uid="uid://br2lmh6bg5rsr" path="res://pizzas.gd" id="29_ype4i"]
@@ -751,7 +751,6 @@ texture = ExtResource("22_5t8nk")
 
 [node name="GAME START SCREEN" type="Sprite2D" parent="CanvasLayer" unique_id=1480639186]
 position = Vector2(337, 211)
-texture = ExtResource("23_nu31w")
 
 [node name="Label3" type="Label" parent="CanvasLayer/GAME START SCREEN" unique_id=966371721]
 visible = false
@@ -764,6 +763,7 @@ theme_override_font_sizes/font_size = 64
 text = "WAVE 1
 
 "
+label_settings = ExtResource("17_2yde8")
 
 [node name="Label" type="Label" parent="CanvasLayer/GAME START SCREEN" unique_id=1373347292]
 visible = false
@@ -775,6 +775,7 @@ theme_override_fonts/font = ExtResource("8_jsk3o")
 theme_override_font_sizes/font_size = 64
 text = "YOU ARE AN EGG
 "
+label_settings = ExtResource("17_2yde8")
 
 [node name="Label2" type="Label" parent="CanvasLayer/GAME START SCREEN" unique_id=1813327254]
 visible = false
@@ -786,6 +787,7 @@ theme_override_fonts/font = ExtResource("8_jsk3o")
 theme_override_font_sizes/font_size = 64
 text = "KILL THEM ALL
 "
+label_settings = ExtResource("17_2yde8")
 
 [node name="PauseScreen" type="Sprite2D" parent="CanvasLayer" unique_id=274115096]
 process_mode = 3
@@ -809,6 +811,7 @@ script = ExtResource("15_3v7ru")
 
 [node name="laser" type="Area3D" parent="lasers" unique_id=1114875679]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3485618, 0)
+collision_mask = 3
 script = ExtResource("16_tcnuu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="lasers/laser" unique_id=451564125]
@@ -824,10 +827,12 @@ script = ExtResource("22_j3e5s")
 
 [node name="Body" type="CharacterBody3D" parent="Player" unique_id=1438843858]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 31.499, 1.477, 0)
+collision_mask = 3
 script = ExtResource("22_dhlwf")
 
 [node name="Area3D" type="Area3D" parent="Player/Body" unique_id=1597042505]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body/Area3D" unique_id=1138473915]
 transform = Transform3D(5, 0, 0, 0, 0.38982338, 0, 0, 0, 5, 0, -0.6141877, 0)

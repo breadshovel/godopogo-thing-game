@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cadc6ahbkmgnh"]
+
+[ext_resource type="FontFile" uid="uid://cvtpu8548y1kk" path="res://Jokerman.otf" id="1_2u1je"]
+
+[resource]
+font = ExtResource("1_2u1je")
+font_size = 64
+shadow_color = Color(0, 0, 0, 1)
