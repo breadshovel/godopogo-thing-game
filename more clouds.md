@@ -281,3 +281,5 @@ pizza add 75 health, if that goes above your health at 100, then it goes into a 
 
 
 a 2 day gamejam mode where you play the original version
+
+sometimes you get free pizza, and a drone goes down and delivers pizza right ontop of you directly onto you and your inventory
