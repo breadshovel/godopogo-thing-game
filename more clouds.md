@@ -252,4 +252,4 @@ then pan through 4 shots of the game
 
 on beat drop:
 
-name falls down from the ceiling, when it lands the screen flashes white for a second and then immediately fades to the titlesscreen,
+name falls down from the ceiling, when it lands the screen flashes white for a second and then immediately fades to the titlesscreen, with the title maybe hovering up and down and tilting a little bit, and the background being a zoom out of the game rotating from a pivot point, like the yoshis island titlescreen
