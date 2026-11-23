@@ -1,64 +1,65 @@
 [gd_scene format=3 uid="uid://cqps4u7kcuywx"]
 
+[ext_resource type="Texture2D" uid="uid://cj84wye11quwd" path="res://Textures/title_sequence/titlescreen.png" id="1_cjnew"]
 [ext_resource type="Texture2D" uid="uid://e6mrwg3yhlgi" path="res://play buitton3.png" id="2_8pdex"]
 [ext_resource type="Texture2D" uid="uid://bjob4ba6d3ums" path="res://play buitton.png" id="2_goadl"]
 [ext_resource type="Texture2D" uid="uid://d1t328c2yss07" path="res://play buitton4.png" id="3_hxypl"]
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="4_hxypl"]
-[ext_resource type="AudioStream" uid="uid://bmyxo266aifge" path="res://Sounds/titlescreen FINAL maybe.mp3" id="5_hxypl"]
+[ext_resource type="AudioStream" uid="uid://dn021x00s32jo" path="res://Sounds/truman songa l ltruamn.wav" id="5_hxypl"]
 
 [sub_resource type="GDScript" id="GDScript_ype4i"]
 script/source = "extends Node2D
-
-var title_sequence = [
-	preload(\"res://Textures/title_sequence/titlesequence1.png\"),
-	preload(\"res://Textures/title_sequence/titlesequence2.png\"),
-	preload(\"res://Textures/title_sequence/titlesequence3.png\"),
-	preload(\"res://Textures/title_sequence/titlesequence4.png\"),
-	preload(\"res://Textures/title_sequence/titlescreen remake.png\"),
-]
-
-var current_frame = 0
-var opacity: float
+#
+#var title_sequence = [
+	#preload(\"res://Textures/title_sequence/titlesequence1.png\"),
+	#preload(\"res://Textures/title_sequence/titlesequence2.png\"),
+	#preload(\"res://Textures/title_sequence/titlesequence3.png\"),
+	#preload(\"res://Textures/title_sequence/titlesequence4.png\"),
+	#preload(\"res://Textures/title_sequence/titlescreen remake.png\"),
+#]
+#
+#var current_frame = 0
+#var opacity: float
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-func _process(delta: float) -> void:
-	print(opacity)
-	if current_frame < 4: opacity += 1.4 * delta
-	$TitlescreenFadeOverlay.modulate.a = round(opacity * 7.5) / 7.5
-
-#func title_sequence():
-#	pass #$TitlescreenBackground.
-	
-
-
-func _on_bpm_timer_timeout() -> void:
-	if current_frame < 4:
-		current_frame += 1
-		$TitlescreenBackground.texture = title_sequence[current_frame]
-	if current_frame == 4:
-		$PlayButton.visible = true
-	$BPM_Timer.start(1.846)
-	opacity = 0
-
-
-func _on_start_timer_timeout() -> void:
-	$BPM_Timer.start(1.846)
-	$TitlescreenBackground.texture = title_sequence[current_frame]
-	$StartTimer.stop()
-	opacity = 0
-
-	
-func _on_intro_comence_timer_timeout() -> void:
-	$StartTimer.start(0.25) # Replace with function body.
-	$TitlescreenMusic.play()
-	$\"INTRO COMENCE TIMER\".stop()
-	
-	
-	
-	
-	
+#
+#func _process(delta: float) -> void:
+	#print(opacity)
+	#if current_frame < 4: opacity += 1.4 * delta
+	#$TitlescreenFadeOverlay.modulate.a = round(opacity * 7.5) / 7.5
+#
+##func title_sequence():
+##	pass #$TitlescreenBackground.
+	#
+#
+#
+#func _on_bpm_timer_timeout() -> void:
+	#if current_frame < 4:
+		#current_frame += 1
+		#$TitlescreenBackground.texture = title_sequence[current_frame]
+	#if current_frame == 4:
+		#$PlayButton.visible = true
+	#$BPM_Timer.start(1.846)
+	#opacity = 0
+#
+#
+#func _on_start_timer_timeout() -> void:
+	#$BPM_Timer.start(1.846)
+	#$TitlescreenBackground.texture = title_sequence[current_frame]
+	#$StartTimer.stop()
+	#opacity = 0
+#
+	#
+#func _on_intro_comence_timer_timeout() -> void:
+	#$StartTimer.start(0.25) # Replace with function body.
+	#$TitlescreenMusic.play()
+	#$\"INTRO COMENCE TIMER\".stop()
+	#
+	#
+	#
+	#
+	#
 	
 	
 	
@@ -124,6 +125,7 @@ wait_time = 0.7
 autostart = true
 
 [node name="TitlescreenFadeOverlay" type="Sprite2D" parent="." unique_id=961843328]
+visible = false
 z_index = 14
 texture = ExtResource("4_hxypl")
 
@@ -142,21 +144,36 @@ texture_pressed = ExtResource("3_hxypl")
 texture_hover = ExtResource("2_goadl")
 script = SubResource("GDScript_hxypl")
 
+[node name="PlayButton2" type="TextureButton" parent="." unique_id=1276430959]
+z_index = 16
+texture_filter = 1
+offset_left = 344.0
+offset_top = 360.00003
+offset_right = 694.0
+offset_bottom = 472.00003
+scale = Vector2(1.0000429, 0.9999464)
+texture_normal = ExtResource("2_goadl")
+texture_pressed = ExtResource("3_hxypl")
+texture_hover = ExtResource("2_8pdex")
+script = SubResource("GDScript_hxypl")
+
 [node name="TitlescreenBackground" type="Sprite2D" parent="." unique_id=950656952]
 texture_filter = 1
 position = Vector2(427, 240)
-texture = ExtResource("4_hxypl")
+texture = ExtResource("1_cjnew")
 
 [node name="TitlescreenMusic" type="AudioStreamPlayer" parent="." unique_id=1851608929]
 stream = ExtResource("5_hxypl")
+autoplay = true
 
 [node name="BPM_Timer" type="Timer" parent="." unique_id=1807258716]
-wait_time = 1.8459999999999999
+wait_time = 1.846
 
 [node name="StartTimer" type="Timer" parent="." unique_id=227175633]
 wait_time = 0.25
 
 [connection signal="timeout" from="INTRO COMENCE TIMER" to="." method="_on_intro_comence_timer_timeout"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="PlayButton2" to="PlayButton2" method="_on_pressed"]
 [connection signal="timeout" from="BPM_Timer" to="." method="_on_bpm_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
