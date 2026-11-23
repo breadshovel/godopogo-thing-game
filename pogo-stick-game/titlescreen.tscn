@@ -37,7 +37,7 @@ func _on_bpm_timer_timeout() -> void:
 	if current_frame < 4:
 		current_frame += 1
 		$TitlescreenBackground.texture = title_sequence[current_frame]
-	else:
+	if current_frame == 4:
 		$PlayButton.visible = true
 	$BPM_Timer.start(1.846)
 	opacity = 0
@@ -129,15 +129,17 @@ texture = ExtResource("4_hxypl")
 
 [node name="PlayButton" type="TextureButton" parent="." unique_id=542921238]
 visible = false
-z_index = 1
+modulate = Color(0.28155392, 0, 0.28155392, 1)
+z_index = 16
 texture_filter = 1
-offset_left = 344.0
-offset_top = 360.0
-offset_right = 694.0
-offset_bottom = 472.0
-texture_normal = ExtResource("2_goadl")
+offset_left = 359.0
+offset_top = 263.0
+offset_right = 709.0
+offset_bottom = 375.0
+scale = Vector2(0.39328608, 0.39328608)
+texture_normal = ExtResource("2_8pdex")
 texture_pressed = ExtResource("3_hxypl")
-texture_hover = ExtResource("2_8pdex")
+texture_hover = ExtResource("2_goadl")
 script = SubResource("GDScript_hxypl")
 
 [node name="TitlescreenBackground" type="Sprite2D" parent="." unique_id=950656952]
