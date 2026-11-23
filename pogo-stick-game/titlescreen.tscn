@@ -14,11 +14,14 @@ var title_sequence = [
 	preload(\"res://Textures/title_sequence/titlesequence2.png\"),
 	preload(\"res://Textures/title_sequence/titlesequence3.png\"),
 	preload(\"res://Textures/title_sequence/titlesequence4.png\"),
-	preload(\"res://Textures/title_sequence/titlescreen.png\"),
+	preload(\"res://Textures/title_sequence/titlescreen remake.png\"),
 ]
 
 var current_frame = 0
 var opacity: float
+
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _process(delta: float) -> void:
 	print(opacity)
