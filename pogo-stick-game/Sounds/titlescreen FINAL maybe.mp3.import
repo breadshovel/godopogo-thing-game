@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bmyxo266aifge"
+path="res://.godot/imported/titlescreen FINAL maybe.mp3-7ecaac21c1c9e095dd26e4ed3656ecb3.mp3str"
+
+[deps]
+
+source_file="res://Sounds/titlescreen FINAL maybe.mp3"
+dest_files=["res://.godot/imported/titlescreen FINAL maybe.mp3-7ecaac21c1c9e095dd26e4ed3656ecb3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

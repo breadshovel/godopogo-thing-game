@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bjob4ba6d3ums" path="res://play buitton.png" id="2_goadl"]
 [ext_resource type="Texture2D" uid="uid://d1t328c2yss07" path="res://play buitton4.png" id="3_hxypl"]
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="4_hxypl"]
-[ext_resource type="AudioStream" uid="uid://clxtsphasvl1a" path="res://Sounds/titlescreen music looping fora  while.mp3" id="5_hxypl"]
+[ext_resource type="AudioStream" uid="uid://bmyxo266aifge" path="res://Sounds/titlescreen FINAL maybe.mp3" id="5_hxypl"]
 
 [sub_resource type="GDScript" id="GDScript_ype4i"]
 script/source = "extends Node2D
