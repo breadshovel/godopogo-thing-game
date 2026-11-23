@@ -45,8 +45,12 @@ func _on_start_timer_timeout() -> void:
 	$TitlescreenBackground.texture = title_sequence[current_frame]
 	$StartTimer.stop()
 	opacity = 0
+
 	
-	
+func _on_intro_comence_timer_timeout() -> void:
+	$StartTimer.start(0.25) # Replace with function body.
+	$TitlescreenMusic.play()
+	$\"INTRO COMENCE TIMER\".stop()
 	
 	
 	
@@ -112,6 +116,10 @@ func _on_pressed() -> void:
 [node name="Titlescreen" type="Node2D" unique_id=1757010949]
 script = SubResource("GDScript_ype4i")
 
+[node name="INTRO COMENCE TIMER" type="Timer" parent="." unique_id=9362249]
+wait_time = 0.7
+autostart = true
+
 [node name="TitlescreenFadeOverlay" type="Sprite2D" parent="." unique_id=961843328]
 z_index = 14
 texture = ExtResource("4_hxypl")
@@ -136,15 +144,14 @@ texture = ExtResource("4_hxypl")
 
 [node name="TitlescreenMusic" type="AudioStreamPlayer" parent="." unique_id=1851608929]
 stream = ExtResource("5_hxypl")
-autoplay = true
 
 [node name="BPM_Timer" type="Timer" parent="." unique_id=1807258716]
 wait_time = 1.8459999999999999
 
 [node name="StartTimer" type="Timer" parent="." unique_id=227175633]
 wait_time = 0.25
-autostart = true
 
+[connection signal="timeout" from="INTRO COMENCE TIMER" to="." method="_on_intro_comence_timer_timeout"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
 [connection signal="timeout" from="BPM_Timer" to="." method="_on_bpm_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
