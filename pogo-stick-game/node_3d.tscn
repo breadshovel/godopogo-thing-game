@@ -29,10 +29,16 @@
 [ext_resource type="Texture2D" uid="uid://cry5i3u537g5t" path="res://deathscreenframe1.png" id="22_5t8nk"]
 [ext_resource type="Script" uid="uid://cevwbuxjysr5s" path="res://PlayerController.gd" id="22_dhlwf"]
 [ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://Player.gd" id="22_j3e5s"]
+[ext_resource type="Texture2D" uid="uid://dse30rrqs2dqj" path="res://untildeath.png" id="24_2mu51"]
+[ext_resource type="Script" uid="uid://bpfwew22apar8" path="res://label_2.gd" id="24_3s0n5"]
+[ext_resource type="Script" uid="uid://b2tp8s02pep8t" path="res://label.gd" id="24_4i7mf"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="27_nu31w"]
 [ext_resource type="Script" uid="uid://br2lmh6bg5rsr" path="res://pizzas.gd" id="29_ype4i"]
 [ext_resource type="Script" uid="uid://c7u51xvyv5xvp" path="res://pizza_spawn_timer.gd" id="30_riyl1"]
+[ext_resource type="PackedScene" uid="uid://c7cbl01rvrphq" path="res://meshes/PizzaSlice.blend" id="35_qpkl4"]
+[ext_resource type="Script" uid="uid://brtbo0kexr5w4" path="res://in_game_timer.gd" id="35_vmvb8"]
+[ext_resource type="Texture2D" uid="uid://mva1upksq7cu" path="res://purpl;e.png" id="36_vmvb8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nswes"]
 
@@ -136,6 +142,7 @@ const ENEMY = preload(\"res://enemy.tscn\")
 var enemy_amount := 0
 var game_start = false
 
+signal all_enemies_dead
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -168,6 +175,7 @@ func next_wave() -> void:
 	game_start = false
 	$\"../CanvasLayer/GAME START SCREEN\".visible = true
 	$\"../CanvasLayer/GAME START SCREEN/Label3\".visible = false
+	all_enemies_dead.emit()
 	
 "
 
@@ -186,6 +194,13 @@ height = 4.926758
 points = PackedVector3Array(-0.5, -2.463379, 0, -0.49765074, -2.463379, -0.049040705, -0.49765074, -2.463379, 0.048942864, -0.5, 2.4628968, 0, -0.4904072, -2.463379, -0.097592026, -0.49765074, 2.4628968, -0.049040705, -0.4904072, -2.463379, 0.097494125, -0.49765074, 2.4628968, 0.048942864, -0.47856304, -2.463379, -0.14516446, -0.4904072, 2.4628968, -0.097592026, -0.47856304, -2.463379, 0.14506656, -0.4904072, 2.4628968, 0.097494125, -0.46202037, -2.463379, -0.1913665, -0.47856304, 2.4628968, -0.14516446, -0.46202037, -2.463379, 0.19126862, -0.47856304, 2.4628968, 0.14506656, -0.44097495, -2.463379, -0.23570868, -0.46202037, 2.4628968, -0.1913665, -0.44097495, -2.463379, 0.23561078, -0.46202037, 2.4628968, 0.19126862, -0.41581833, -2.463379, -0.27779955, -0.44097495, 2.4628968, -0.23570868, -0.41581833, -2.463379, 0.27770162, -0.44097495, 2.4628968, 0.23561078, -0.38655052, -2.463379, -0.31724745, -0.41581833, 2.4628968, -0.27779955, -0.38655052, -2.463379, 0.31714958, -0.41581833, 2.4628968, 0.27770162, -0.35356304, -2.463379, -0.35356304, -0.38655052, 2.4628968, -0.31724745, -0.35356304, -2.463379, 0.35346514, -0.38655052, 2.4628968, 0.31714958, -0.31724745, -2.463379, -0.38655052, -0.35356304, 2.4628968, -0.35356304, -0.31724745, -2.463379, 0.38645262, -0.35356304, 2.4628968, 0.35346514, -0.27779955, -2.463379, -0.41581833, -0.31724745, 2.4628968, -0.38655052, -0.27779955, -2.463379, 0.41572046, -0.31724745, 2.4628968, 0.38645262, -0.23570868, -2.463379, -0.44097495, -0.27779955, 2.4628968, -0.41581833, -0.23570868, -2.463379, 0.44087708, -0.27779955, 2.4628968, 0.41572046, -0.1913665, -2.463379, -0.46202037, -0.23570868, 2.4628968, -0.44097495, -0.1913665, -2.463379, 0.46192247, -0.23570868, 2.4628968, 0.44087708, -0.14516446, -2.463379, -0.47856304, -0.1913665, 2.4628968, -0.46202037, -0.14516446, -2.463379, 0.47846514, -0.1913665, 2.4628968, 0.46192247, -0.097592026, -2.463379, -0.4904072, -0.14516446, 2.4628968, -0.47856304, -0.097592026, -2.463379, 0.4903093, -0.14516446, 2.4628968, 0.47846514, -0.049040705, -2.463379, -0.49765074, -0.097592026, 2.4628968, -0.4904072, -0.049040705, -2.463379, 0.49755287, -0.097592026, 2.4628968, 0.4903093, 0, -2.463379, -0.5, -0.049040705, 2.4628968, -0.49765074, 0, -2.463379, 0.5, -0.049040705, 2.4628968, 0.49755287, 0.048942864, -2.463379, -0.49765074, 0, 2.4628968, -0.5, 0.048942864, -2.463379, 0.49755287, 0, 2.4628968, 0.5, 0.097494125, -2.463379, -0.4904072, 0.048942864, 2.4628968, -0.49765074, 0.097494125, -2.463379, 0.4903093, 0.048942864, 2.4628968, 0.49755287, 0.14506656, -2.463379, -0.47856304, 0.097494125, 2.4628968, -0.4904072, 0.14506656, -2.463379, 0.47846514, 0.097494125, 2.4628968, 0.4903093, 0.19126862, -2.463379, -0.46202037, 0.14506656, 2.4628968, -0.47856304, 0.19126862, -2.463379, 0.46192247, 0.14506656, 2.4628968, 0.47846514, 0.23561078, -2.463379, -0.44097495, 0.19126862, 2.4628968, -0.46202037, 0.23561078, -2.463379, 0.44087708, 0.19126862, 2.4628968, 0.46192247, 0.27770162, -2.463379, -0.41581833, 0.23561078, 2.4628968, -0.44097495, 0.27770162, -2.463379, 0.41572046, 0.23561078, 2.4628968, 0.44087708, 0.31714958, -2.463379, -0.38655052, 0.27770162, 2.4628968, -0.41581833, 0.31714958, -2.463379, 0.38645262, 0.27770162, 2.4628968, 0.41572046, 0.35346514, -2.463379, -0.35356304, 0.31714958, 2.4628968, -0.38655052, 0.35346514, -2.463379, 0.35346514, 0.31714958, 2.4628968, 0.38645262, 0.38645262, -2.463379, -0.31724745, 0.35346514, 2.4628968, -0.35356304, 0.38645262, -2.463379, 0.31714958, 0.35346514, 2.4628968, 0.35346514, 0.41572046, -2.463379, -0.27779955, 0.38645262, 2.4628968, -0.31724745, 0.41572046, -2.463379, 0.27770162, 0.38645262, 2.4628968, 0.31714958, 0.44087708, -2.463379, -0.23570868, 0.41572046, 2.4628968, -0.27779955, 0.44087708, -2.463379, 0.23561078, 0.41572046, 2.4628968, 0.27770162, 0.46192247, -2.463379, -0.1913665, 0.44087708, 2.4628968, -0.23570868, 0.46192247, -2.463379, 0.19126862, 0.44087708, 2.4628968, 0.23561078, 0.47846514, -2.463379, -0.14516446, 0.46192247, 2.4628968, -0.1913665, 0.47846514, -2.463379, 0.14506656, 0.46192247, 2.4628968, 0.19126862, 0.4903093, -2.463379, -0.097592026, 0.47846514, 2.4628968, -0.14516446, 0.4903093, -2.463379, 0.097494125, 0.47846514, 2.4628968, 0.14506656, 0.49755287, -2.463379, -0.049040705, 0.4903093, 2.4628968, -0.097592026, 0.49755287, -2.463379, 0.048942864, 0.4903093, 2.4628968, 0.097494125, 0.5, -2.463379, 0, 0.49755287, 2.4628968, -0.049040705, 0.49755287, 2.4628968, 0.048942864, 0.5, 2.4628968, 0)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hbmba"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nswes"]
+transparency = 1
+albedo_color = Color(0.47843137, 0.47843137, 0.47843137, 0.38039216)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ex85l"]
+material = SubResource("StandardMaterial3D_nswes")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5t8nk"]
 albedo_color = Color(2.042989, 1.1453491, 0, 1)
@@ -761,12 +776,14 @@ horizontal_alignment = 2
 
 [node name="DeathScreen" type="Sprite2D" parent="CanvasLayer" unique_id=1330485008]
 visible = false
+z_index = 20
 texture_filter = 1
 position = Vector2(427, 240.00002)
 scale = Vector2(0.713, 0.535)
 texture = ExtResource("22_5t8nk")
 
 [node name="GAME START SCREEN" type="Sprite2D" parent="CanvasLayer" unique_id=1480639186]
+z_index = 7
 position = Vector2(337, 211)
 texture = ExtResource("19_riyl1")
 script = ExtResource("19_ype4i")
@@ -826,6 +843,46 @@ process_mode = 3
 wait_time = 0.05
 autostart = true
 
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1153662871]
+visible = false
+z_index = 1
+texture_filter = 1
+offset_left = 138.0
+offset_top = -44.0
+offset_right = 235.00002
+offset_bottom = 31.0
+scale = Vector2(5.989143, 8.77924)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_imku0")
+theme_override_font_sizes/font_size = 48
+text = "10"
+horizontal_alignment = 1
+script = ExtResource("24_3s0n5")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=239025218]
+z_index = 1
+offset_left = 21.999998
+offset_top = 383.0
+offset_right = 119.0
+offset_bottom = 454.0
+scale = Vector2(0.81840515, 1.1996666)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("8_jsk3o")
+theme_override_font_sizes/font_size = 48
+text = "8.51"
+script = ExtResource("24_4i7mf")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=543874090]
+position = Vector2(64.99999, 425.5)
+scale = Vector2(0.07833332, -0.07222223)
+texture = ExtResource("36_vmvb8")
+
+[node name="Untildeath" type="Sprite2D" parent="CanvasLayer" unique_id=154267704]
+texture_filter = 1
+position = Vector2(67, 335)
+scale = Vector2(0.5723526, 0.5723526)
+texture = ExtResource("24_2mu51")
+
 [node name="enemies" type="Node" parent="." unique_id=1690222008]
 script = SubResource("GDScript_5t8nk")
 
@@ -853,13 +910,18 @@ transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 
 collision_mask = 3
 script = ExtResource("22_dhlwf")
 
-[node name="Area3D" type="Area3D" parent="Player/Body" unique_id=1597042505]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+[node name="groundpoundcollision" type="Area3D" parent="Player/Body" unique_id=1597042505]
+transform = Transform3D(0.9999998, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 0.9999998, 0, 3.1512153, 0)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body/Area3D" unique_id=1138473915]
-transform = Transform3D(5, 0, 0, 0, 0.38982338, 0, 0, 0, 5, 0, -0.98921764, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body/groundpoundcollision" unique_id=1138473915]
+transform = Transform3D(4, 0, 1.4210855e-14, 0, 0.39, 0, -1.4210855e-14, 0, 4, 0, -3.2450008, 0)
 shape = SubResource("CylinderShape3D_hbmba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Body/groundpoundcollision" unique_id=920984861]
+transform = Transform3D(4, 0, 1.4210855e-14, 0, 0.39, 0, -1.4210855e-14, 0, 4, 0, -0.28568888, 0)
+visible = false
+mesh = SubResource("CylinderMesh_ex85l")
 
 [node name="GroundPoundEffect" type="MeshInstance3D" parent="Player/Body" unique_id=1947538852]
 transform = Transform3D(-2, 7.54979e-08, 0, -3.019916e-07, -0.5, 0, 0, 0, 2, 5.3513986e-08, -0.61212915, 0)
@@ -867,7 +929,7 @@ mesh = SubResource("SphereMesh_nuxcn")
 script = SubResource("GDScript_j3e5s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body" unique_id=1746111810]
-transform = Transform3D(1.999981, 0, 4.0500936e-13, 0, 1.5, 0, -4.0500936e-13, 0, 1.999981, 0, -0.22476196, 0)
+transform = Transform3D(1.9999912, 0, 6.1106675e-13, 0, 1, 0, -6.1106675e-13, 0, 1.9999912, 0, 0.4955175, 0)
 shape = SubResource("CapsuleShape3D_noarx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Body" unique_id=1989997791]
@@ -914,10 +976,14 @@ script = ExtResource("3_a0tk4")
 script = SubResource("GDScript_4vnpt")
 
 [node name="Camera3D" type="Camera3D" parent="Player/Body/CameraPivot" unique_id=1290339716]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.252776e-12, 0, 5.999859)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0396445e-07, 0, 3.6215706)
 visible = false
 current = true
+fov = 119.2
 script = ExtResource("25_5t8nk")
+
+[node name="PizzaSlice" parent="Player/Body/CameraPivot" unique_id=539387127 instance=ExtResource("35_qpkl4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.445277, 4093.4207, 20.664984)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=476251150]
 
@@ -972,11 +1038,23 @@ transform = Transform3D(0.78855884, 0, 0, 0, 0.8881763, 0, 0, 0, 1.9388043, 0, -
 operation = 2
 mesh = SubResource("BoxMesh_v6if3")
 
+[node name="InGameTimer" type="Timer" parent="." unique_id=226798179]
+script = ExtResource("35_vmvb8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=927211566]
+
+[node name="PizzaSlice" parent="." unique_id=848006917 instance=ExtResource("35_qpkl4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3238735, 7.427828, -14.440624)
+
 [connection signal="timeout" from="START GAME TIMER" to="." method="_on_start_game_timer_timeout"]
 [connection signal="timeout" from="START GAME TIMER" to="enemies" method="_on_start_game_timer_timeout"]
+[connection signal="timeout" from="START GAME TIMER" to="InGameTimer" method="_on_start_game_timer_timeout"]
 [connection signal="timeout" from="START GAME TIMER/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/GAME START SCREEN/Timer" to="CanvasLayer/GAME START SCREEN" method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/PauseScreen/PauseTimer" to="CanvasLayer/PauseScreen" method="_on_pause_timer_timeout"]
+[connection signal="all_enemies_dead" from="enemies" to="InGameTimer" method="_on_enemies_all_enemies_dead"]
 [connection signal="body_entered" from="lasers/laser" to="lasers/laser" method="_on_body_entered"]
-[connection signal="body_entered" from="Player/Body/Area3D" to="Player/Body" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Player/Body/groundpoundcollision" to="Player/Body" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Player/Body/groundpoundcollision" to="Player/Body" method="_on_groundpoundcollision_body_entered"]
 [connection signal="timeout" from="pizzas/PizzaSpawnTimer" to="pizzas" method="_on_pizza_spawn_timer_timeout"]
+[connection signal="timeout" from="InGameTimer" to="Player" method="_on_in_game_timer_timeout"]

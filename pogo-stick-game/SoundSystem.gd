@@ -24,15 +24,13 @@ var tick := 0.0
 var tick2 := 0.0
 const DEATH_SEQ_LENGTH: float = 1
 
-func check_death_sequence(plr: Player, deathScreen: Sprite2D, delta: float):
-	if plr.controller.health <= 0:
+func check_death_sequence(plr: Player, deathScreen: Sprite2D, delta: float, time_left):
+		
 		tick += delta
 		tick2 += delta
 		
-		#detect if dead
-		if plr.controller.health <= 0:
-			play_death_sound()
-			deathScreen.visible = true
+		play_death_sound()
+		deathScreen.visible = true
 		
 		#flash death screen back and forth every frame
 		print(tick)

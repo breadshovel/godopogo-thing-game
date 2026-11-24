@@ -2,6 +2,8 @@ class_name Player extends Node3D
 
 var controller: PlayerController
 
+var ran_out_of_time = false
+
 #literally just set starting point
 func _ready() -> void:
 	controller = $Body
@@ -10,8 +12,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if $"..".game_start:
-		if (controller.health <= 0):
-			SoundSystem.check_death_sequence(self, $"../CanvasLayer/DeathScreen", delta)
+		if (controller.health <= 0) or ran_out_of_time:
+			if ran_out_of_time: print("ran_out_of_time was true")
+			SoundSystem.check_death_sequence(self, $"../CanvasLayer/DeathScreen", delta, $"../InGameTimer".time_left)
 			return
 			
 	controller.input_update(delta)
@@ -31,3 +34,9 @@ func manage_starting_health():
 		return controller.health
 	else:
 		return 100
+
+
+func _on_in_game_timer_timeout() -> void:
+	ran_out_of_time = true
+	print("GO HERE")
+	print("timer ran out")
