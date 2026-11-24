@@ -52,6 +52,16 @@
 
 
 
+restore bvlack wave transtion for first 1, 
+
+add timer feature, 
+
+add pizzaria system as you envision it
+
+add inventory system
+
+
+
 polish up the gui ie add sparkles when the meter is done filling
 
 
@@ -242,13 +252,13 @@ to the first 4 beats
 
 
 
-my name, my contributions, fades to black 
+my name, my contributions, fades to black
 zack, his contributions, fades to black
 simon, his contributions, fades to black
 "GAME NAME" or PRESENTS"
 
 next 4 beats
-then pan through 4 shots of the game 
+then pan through 4 shots of the game
 
 on beat drop:
 
@@ -275,9 +285,11 @@ pizzarias can have 1 or 2 pizza slices, at random, RARELY a full pizza, maybe th
 
 
 
+
 pizza places will only be open for a certain amount of time, so they should have a progress bar or timer above them to indicate how much longer they will be there
 
 pizza add 75 health, if that goes above your health at 100, then it goes into a special extra healthbar, like golden hearts in Minecraft
+
 
 
 a 2 day gamejam mode where you play the original version
@@ -287,4 +299,32 @@ sometimes you get free pizza, and a drone goes down and delivers pizza right ont
 
 
 
+
 when you go to a pizzeria it takes time to pick up the pizza, and the enemies can break through the walls and get in
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+when yyou go into pizzeria, outsidetimer keeps going but slows, but intense music changes to something simple. like the netrual final boss in undertale when you heal.
+you must complete randomly selected parkour inside to get pizza
+Pogoliminance
+

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cqps4u7kcuywx"]
 
-[ext_resource type="Texture2D" uid="uid://cj84wye11quwd" path="res://Textures/title_sequence/titlescreen.png" id="1_cjnew"]
 [ext_resource type="Texture2D" uid="uid://e6mrwg3yhlgi" path="res://play buitton3.png" id="2_8pdex"]
 [ext_resource type="Texture2D" uid="uid://bjob4ba6d3ums" path="res://play buitton.png" id="2_goadl"]
 [ext_resource type="Texture2D" uid="uid://d1t328c2yss07" path="res://play buitton4.png" id="3_hxypl"]
 [ext_resource type="Texture2D" uid="uid://358k1olh5lus" path="res://SCREEN.png" id="4_hxypl"]
-[ext_resource type="AudioStream" uid="uid://dn021x00s32jo" path="res://Sounds/truman songa l ltruamn.wav" id="5_hxypl"]
+[ext_resource type="Texture2D" uid="uid://cj84wye11quwd" path="res://Textures/title_sequence/titlescreen.png" id="5_o0614"]
+[ext_resource type="AudioStream" uid="uid://dn021x00s32jo" path="res://Sounds/truman songa l ltruamn.wav" id="6_jtfbd"]
 
 [sub_resource type="GDScript" id="GDScript_ype4i"]
 script/source = "extends Node2D
@@ -29,8 +29,8 @@ func _ready() -> void:
 	#if current_frame < 4: opacity += 1.4 * delta
 	#$TitlescreenFadeOverlay.modulate.a = round(opacity * 7.5) / 7.5
 #
-##func title_sequence():
-##	pass #$TitlescreenBackground.
+################func title_sequence():
+###############	pass #$TitlescreenBackground.
 	#
 #
 #
@@ -42,29 +42,29 @@ func _ready() -> void:
 		#$PlayButton.visible = true
 	#$BPM_Timer.start(1.846)
 	#opacity = 0
-#
-#
+##
+##
 #func _on_start_timer_timeout() -> void:
 	#$BPM_Timer.start(1.846)
 	#$TitlescreenBackground.texture = title_sequence[current_frame]
 	#$StartTimer.stop()
 	#opacity = 0
-#
-	#
+##
+	##
 #func _on_intro_comence_timer_timeout() -> void:
 	#$StartTimer.start(0.25) # Replace with function body.
 	#$TitlescreenMusic.play()
 	#$\"INTRO COMENCE TIMER\".stop()
+	##
+	##
+	##
+	##
+	##
 	#
 	#
 	#
 	#
 	#
-	
-	
-	
-	
-	
 	
 	
 	
@@ -160,10 +160,10 @@ script = SubResource("GDScript_hxypl")
 [node name="TitlescreenBackground" type="Sprite2D" parent="." unique_id=950656952]
 texture_filter = 1
 position = Vector2(427, 240)
-texture = ExtResource("1_cjnew")
+texture = ExtResource("5_o0614")
 
 [node name="TitlescreenMusic" type="AudioStreamPlayer" parent="." unique_id=1851608929]
-stream = ExtResource("5_hxypl")
+stream = ExtResource("6_jtfbd")
 autoplay = true
 
 [node name="BPM_Timer" type="Timer" parent="." unique_id=1807258716]
