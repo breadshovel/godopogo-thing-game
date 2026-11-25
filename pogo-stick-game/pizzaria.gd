@@ -20,3 +20,4 @@ func _on_pizzaria_body_entered(body: Node3D) -> void:
 	if body.get_parent().name == "Player":
 		body.global_position = Vector3(146.458, 30.2, 50)
 		SignalBus.pizzaria_entered.emit()
+		SignalBus.player_teleport_position = Vector3(global_position.x, global_position.y + 10, global_position.z)
