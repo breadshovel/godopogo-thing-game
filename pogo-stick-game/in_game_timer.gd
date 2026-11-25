@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_game_timer_timeout() -> void:
-	start(30)
+	start(30 * slow_down_scale)
 
 
 func _on_enemies_all_enemies_dead() -> void:
