@@ -1045,6 +1045,7 @@ script = ExtResource("35_vmvb8")
 
 [node name="PizzaSlice" parent="." unique_id=848006917 instance=ExtResource("35_qpkl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3238735, 7.427828, -14.440624)
+visible = false
 
 [connection signal="timeout" from="START GAME TIMER" to="." method="_on_start_game_timer_timeout"]
 [connection signal="timeout" from="START GAME TIMER" to="enemies" method="_on_start_game_timer_timeout"]
