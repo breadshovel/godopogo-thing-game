@@ -3,7 +3,7 @@ extends CharacterBody3D
 var damage_sound: AudioStream = preload("res://Sounds/Bite.wav")
 var death_sound: AudioStream = preload("res://universfield-dramatic-death-collapse-352720.mp3")
 
-var SPEED = randf_range(4.5, 23)#5.0
+var SPEED = randf_range(3, 15)#5.0
 var speed_backup = SPEED
 const JUMP_VELOCITY = 7
 var jump = false
@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 		
 		#if thing im colliding with is in enemy folder, take damage as player
 		if collider.name == "Body":
-			if not collider.ground_pound and not collider.on_high_jump:
+			if not collider.ground_pound:
 				collider.health -= 1
 			#if randf_range(0, 10) < 1:
 				#HEALTH -= 10

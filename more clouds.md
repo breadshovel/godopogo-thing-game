@@ -52,9 +52,9 @@
 
 
 
-restore bvlack wave transtion for first 1,
+restore bvlack wave transtion for first 1, 
 
-add timer feature,
+add timer feature, 
 
 add pizzaria system as you envision it
 
@@ -327,68 +327,4 @@ when you go to a pizzeria it takes time to pick up the pizza, and the enemies ca
 when yyou go into pizzeria, outsidetimer keeps going but slows, but intense music changes to something simple. like the netrual final boss in undertale when you heal.
 you must complete randomly selected parkour inside to get pizza
 Pogoliminance
-
-
-
-
-
-ADD DANGER METER
-
-
-
-shotgun with recoil
-
-
-
-
-
-
-
-
-
-
-
-shops speratically pop up,
-
-
-
-when kill enemies get egg shells, buy stuff at shops
-
-
-
-you get more health aND egg shells back  the quicker you complete a wave
-
-
-
-jumping is recoil from shooting down with a shotgun
-
-
-
-
-
-POSSIBLE IDEA: all movement is shotgun recoil
-
-
-
-
-
-change charge system to be holding space down to charge
-
-
-
-
-
-open world with obstacales to cross, which you can do by charging jumps
-
-
-
-
-
-calm relaxing ambient piano-y music, but when approaching an enemy, the amen break/beatcore beat and bass synth dynamically come in
-
-
-
-
-
-in bottom right, detecated pizza slot you can use to heal with right click, on bottom, hotbar you can scroll thru for items
 

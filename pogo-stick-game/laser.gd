@@ -1,7 +1,5 @@
 extends Area3D
 
-const SPEED = 45
-
 @onready var player = $"../../Player/Body"
 @onready var forward_direction = -player.global_transform.basis.z.normalized()
 var tick := 0.0
@@ -15,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#go fawrd
-	position += forward_direction * delta * SPEED
+	position += forward_direction * delta * 30
 	
 	#increment every frame, after a while, despawn
 	tick += delta

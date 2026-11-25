@@ -8,7 +8,7 @@ class Constants:
 	static var THUNK: AudioStream = preload("res://Sounds/83 Thunk.mp3")
 	
 	# velocity
-	static var SPEED: float = 15.0
+	static var SPEED: float = 10.0
 	static var HIGH_JUMP_VELOCITY: float = 15.0
 	static var REGULAR_JUMP_VELOCITY: float = 4.5
 	# input
@@ -48,6 +48,11 @@ func init(hitpoints: int, cs3D: CollisionShape3D):
 	for node in get_tree().get_nodes_in_group("PlayerMeters"):
 		if node is MeterProgressBar:
 			meters[node.Type] = node
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if ground_pound and body.get_parent().name == "enemies":
+		#print(body.name)
+		body.knockback()
 
 var space_hold: float = 0.0
 func input_update(deltaTime: float):
@@ -109,7 +114,7 @@ func physics_control(delta: float):
 	#if theres a ground pound, override all phyisics
 	if !ground_pound:
 		#make sure scale is right
-		#$CollisionShape3D.scale = Vector3(1, 1, 1)
+		$CollisionShape3D.scale = Vector3(1, 1, 1)
 		
 		# Add the gravity.ss
 		if !is_on_floor():
@@ -159,10 +164,4 @@ func physics_control(delta: float):
 		
 		if position.y <= 1.5:
 			ground_pound = false
-			#collision_shape.scale = Vector3(1, 1, 1)
-
-
-func _on_groundpoundcollision_body_entered(body: Node3D) -> void:
-	if ground_pound and body.get_parent().name == "enemies":
-		#print(body.name)
-		body.knockback()
+			collision_shape.scale = Vector3(1, 1, 1)
