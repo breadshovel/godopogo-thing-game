@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		die()
 	
 	#find player
-	var player = get_tree().current_scene.find_child("Player").controller
+	var player = $"../../Player/Body"
 	
 	# Add the gravity.
 	if not is_on_floor():

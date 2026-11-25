@@ -6,7 +6,7 @@ enum MeterType {
 	Zap
 }
 
-const CHARGE_INCREASE: float = 20
+const CHARGE_INCREASE: float = 40
 const CHARGE_DECREASE: float = 40
 
 @export var Type: MeterType

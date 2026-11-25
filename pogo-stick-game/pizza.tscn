@@ -105,6 +105,7 @@ mesh = SubResource("CylinderMesh_nswes")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=110710820]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.39553294, 3.5973892, -1.5067439)
+visible = false
 billboard = 1
 script = SubResource("GDScript_wboqb")
 
@@ -112,6 +113,7 @@ script = SubResource("GDScript_wboqb")
 transparent_bg = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="Sprite3D/SubViewport" unique_id=2124546770]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

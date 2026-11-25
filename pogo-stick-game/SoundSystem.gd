@@ -25,7 +25,7 @@ var tick2 := 0.0
 const DEATH_SEQ_LENGTH: float = 1
 
 func check_death_sequence(plr: Player, deathScreen: Sprite2D, delta: float, time_left):
-		
+		print("check_death_sequence was called")
 		tick += delta
 		tick2 += delta
 		

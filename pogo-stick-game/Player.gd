@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 	if $"..".game_start:
 		if (controller.health <= 0) or ran_out_of_time:
 			if ran_out_of_time: print("ran_out_of_time was true")
+			if (controller.health <= 0): print("player health was 0")
 			SoundSystem.check_death_sequence(self, $"../CanvasLayer/DeathScreen", delta, $"../InGameTimer".time_left)
 			return
 			

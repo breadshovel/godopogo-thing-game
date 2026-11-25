@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://cqkpn0jovy42l"]
+
+[ext_resource type="Script" uid="uid://j4445j3w30ga" path="res://pizzaria.gd" id="1_oidye"]
+[ext_resource type="Texture2D" uid="uid://bqkd5j5rxbrda" path="res://healthbar.png" id="2_0o4b1"]
+[ext_resource type="Texture2D" uid="uid://br65hft7wa0lw" path="res://healthbar interirori.png" id="3_3dcsv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex85l"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hbmba"]
+material = SubResource("StandardMaterial3D_ex85l")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_au8o3"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbmba"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nswes"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_hbmba"]
+material = SubResource("StandardMaterial3D_nswes")
+text = "pizzaria"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuxcn"]
+albedo_color = Color(0.61810786, 0.61810786, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ex85l"]
+material = SubResource("StandardMaterial3D_nuxcn")
+
+[sub_resource type="GDScript" id="GDScript_m1we3"]
+script/source = "extends Sprite3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	texture = $SubViewport.get_texture() # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_nuwfp"]
+script/source = "extends TextureProgressBar
+
+@onready var despawn_timer = $\"../../../DespawnTimer\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	value = round(despawn_timer.time_left * 5)
+"
+
+[node name="Pizzaria" type="StaticBody3D" unique_id=295164461]
+transform = Transform3D(0.53416854, 0, -0.5955367, 0, 0.8, 0, 0.5955367, 0, 0.53416854, 0, 0, 0)
+script = ExtResource("1_oidye")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=547417311]
+transform = Transform3D(8.069884, 0, 0, 0, 8.0532055, 0, 0, 0, 12.866898, 0, 3.5994234, 0)
+mesh = SubResource("BoxMesh_hbmba")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=347310533]
+transform = Transform3D(8.069884, 0, 0, 0, 8.0532055, 0, 0, 0, 12.866898, 0, 3.5990767, 0)
+shape = SubResource("ConvexPolygonShape3D_au8o3")
+
+[node name="Pizzaria" type="Area3D" parent="." unique_id=510227071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.077503, 1.1951189, -2.3841858e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pizzaria" unique_id=436692026]
+transform = Transform3D(8.493055, 0, 0, 0, 4.2157073, 0, 0, 0, 2.2139292, -5.0825524, 0.7524624, -2.639209e-07)
+shape = SubResource("BoxShape3D_hbmba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=785454934]
+transform = Transform3D(-4.7683716e-07, 0, 13.11277, 0, 24.954811, 0, -13.11277, 0, -4.7683716e-07, 3.7096004, 6.0145874, 0.60305214)
+mesh = SubResource("TextMesh_hbmba")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1698596553]
+transform = Transform3D(0.84625375, 0, 1.1920929e-07, 0, 5.9870687, 0, 0, 0, 2.1644206, 3.636835, 1.2731476, 0)
+mesh = SubResource("BoxMesh_ex85l")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=707294997]
+transform = Transform3D(-5.731774e-07, 0, -13.11277, 0, 24.954811, 0, 13.11277, 0, -5.731774e-07, -3.7088728, 6.0145874, 0.6030515)
+mesh = SubResource("TextMesh_hbmba")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=196261131]
+transform = Transform3D(0.84625375, 0, 0, 0, 5.9870687, 0, 0, 0, 2.1644206, -3.6197224, 1.2731476, 2.5801904e-07)
+mesh = SubResource("BoxMesh_ex85l")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1770055236]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.39553303, 15.636589, -0.015974045)
+billboard = 1
+script = SubResource("GDScript_m1we3")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=2004740403]
+transparent_bg = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="Sprite3D/SubViewport" unique_id=652822545]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+texture_over = ExtResource("2_0o4b1")
+texture_progress = ExtResource("3_3dcsv")
+tint_progress = Color(0, 12.506515, 5.633054, 1)
+script = SubResource("GDScript_nuwfp")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=51192085]
+
+[connection signal="body_entered" from="Pizzaria" to="." method="_on_pizzaria_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
