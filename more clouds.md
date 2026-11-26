@@ -64,21 +64,29 @@
 
 
 
+~~combo system~~
 
+~~add money (egg shells)~~
 
+reworked announcement system
 
-
-add inventory system\\
+add inventory system
 
 add shotgun
 
 
 
+add ammo
 
+add ammo shop
 
 add enemy varients and bosses
 
 make world bigger
+
+
+
+expand upon
 
 
 
@@ -439,4 +447,51 @@ combos add time to timer
 
 
 after every wave is done, the item shop pops up right infront of you
+
+
+
+
+
+
+
+ITEM IDEAS:
+
+
+
+shotgun
+
+something that speeds you up
+
+something that makes charge take less time to charge
+
+something that makes shots fire quicker
+
+an upgrade that makes you able to chain ground pounds, by making you auto jump again after a groundpound as long as you hit something
+
+propeller????
+
+rpg???
+
+item to seal all enemys below you in a forcefield for a while
+
+direction shield
+
+healthbar expansion (adds golden bar already implemented, wouldn't be there at beginning)
+
+
+
+
+
+IDEAS FOR ENEMYS:
+
+
+blue: standard
+
+yellow: moves quickly, less health
+
+red: movves quickly, same health as standard
+
+gray: moves slowly, has alot of health, does alot of damage
+
+white: standard, but shoots bullets at you
 

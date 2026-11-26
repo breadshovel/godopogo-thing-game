@@ -110,6 +110,7 @@ func take_damage() -> void:
 	health -= 25
 
 func die() -> void:
+	SignalBus.enemy_died.emit()
 	SoundSystem.play_audiostream(death_sound, .17)
 	queue_free() # Replace with function body.
 	

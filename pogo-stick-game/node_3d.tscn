@@ -35,17 +35,23 @@
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="Script" uid="uid://bpfwew22apar8" path="res://label_2.gd" id="25_8p5mg"]
 [ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="27_nu31w"]
-[ext_resource type="Script" uid="uid://0fpll1nh7wun" path="res://announcer.gd" id="28_5w2ad"]
 [ext_resource type="Script" uid="uid://br2lmh6bg5rsr" path="res://pizzas.gd" id="29_ype4i"]
 [ext_resource type="Texture2D" uid="uid://cfbauajj1kvjq" path="res://Textures/pizza container.png" id="30_dsgk7"]
 [ext_resource type="Script" uid="uid://c7u51xvyv5xvp" path="res://pizza_spawn_timer.gd" id="30_riyl1"]
 [ext_resource type="Script" uid="uid://fmcoanwao3j5" path="res://pizza_container.gd" id="31_72tv7"]
 [ext_resource type="Texture2D" uid="uid://i7equ54es766" path="res://Textures/pizzas label.png" id="32_x6a8j"]
+[ext_resource type="Texture2D" uid="uid://cyhpoxootmosl" path="res://Textures/eggshells label.png" id="33_8kg7c"]
+[ext_resource type="Script" uid="uid://l33nkh5ow3ee" path="res://eggshells_amount.gd" id="33_wwdad"]
+[ext_resource type="Script" uid="uid://d1vsj5torxj5e" path="res://announcement_system.gd" id="34_ykyjb"]
 [ext_resource type="PackedScene" uid="uid://c7cbl01rvrphq" path="res://meshes/PizzaSlice.blend" id="35_qpkl4"]
 [ext_resource type="Script" uid="uid://brtbo0kexr5w4" path="res://in_game_timer.gd" id="35_vmvb8"]
 [ext_resource type="Texture2D" uid="uid://mva1upksq7cu" path="res://purpl;e.png" id="36_vmvb8"]
 [ext_resource type="Script" uid="uid://btc4aovf68mfu" path="res://room_2.gd" id="40_pf4ct"]
 [ext_resource type="Script" uid="uid://h3ldxhqca7fb" path="res://area_3d.gd" id="42_5w2ad"]
+[ext_resource type="Script" uid="uid://inxct8bx6tks" path="res://combo_system.gd" id="46_wwdad"]
+[ext_resource type="Script" uid="uid://xseihmske53i" path="res://combo_timer_display_debug.gd" id="47_ykyjb"]
+[ext_resource type="Script" uid="uid://dsg01nira8ow7" path="res://current_combo.gd" id="48_sivbr"]
+[ext_resource type="Script" uid="uid://d301kjav727u6" path="res://payout.gd" id="50_ykyjb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nswes"]
 
@@ -204,6 +210,8 @@ height = 4.926758
 points = PackedVector3Array(-0.5, -2.463379, 0, -0.49765074, -2.463379, -0.049040705, -0.49765074, -2.463379, 0.048942864, -0.5, 2.4628968, 0, -0.4904072, -2.463379, -0.097592026, -0.49765074, 2.4628968, -0.049040705, -0.4904072, -2.463379, 0.097494125, -0.49765074, 2.4628968, 0.048942864, -0.47856304, -2.463379, -0.14516446, -0.4904072, 2.4628968, -0.097592026, -0.47856304, -2.463379, 0.14506656, -0.4904072, 2.4628968, 0.097494125, -0.46202037, -2.463379, -0.1913665, -0.47856304, 2.4628968, -0.14516446, -0.46202037, -2.463379, 0.19126862, -0.47856304, 2.4628968, 0.14506656, -0.44097495, -2.463379, -0.23570868, -0.46202037, 2.4628968, -0.1913665, -0.44097495, -2.463379, 0.23561078, -0.46202037, 2.4628968, 0.19126862, -0.41581833, -2.463379, -0.27779955, -0.44097495, 2.4628968, -0.23570868, -0.41581833, -2.463379, 0.27770162, -0.44097495, 2.4628968, 0.23561078, -0.38655052, -2.463379, -0.31724745, -0.41581833, 2.4628968, -0.27779955, -0.38655052, -2.463379, 0.31714958, -0.41581833, 2.4628968, 0.27770162, -0.35356304, -2.463379, -0.35356304, -0.38655052, 2.4628968, -0.31724745, -0.35356304, -2.463379, 0.35346514, -0.38655052, 2.4628968, 0.31714958, -0.31724745, -2.463379, -0.38655052, -0.35356304, 2.4628968, -0.35356304, -0.31724745, -2.463379, 0.38645262, -0.35356304, 2.4628968, 0.35346514, -0.27779955, -2.463379, -0.41581833, -0.31724745, 2.4628968, -0.38655052, -0.27779955, -2.463379, 0.41572046, -0.31724745, 2.4628968, 0.38645262, -0.23570868, -2.463379, -0.44097495, -0.27779955, 2.4628968, -0.41581833, -0.23570868, -2.463379, 0.44087708, -0.27779955, 2.4628968, 0.41572046, -0.1913665, -2.463379, -0.46202037, -0.23570868, 2.4628968, -0.44097495, -0.1913665, -2.463379, 0.46192247, -0.23570868, 2.4628968, 0.44087708, -0.14516446, -2.463379, -0.47856304, -0.1913665, 2.4628968, -0.46202037, -0.14516446, -2.463379, 0.47846514, -0.1913665, 2.4628968, 0.46192247, -0.097592026, -2.463379, -0.4904072, -0.14516446, 2.4628968, -0.47856304, -0.097592026, -2.463379, 0.4903093, -0.14516446, 2.4628968, 0.47846514, -0.049040705, -2.463379, -0.49765074, -0.097592026, 2.4628968, -0.4904072, -0.049040705, -2.463379, 0.49755287, -0.097592026, 2.4628968, 0.4903093, 0, -2.463379, -0.5, -0.049040705, 2.4628968, -0.49765074, 0, -2.463379, 0.5, -0.049040705, 2.4628968, 0.49755287, 0.048942864, -2.463379, -0.49765074, 0, 2.4628968, -0.5, 0.048942864, -2.463379, 0.49755287, 0, 2.4628968, 0.5, 0.097494125, -2.463379, -0.4904072, 0.048942864, 2.4628968, -0.49765074, 0.097494125, -2.463379, 0.4903093, 0.048942864, 2.4628968, 0.49755287, 0.14506656, -2.463379, -0.47856304, 0.097494125, 2.4628968, -0.4904072, 0.14506656, -2.463379, 0.47846514, 0.097494125, 2.4628968, 0.4903093, 0.19126862, -2.463379, -0.46202037, 0.14506656, 2.4628968, -0.47856304, 0.19126862, -2.463379, 0.46192247, 0.14506656, 2.4628968, 0.47846514, 0.23561078, -2.463379, -0.44097495, 0.19126862, 2.4628968, -0.46202037, 0.23561078, -2.463379, 0.44087708, 0.19126862, 2.4628968, 0.46192247, 0.27770162, -2.463379, -0.41581833, 0.23561078, 2.4628968, -0.44097495, 0.27770162, -2.463379, 0.41572046, 0.23561078, 2.4628968, 0.44087708, 0.31714958, -2.463379, -0.38655052, 0.27770162, 2.4628968, -0.41581833, 0.31714958, -2.463379, 0.38645262, 0.27770162, 2.4628968, 0.41572046, 0.35346514, -2.463379, -0.35356304, 0.31714958, 2.4628968, -0.38655052, 0.35346514, -2.463379, 0.35346514, 0.31714958, 2.4628968, 0.38645262, 0.38645262, -2.463379, -0.31724745, 0.35346514, 2.4628968, -0.35356304, 0.38645262, -2.463379, 0.31714958, 0.35346514, 2.4628968, 0.35346514, 0.41572046, -2.463379, -0.27779955, 0.38645262, 2.4628968, -0.31724745, 0.41572046, -2.463379, 0.27770162, 0.38645262, 2.4628968, 0.31714958, 0.44087708, -2.463379, -0.23570868, 0.41572046, 2.4628968, -0.27779955, 0.44087708, -2.463379, 0.23561078, 0.41572046, 2.4628968, 0.27770162, 0.46192247, -2.463379, -0.1913665, 0.44087708, 2.4628968, -0.23570868, 0.46192247, -2.463379, 0.19126862, 0.44087708, 2.4628968, 0.23561078, 0.47846514, -2.463379, -0.14516446, 0.46192247, 2.4628968, -0.1913665, 0.47846514, -2.463379, 0.14506656, 0.46192247, 2.4628968, 0.19126862, 0.4903093, -2.463379, -0.097592026, 0.47846514, 2.4628968, -0.14516446, 0.4903093, -2.463379, 0.097494125, 0.47846514, 2.4628968, 0.14506656, 0.49755287, -2.463379, -0.049040705, 0.4903093, 2.4628968, -0.097592026, 0.49755287, -2.463379, 0.048942864, 0.4903093, 2.4628968, 0.097494125, 0.5, -2.463379, 0, 0.49755287, 2.4628968, -0.049040705, 0.49755287, 2.4628968, 0.048942864, 0.5, 2.4628968, 0)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hbmba"]
+height = 0.78
+radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p5mg"]
 transparency = 1
@@ -239,7 +247,7 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
-radius = 0.3310547
+radius = 0.6
 height = 1.914917
 
 [sub_resource type="SphereMesh" id="SphereMesh_a0tk4"]
@@ -997,22 +1005,6 @@ position = Vector2(45, -48)
 scale = Vector2(0.5723526, 0.5723526)
 texture = ExtResource("24_2mu51")
 
-[node name="Announcer" type="Label" parent="CanvasLayer" unique_id=865286102]
-offset_right = 854.0
-offset_bottom = 308.0
-theme_override_fonts/font = ExtResource("8_jsk3o")
-theme_override_font_sizes/font_size = 24
-text = "sdfgsdfg"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("28_5w2ad")
-
-[node name="HideTimer" type="Timer" parent="CanvasLayer/Announcer" unique_id=1566214778]
-
-[node name="ColorChangeTimer" type="Timer" parent="CanvasLayer/Announcer" unique_id=2016106694]
-wait_time = 0.05
-autostart = true
-
 [node name="PizzaAmount" type="Label" parent="CanvasLayer" unique_id=858518015]
 z_index = 1
 texture_filter = 1
@@ -1036,6 +1028,27 @@ texture_filter = 1
 position = Vector2(816, 189)
 scale = Vector2(0.18751103, 0.18751103)
 texture = ExtResource("32_x6a8j")
+
+[node name="EggshellsAmount" type="Label" parent="CanvasLayer" unique_id=292621750]
+z_index = 1
+texture_filter = 1
+offset_left = 106.00001
+offset_top = 80.00001
+offset_right = 146.0
+offset_bottom = 104.00001
+scale = Vector2(1.6581941, 3.3563783)
+theme_override_fonts/font = ExtResource("8_jsk3o")
+text = "1"
+script = ExtResource("33_wwdad")
+
+[node name="EggshellsLabel" type="Sprite2D" parent="CanvasLayer" unique_id=1272911107]
+texture_filter = 1
+position = Vector2(86.00001, 100)
+scale = Vector2(0.1439462, 0.22134328)
+texture = ExtResource("33_8kg7c")
+
+[node name="AnnouncementSystem" type="Node" parent="CanvasLayer" unique_id=236089977]
+script = ExtResource("34_ykyjb")
 
 [node name="enemies" type="Node" parent="." unique_id=1690222008]
 script = SubResource("GDScript_5t8nk")
@@ -1069,7 +1082,7 @@ transform = Transform3D(0.9999998, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0,
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body/groundpoundcollision" unique_id=1138473915]
-transform = Transform3D(4, 0, 1.4210855e-14, 0, 0.39, 0, -1.4210855e-14, 0, 4, 0, -3.2450008, 0)
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, -3.2450008, 0)
 shape = SubResource("CylinderShape3D_hbmba")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Body/groundpoundcollision" unique_id=920984861]
@@ -1083,7 +1096,7 @@ mesh = SubResource("SphereMesh_nuxcn")
 script = SubResource("GDScript_j3e5s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Body" unique_id=1746111810]
-transform = Transform3D(1.9999912, 0, 6.1106675e-13, 0, 1, 0, -6.1106675e-13, 0, 1.9999912, 0, 0.4955175, 0)
+transform = Transform3D(0.99999976, 0, 3.090861e-13, 0, 1, 0, -3.090861e-13, 0, 0.99999976, 0, -0.11894083, 0)
 shape = SubResource("CapsuleShape3D_noarx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Body" unique_id=1989997791]
@@ -1200,6 +1213,39 @@ script = ExtResource("35_vmvb8")
 [node name="PizzaSlice" parent="." unique_id=848006917 instance=ExtResource("35_qpkl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3238735, 7.427828, -14.440624)
 visible = false
+
+[node name="ComboSystem" type="Node3D" parent="." unique_id=1945494466]
+script = ExtResource("46_wwdad")
+
+[node name="ComboRunoutTimer" type="Timer" parent="ComboSystem" unique_id=845758167]
+
+[node name="combo timer display debug" type="Label" parent="ComboSystem/ComboRunoutTimer" unique_id=1819903678]
+visible = false
+offset_left = 409.0
+offset_top = 229.0
+offset_right = 449.0
+offset_bottom = 252.0
+text = "1
+"
+script = ExtResource("47_ykyjb")
+
+[node name="current combo" type="Label" parent="ComboSystem" unique_id=230578251]
+visible = false
+offset_left = 439.0
+offset_top = 259.0
+offset_right = 479.0
+offset_bottom = 308.0
+text = "1
+"
+script = ExtResource("48_sivbr")
+
+[node name="payout" type="Label" parent="ComboSystem" unique_id=1659610380]
+visible = false
+offset_left = 570.0
+offset_top = 190.0
+offset_right = 610.0
+offset_bottom = 213.0
+script = ExtResource("50_ykyjb")
 
 [node name="Room1" type="StaticBody3D" parent="." unique_id=390389630]
 
@@ -1332,12 +1378,11 @@ shape = SubResource("BoxShape3D_onfq4")
 [connection signal="timeout" from="START GAME TIMER/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/GAME START SCREEN/Timer" to="CanvasLayer/GAME START SCREEN" method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/PauseScreen/PauseTimer" to="CanvasLayer/PauseScreen" method="_on_pause_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer/Announcer/HideTimer" to="CanvasLayer/Announcer" method="_on_hide_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer/Announcer/ColorChangeTimer" to="CanvasLayer/Announcer" method="_on_color_change_timer_timeout"]
 [connection signal="all_enemies_dead" from="enemies" to="InGameTimer" method="_on_enemies_all_enemies_dead"]
 [connection signal="body_entered" from="lasers/laser" to="lasers/laser" method="_on_body_entered"]
 [connection signal="body_entered" from="Player/Body/groundpoundcollision" to="Player/Body" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Player/Body/groundpoundcollision" to="Player/Body" method="_on_groundpoundcollision_body_entered"]
 [connection signal="timeout" from="pizzas/PizzaSpawnTimer" to="pizzas" method="_on_pizza_spawn_timer_timeout"]
 [connection signal="timeout" from="InGameTimer" to="Player" method="_on_in_game_timer_timeout"]
+[connection signal="timeout" from="ComboSystem/ComboRunoutTimer" to="ComboSystem" method="_on_combo_runout_timer_timeout"]
 [connection signal="body_entered" from="Room2/Area3D" to="Room2/Area3D" method="_on_body_entered"]
