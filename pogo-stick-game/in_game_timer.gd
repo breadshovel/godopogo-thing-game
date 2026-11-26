@@ -6,6 +6,7 @@ var slow_down_scale = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.pizzaria_entered.connect(slow_down)
+	SignalBus.pizzaria_exited.connect(speed_up)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,3 +23,7 @@ func _on_enemies_all_enemies_dead() -> void:
 func slow_down():
 	slow_down_scale *= 10
 	start(time_left*10)
+
+func speed_up():
+	slow_down_scale /= 10
+	start(time_left/10)

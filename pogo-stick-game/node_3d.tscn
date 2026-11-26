@@ -31,7 +31,6 @@
 [ext_resource type="Script" uid="uid://cevwbuxjysr5s" path="res://PlayerController.gd" id="22_dhlwf"]
 [ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://Player.gd" id="22_j3e5s"]
 [ext_resource type="Texture2D" uid="uid://dse30rrqs2dqj" path="res://untildeath.png" id="24_2mu51"]
-[ext_resource type="Script" uid="uid://bpfwew22apar8" path="res://label_2.gd" id="24_3s0n5"]
 [ext_resource type="Script" uid="uid://cb8b2vwafp4wy" path="res://label.gd" id="24_4i7mf"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="27_nu31w"]
@@ -40,7 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://c7cbl01rvrphq" path="res://meshes/PizzaSlice.blend" id="35_qpkl4"]
 [ext_resource type="Script" uid="uid://brtbo0kexr5w4" path="res://in_game_timer.gd" id="35_vmvb8"]
 [ext_resource type="Texture2D" uid="uid://mva1upksq7cu" path="res://purpl;e.png" id="36_vmvb8"]
-[ext_resource type="PackedScene" uid="uid://dg5t0qado25bd" path="res://pizza.tscn" id="40_g4s1x"]
+[ext_resource type="Script" uid="uid://btc4aovf68mfu" path="res://room_2.gd" id="40_pf4ct"]
 [ext_resource type="Script" uid="uid://h3ldxhqca7fb" path="res://area_3d.gd" id="42_5w2ad"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nswes"]
@@ -78,7 +77,6 @@ background_color = Color(0.4865288, 0.36608982, 1, 1)
 sky = SubResource("Sky_g4s1x")
 tonemap_mode = 3
 tonemap_exposure = 1.78
-fog_enabled = true
 fog_light_color = Color(0.23529412, 0.2901961, 0.63529414, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a202f"]
@@ -266,6 +264,7 @@ var camera_ypos: float
 
 func _ready() -> void:
 	SignalBus.pizzaria_entered.connect(set_camera_b)
+	SignalBus.pizzaria_exited.connect(set_camera_a)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -278,6 +277,9 @@ func _process(delta: float) -> void:
 		
 func set_camera_b():
 	cam_follow_y = true
+
+func set_camera_a():
+	cam_follow_y = false
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8b2m"]
@@ -941,7 +943,6 @@ theme_override_fonts/font = ExtResource("12_imku0")
 theme_override_font_sizes/font_size = 48
 text = "10"
 horizontal_alignment = 1
-script = ExtResource("24_3s0n5")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=239025218]
 z_index = 1
@@ -1186,6 +1187,7 @@ material = SubResource("StandardMaterial3D_5w2ad")
 
 [node name="Room2" type="StaticBody3D" parent="." unique_id=1069175263]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 154.3691, 20.560005, -51.75449)
+script = ExtResource("40_pf4ct")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room2" unique_id=791385362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7673264, 3.9358177, 46.252316)
@@ -1246,9 +1248,6 @@ material = SubResource("StandardMaterial3D_ypr1d")
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Room2" unique_id=787382871]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7673264, 3.9358177, 46.252316)
 shape = SubResource("ConcavePolygonShape3D_8p5mg")
-
-[node name="Pizza" parent="Room2" unique_id=159552378 instance=ExtResource("40_g4s1x")]
-transform = Transform3D(0.51517814, 0, 0.85708314, 0, 1, 0, -0.85708314, 0, 0.51517814, 21.151001, 7.1767197, 50.597828)
 
 [node name="Area3D" type="Area3D" parent="Room2" unique_id=2130501767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7673264, 3.9358177, 46.252316)
