@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.get_parent().name == "Player":
 		var plr = body.get_parent()
-		plr.extra_health_managment(75)
-		plr.pizza_amount += 1
+		#plr.extra_health_managment(75)
+		plr.pizza_amount += 3
 		queue_free()
 		
 ##does the math for adding health beyond a full healthbar

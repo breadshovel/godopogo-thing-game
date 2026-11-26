@@ -31,7 +31,7 @@
 [ext_resource type="Script" uid="uid://cevwbuxjysr5s" path="res://PlayerController.gd" id="22_dhlwf"]
 [ext_resource type="Script" uid="uid://c4tcajni4iqfx" path="res://Player.gd" id="22_j3e5s"]
 [ext_resource type="Texture2D" uid="uid://dse30rrqs2dqj" path="res://untildeath.png" id="24_2mu51"]
-[ext_resource type="Script" uid="uid://cb8b2vwafp4wy" path="res://label.gd" id="24_4i7mf"]
+[ext_resource type="Script" uid="uid://b2tp8s02pep8t" path="res://label.gd" id="24_4i7mf"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
 [ext_resource type="Script" uid="uid://bpfwew22apar8" path="res://label_2.gd" id="25_8p5mg"]
 [ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="27_nu31w"]
@@ -39,6 +39,7 @@
 [ext_resource type="Script" uid="uid://br2lmh6bg5rsr" path="res://pizzas.gd" id="29_ype4i"]
 [ext_resource type="Texture2D" uid="uid://cfbauajj1kvjq" path="res://Textures/pizza container.png" id="30_dsgk7"]
 [ext_resource type="Script" uid="uid://c7u51xvyv5xvp" path="res://pizza_spawn_timer.gd" id="30_riyl1"]
+[ext_resource type="Script" uid="uid://fmcoanwao3j5" path="res://pizza_container.gd" id="31_72tv7"]
 [ext_resource type="PackedScene" uid="uid://c7cbl01rvrphq" path="res://meshes/PizzaSlice.blend" id="35_qpkl4"]
 [ext_resource type="Script" uid="uid://brtbo0kexr5w4" path="res://in_game_timer.gd" id="35_vmvb8"]
 [ext_resource type="Texture2D" uid="uid://mva1upksq7cu" path="res://purpl;e.png" id="36_vmvb8"]
@@ -1011,10 +1012,23 @@ script = ExtResource("28_5w2ad")
 wait_time = 0.05
 autostart = true
 
+[node name="PizzaAmount" type="Label" parent="CanvasLayer" unique_id=858518015]
+z_index = 1
+texture_filter = 1
+offset_left = 107.0
+offset_top = 83.0
+offset_right = 147.0
+offset_bottom = 183.0
+scale = Vector2(1.3015807, 1.0397533)
+theme_override_fonts/font = ExtResource("12_imku0")
+theme_override_font_sizes/font_size = 32
+text = "1"
+
 [node name="PizzaContainer" type="Sprite2D" parent="CanvasLayer" unique_id=1543393665]
 texture_filter = 1
 position = Vector2(77, 78)
 texture = ExtResource("30_dsgk7")
+script = ExtResource("31_72tv7")
 
 [node name="enemies" type="Node" parent="." unique_id=1690222008]
 script = SubResource("GDScript_5t8nk")

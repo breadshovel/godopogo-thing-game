@@ -32,6 +32,8 @@ var jump_velocity: float
 var extra_health_bar
 var extra_health: float
 
+@onready var plr = $".."
+
 func init(hitpoints: int, cs3D: CollisionShape3D):
 	self.health = hitpoints
 	self.collision_shape = cs3D
@@ -104,6 +106,11 @@ func physics_control(delta: float):
 	if position.y <= 0:
 		health = 0
 		
+	#------------------IF RIGHT CLICK USE A PIZZA I GUESS-------------
+	pizza_healing()
+	
+	
+	
 	#------------------------MOVEMENT LOGIC----------------------------
 	
 	#if theres a ground pound, override all phyisics
@@ -166,3 +173,8 @@ func _on_groundpoundcollision_body_entered(body: Node3D) -> void:
 	if ground_pound and body.get_parent().name == "enemies":
 		#print(body.name)
 		body.knockback()
+		
+func pizza_healing():
+	if Input.is_action_just_pressed("heal") and plr.pizza_amount > 0:
+		plr.extra_health_managment(75)
+		plr.pizza_amount -= 1

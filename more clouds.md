@@ -56,17 +56,23 @@
 
 ~~add timer feature,~~
 
-add pizzaria system as you envision it
+~~add pizzaria system as you envision it~~
 
-make it so you heal every round based on how quickly you defeated the guys
+~~make it so you heal every round based on how quickly you defeated the guys~~
 
-add pizzas as an item
-
-
+~~add pizzas as an item~~
 
 
 
-add inventory system
+
+
+
+
+add inventory system\\
+
+add shotgun
+
+
 
 
 
@@ -403,4 +409,34 @@ calm relaxing ambient piano-y music, but when approaching an enemy, the amen bre
 in bottom right, detecated pizza slot you can use to heal with right click, on bottom, hotbar you can scroll thru for items
 
 
+
+an item that seals everyone in a bubble temporarily
+
+
+
+an up=sideown jetpack (essentially functions as the groundpound did)
+
+
+
+
+
+
+
+
+
+
+
+get more money from speed bonuses and combos
+
+
+
+combos add time to timer
+
+
+
+
+
+
+
+after every wave is done, the item shop pops up right infront of you
 
