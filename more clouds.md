@@ -52,13 +52,27 @@
 
 
 
-restore bvlack wave transtion for first 1,
+~~restore bvlack wave transtion for first 1,~~
 
-add timer feature,
+~~add timer feature,~~
 
 add pizzaria system as you envision it
 
+make it so you heal every round based on how quickly you defeated the guys
+
+add pizzas as an item
+
+
+
+
+
 add inventory system
+
+
+
+add enemy varients and bosses
+
+make world bigger
 
 
 
@@ -328,10 +342,6 @@ when yyou go into pizzeria, outsidetimer keeps going but slows, but intense musi
 you must complete randomly selected parkour inside to get pizza
 Pogoliminance
 
-
-
-
-
 ADD DANGER METER
 
 
@@ -391,4 +401,6 @@ calm relaxing ambient piano-y music, but when approaching an enemy, the amen bre
 
 
 in bottom right, detecated pizza slot you can use to heal with right click, on bottom, hotbar you can scroll thru for items
+
+
 
