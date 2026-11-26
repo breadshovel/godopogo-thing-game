@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://cfbauajj1kvjq" path="res://Textures/pizza container.png" id="30_dsgk7"]
 [ext_resource type="Script" uid="uid://c7u51xvyv5xvp" path="res://pizza_spawn_timer.gd" id="30_riyl1"]
 [ext_resource type="Script" uid="uid://fmcoanwao3j5" path="res://pizza_container.gd" id="31_72tv7"]
+[ext_resource type="Texture2D" uid="uid://i7equ54es766" path="res://Textures/pizzas label.png" id="32_x6a8j"]
 [ext_resource type="PackedScene" uid="uid://c7cbl01rvrphq" path="res://meshes/PizzaSlice.blend" id="35_qpkl4"]
 [ext_resource type="Script" uid="uid://brtbo0kexr5w4" path="res://in_game_timer.gd" id="35_vmvb8"]
 [ext_resource type="Texture2D" uid="uid://mva1upksq7cu" path="res://purpl;e.png" id="36_vmvb8"]
@@ -1015,10 +1016,10 @@ autostart = true
 [node name="PizzaAmount" type="Label" parent="CanvasLayer" unique_id=858518015]
 z_index = 1
 texture_filter = 1
-offset_left = 107.0
-offset_top = 83.0
-offset_right = 147.0
-offset_bottom = 183.0
+offset_left = 824.5
+offset_top = 254.0
+offset_right = 864.5
+offset_bottom = 354.0
 scale = Vector2(1.3015807, 1.0397533)
 theme_override_fonts/font = ExtResource("12_imku0")
 theme_override_font_sizes/font_size = 32
@@ -1026,9 +1027,15 @@ text = "1"
 
 [node name="PizzaContainer" type="Sprite2D" parent="CanvasLayer" unique_id=1543393665]
 texture_filter = 1
-position = Vector2(77, 78)
+position = Vector2(794.5, 249)
 texture = ExtResource("30_dsgk7")
 script = ExtResource("31_72tv7")
+
+[node name="PizzasLabel" type="Sprite2D" parent="CanvasLayer" unique_id=322088384]
+texture_filter = 1
+position = Vector2(816, 189)
+scale = Vector2(0.18751103, 0.18751103)
+texture = ExtResource("32_x6a8j")
 
 [node name="enemies" type="Node" parent="." unique_id=1690222008]
 script = SubResource("GDScript_5t8nk")
