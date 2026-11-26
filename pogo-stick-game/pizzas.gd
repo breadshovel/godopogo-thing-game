@@ -16,5 +16,6 @@ func _process(delta: float) -> void:
 func _on_pizza_spawn_timer_timeout() -> void:
 	if get_child_count() == 1:
 		SpawnSystem.spawn_objects(PIZZARIA, 1, $".", 0, false, $"../Player/Body".position)
+		$"../CanvasLayer/Announcer".announce("A PIZZARIA HAS OPENED", 1)
 	$PizzaSpawnTimer.start_pizza_timer()
 #	pizza # Replace with function body.

@@ -7,10 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://br65hft7wa0lw" path="res://healthbar interirori.png" id="5_3yqyl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wujgv"]
+resource_local_to_scene = true
 albedo_color = Color(0.10635612, 0, 0.62050736, 1)
 albedo_texture = ExtResource("2_iifgy")
 
 [sub_resource type="BoxMesh" id="BoxMesh_hbmba"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_wujgv")
 size = Vector3(1, 2.3510742, 1)
 

@@ -54,7 +54,7 @@ func input_update(deltaTime: float):
 	meters[MeterProgressBar.MeterType.Health].update_bar(health)
 	meters[MeterProgressBar.MeterType.Zap].update_progressive_zap(deltaTime)
 
-	extra_health_bar = $"../../CanvasLayer/PlayerExtraHealthBar"
+	extra_health_bar = $"../../CanvasLayer/Meters/PlayerExtraHealthBar"
 	
 	if health > 100:
 		extra_health = health - 100

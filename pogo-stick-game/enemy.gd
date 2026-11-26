@@ -10,6 +10,12 @@ var jump = false
 var movement_decision: Vector2
 var health = 100
 
+func _ready() -> void:
+	if SPEED >= 15:
+		var material = $MeshInstance3D.get_active_material(0)
+#		if material:
+		material.albedo_color = Color.RED
+
 func _physics_process(delta: float) -> void:
 	#if die, die
 	if health <= 0:

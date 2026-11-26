@@ -33,8 +33,11 @@
 [ext_resource type="Texture2D" uid="uid://dse30rrqs2dqj" path="res://untildeath.png" id="24_2mu51"]
 [ext_resource type="Script" uid="uid://cb8b2vwafp4wy" path="res://label.gd" id="24_4i7mf"]
 [ext_resource type="Script" uid="uid://dwa0unul25tqi" path="res://CameraController.gd" id="25_5t8nk"]
+[ext_resource type="Script" uid="uid://bpfwew22apar8" path="res://label_2.gd" id="25_8p5mg"]
 [ext_resource type="Texture2D" uid="uid://bmytrha0d4qeh" path="res://pizzacolers.png" id="27_nu31w"]
+[ext_resource type="Script" uid="uid://0fpll1nh7wun" path="res://announcer.gd" id="28_5w2ad"]
 [ext_resource type="Script" uid="uid://br2lmh6bg5rsr" path="res://pizzas.gd" id="29_ype4i"]
+[ext_resource type="Texture2D" uid="uid://cfbauajj1kvjq" path="res://Textures/pizza container.png" id="30_dsgk7"]
 [ext_resource type="Script" uid="uid://c7u51xvyv5xvp" path="res://pizza_spawn_timer.gd" id="30_riyl1"]
 [ext_resource type="PackedScene" uid="uid://c7cbl01rvrphq" path="res://meshes/PizzaSlice.blend" id="35_qpkl4"]
 [ext_resource type="Script" uid="uid://brtbo0kexr5w4" path="res://in_game_timer.gd" id="35_vmvb8"]
@@ -144,6 +147,7 @@ const ENEMY = preload(\"res://enemy.tscn\")
 
 var enemy_amount := 0
 var game_start = false
+var time_left_at_end
 
 signal all_enemies_dead
 
@@ -171,6 +175,7 @@ func _on_start_game_timer_timeout() -> void:
 	SpawnSystem.spawn_objects(ENEMY, enemy_spawn_count, $\".\", 3, false, false)
 		
 func next_wave() -> void:
+	time_left_at_end = $\"../InGameTimer\".time_left
 	$\"..\".wave += 1
 	$\"../Player\"._ready()
 	
@@ -747,75 +752,22 @@ shape = SubResource("ConvexPolygonShape3D_tcnuu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1782508791]
 
-[node name="PlayerExtraHealthBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=894187129 groups=["PlayerMeters"]]
-texture_filter = 1
-offset_left = 335.0
-offset_top = 102.0
-offset_right = 1335.0
-offset_bottom = 602.00006
-scale = Vector2(0.22241478, 0.0952536)
-texture_over = ExtResource("7_1q667")
-texture_progress = ExtResource("8_ype4i")
-tint_over = Color(1, 1, 1, 0.50980395)
-tint_progress = Color(1, 1, 1, 0.50980395)
-script = ExtResource("8_dhlwf")
-
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=2051626923 groups=["PlayerMeters"]]
-texture_filter = 1
-offset_left = 205.0
-offset_top = 6.0
-offset_right = 1205.0
-offset_bottom = 506.0
-scale = Vector2(0.5, 0.2)
-texture_over = ExtResource("12_dhlwf")
-texture_progress = ExtResource("13_5t8nk")
-tint_over = Color(1, 1, 1, 0.50980395)
-tint_progress = Color(1, 1, 1, 0.50980395)
-script = ExtResource("8_dhlwf")
-
-[node name="Chargeometer" type="TextureProgressBar" parent="CanvasLayer" unique_id=996571010 groups=["PlayerMeters"]]
-texture_filter = 1
-offset_left = 729.00006
-offset_top = 87.00001
-offset_right = 879.00006
-offset_bottom = 587.0
-rotation = -1.6580628
-scale = Vector2(0.25, 0.25)
-fill_mode = 2
-stretch_margin_bottom = 500
-texture_over = ExtResource("10_cdqbm")
-texture_progress = ExtResource("11_wlxy5")
-script = ExtResource("8_dhlwf")
-Type = 1
-
-[node name="Zapometer" type="TextureProgressBar" parent="CanvasLayer" unique_id=889797761 groups=["PlayerMeters"]]
-texture_filter = 1
-offset_left = 746.0
-offset_top = 427.99997
-offset_right = 896.0
-offset_bottom = 928.0
-rotation = -1.5358897
-scale = Vector2(0.215, 0.215)
-fill_mode = 2
-texture_over = ExtResource("14_ealrb")
-texture_progress = ExtResource("15_jsnrv")
-script = ExtResource("8_dhlwf")
-Type = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1883429521]
+[node name="Controls" type="HBoxContainer" parent="CanvasLayer" unique_id=1883429521]
+visible = false
+z_index = 1
 offset_right = 275.0
 offset_bottom = 52.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer" unique_id=1021987433]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Controls" unique_id=1021987433]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer" unique_id=1951627178]
+[node name="Label2" type="Label" parent="CanvasLayer/Controls/VBoxContainer" unique_id=1951627178]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_jsk3o")
 text = "CONTROLS:
 "
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer" unique_id=570157988]
+[node name="Label" type="Label" parent="CanvasLayer/Controls/VBoxContainer" unique_id=570157988]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_jsk3o")
 text = "WASD = movement
@@ -826,38 +778,104 @@ CTRL = ground pound
 R = lock/unlock mouse
 ESC = pause"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer" unique_id=1805637887]
-offset_left = 560.0
+[node name="Meters" type="Control" parent="CanvasLayer" unique_id=21901292]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 854.0
 offset_right = 854.0
 offset_bottom = 187.0
-alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer2" unique_id=2071821169]
-layout_mode = 2
+[node name="PlayerExtraHealthBar" type="TextureProgressBar" parent="CanvasLayer/Meters" unique_id=894187129 groups=["PlayerMeters"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = -519.0
+offset_top = 102.0
+offset_right = 481.0
+offset_bottom = 602.00006
+scale = Vector2(0.22241478, 0.0952536)
+texture_over = ExtResource("7_1q667")
+texture_progress = ExtResource("8_ype4i")
+tint_over = Color(1, 1, 1, 0.50980395)
+tint_progress = Color(1, 1, 1, 0.50980395)
+script = ExtResource("8_dhlwf")
 
-[node name="ChargeometerLabel" type="Label" parent="CanvasLayer/HBoxContainer2/VBoxContainer" unique_id=528583720]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("12_imku0")
-theme_override_font_sizes/font_size = 32
-text = "chargometer"
-horizontal_alignment = 2
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer/Meters" unique_id=2051626923 groups=["PlayerMeters"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = -649.0
+offset_top = 6.0
+offset_right = 351.0
+offset_bottom = 506.0
+scale = Vector2(0.5, 0.2)
+texture_over = ExtResource("12_dhlwf")
+texture_progress = ExtResource("13_5t8nk")
+tint_over = Color(1, 1, 1, 0.50980395)
+tint_progress = Color(1, 1, 1, 0.50980395)
+script = ExtResource("8_dhlwf")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer" unique_id=2140142583]
-offset_left = 560.0
+[node name="Chargeometer" type="TextureProgressBar" parent="CanvasLayer/Meters" unique_id=996571010 groups=["PlayerMeters"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = -124.99994
+offset_top = 87.00001
+offset_right = 25.000061
+offset_bottom = 587.0
+rotation = -1.6580628
+scale = Vector2(0.25, 0.25)
+fill_mode = 2
+stretch_margin_bottom = 500
+texture_over = ExtResource("10_cdqbm")
+texture_progress = ExtResource("11_wlxy5")
+script = ExtResource("8_dhlwf")
+Type = 1
+
+[node name="Zapometer" type="TextureProgressBar" parent="CanvasLayer/Meters" unique_id=889797761 groups=["PlayerMeters"]]
+texture_filter = 1
+layout_mode = 0
+offset_left = -108.0
+offset_top = 427.99997
+offset_right = 42.0
+offset_bottom = 928.0
+rotation = -1.5358897
+scale = Vector2(0.215, 0.215)
+fill_mode = 2
+texture_over = ExtResource("14_ealrb")
+texture_progress = ExtResource("15_jsnrv")
+script = ExtResource("8_dhlwf")
+Type = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Meters" unique_id=2140142583]
+layout_mode = 0
+offset_left = -294.0
 offset_top = 293.0
-offset_right = 854.0
 offset_bottom = 480.0
 alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer3" unique_id=1445284896]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Meters/HBoxContainer3" unique_id=1445284896]
 layout_mode = 2
 alignment = 2
 
-[node name="ZapometerLabel" type="Label" parent="CanvasLayer/HBoxContainer3/VBoxContainer" unique_id=1156718442]
+[node name="ZapometerLabel" type="Label" parent="CanvasLayer/Meters/HBoxContainer3/VBoxContainer" unique_id=1156718442]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("12_imku0")
 theme_override_font_sizes/font_size = 32
 text = "zapometer"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Meters" unique_id=1805637887]
+layout_mode = 0
+offset_left = -294.0
+offset_bottom = 187.0
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Meters/HBoxContainer2" unique_id=2071821169]
+layout_mode = 2
+
+[node name="ChargeometerLabel" type="Label" parent="CanvasLayer/Meters/HBoxContainer2/VBoxContainer" unique_id=528583720]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_imku0")
+theme_override_font_sizes/font_size = 32
+text = "chargometer"
 horizontal_alignment = 2
 
 [node name="DeathScreen" type="Sprite2D" parent="CanvasLayer" unique_id=1330485008]
@@ -869,6 +887,7 @@ scale = Vector2(0.713, 0.535)
 texture = ExtResource("22_5t8nk")
 
 [node name="GAME START SCREEN" type="Sprite2D" parent="CanvasLayer" unique_id=1480639186]
+visible = false
 z_index = 7
 position = Vector2(337, 211)
 texture = ExtResource("19_riyl1")
@@ -929,7 +948,7 @@ process_mode = 3
 wait_time = 0.05
 autostart = true
 
-[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1153662871]
+[node name="Countdown" type="Label" parent="CanvasLayer" unique_id=1153662871]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -943,13 +962,21 @@ theme_override_fonts/font = ExtResource("12_imku0")
 theme_override_font_sizes/font_size = 48
 text = "10"
 horizontal_alignment = 1
+script = ExtResource("25_8p5mg")
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=239025218]
-z_index = 1
+[node name="Timer" type="Control" parent="CanvasLayer" unique_id=954067434]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 21.999998
 offset_top = 383.0
-offset_right = 119.0
-offset_bottom = 454.0
+offset_right = 62.0
+offset_bottom = 423.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Timer" unique_id=239025218]
+z_index = 1
+layout_mode = 0
+offset_right = 97.0
+offset_bottom = 71.0
 scale = Vector2(0.81840515, 1.1996666)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("8_jsk3o")
@@ -957,16 +984,37 @@ theme_override_font_sizes/font_size = 48
 text = "8.51"
 script = ExtResource("24_4i7mf")
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=543874090]
-position = Vector2(64.99999, 425.5)
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Timer" unique_id=543874090]
+position = Vector2(42.999992, 42.5)
 scale = Vector2(0.07833332, -0.07222223)
 texture = ExtResource("36_vmvb8")
 
-[node name="Untildeath" type="Sprite2D" parent="CanvasLayer" unique_id=154267704]
+[node name="Untildeath" type="Sprite2D" parent="CanvasLayer/Timer" unique_id=154267704]
 texture_filter = 1
-position = Vector2(67, 335)
+position = Vector2(45, -48)
 scale = Vector2(0.5723526, 0.5723526)
 texture = ExtResource("24_2mu51")
+
+[node name="Announcer" type="Label" parent="CanvasLayer" unique_id=865286102]
+offset_right = 854.0
+offset_bottom = 308.0
+theme_override_fonts/font = ExtResource("8_jsk3o")
+theme_override_font_sizes/font_size = 24
+text = "sdfgsdfg"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("28_5w2ad")
+
+[node name="HideTimer" type="Timer" parent="CanvasLayer/Announcer" unique_id=1566214778]
+
+[node name="ColorChangeTimer" type="Timer" parent="CanvasLayer/Announcer" unique_id=2016106694]
+wait_time = 0.05
+autostart = true
+
+[node name="PizzaContainer" type="Sprite2D" parent="CanvasLayer" unique_id=1543393665]
+texture_filter = 1
+position = Vector2(77, 78)
+texture = ExtResource("30_dsgk7")
 
 [node name="enemies" type="Node" parent="." unique_id=1690222008]
 script = SubResource("GDScript_5t8nk")
@@ -1263,10 +1311,12 @@ shape = SubResource("BoxShape3D_onfq4")
 [connection signal="timeout" from="START GAME TIMER/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/GAME START SCREEN/Timer" to="CanvasLayer/GAME START SCREEN" method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/PauseScreen/PauseTimer" to="CanvasLayer/PauseScreen" method="_on_pause_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Announcer/HideTimer" to="CanvasLayer/Announcer" method="_on_hide_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Announcer/ColorChangeTimer" to="CanvasLayer/Announcer" method="_on_color_change_timer_timeout"]
 [connection signal="all_enemies_dead" from="enemies" to="InGameTimer" method="_on_enemies_all_enemies_dead"]
 [connection signal="body_entered" from="lasers/laser" to="lasers/laser" method="_on_body_entered"]
-[connection signal="body_entered" from="Player/Body/groundpoundcollision" to="Player/Body" method="_on_groundpoundcollision_body_entered"]
 [connection signal="body_entered" from="Player/Body/groundpoundcollision" to="Player/Body" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Player/Body/groundpoundcollision" to="Player/Body" method="_on_groundpoundcollision_body_entered"]
 [connection signal="timeout" from="pizzas/PizzaSpawnTimer" to="pizzas" method="_on_pizza_spawn_timer_timeout"]
 [connection signal="timeout" from="InGameTimer" to="Player" method="_on_in_game_timer_timeout"]
 [connection signal="body_entered" from="Room2/Area3D" to="Room2/Area3D" method="_on_body_entered"]
