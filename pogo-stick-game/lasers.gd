@@ -29,7 +29,7 @@ func shoot_bullet(plr, bullet_speed, bullet_amount, scatter, despawn_ticks):
 		new_laser.despawn_ticks = despawn_ticks
 				
 		var forward_direction = -player.global_transform.basis.z.normalized()
-		new_laser.position += forward_direction * 1
+		new_laser.position += forward_direction * .5
 				
 		add_child(new_laser)
 				

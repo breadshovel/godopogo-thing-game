@@ -31,11 +31,18 @@ var charge: float
 var jump_velocity: float
 var extra_health_bar
 var extra_health: float
+var recoil_direction: Vector3 = Vector3.ZERO
+var recoil_friction
+var direction
+var move_vel: Vector3 = Vector3.ZERO
+
+#gun stuff
 var reload_speed: float
 var bullet_amount
 var bullet_speed
 var scatter
 var bullet_despawn_ticks
+var recoil_amount
 
 @onready var plr = $".."
 
@@ -56,7 +63,7 @@ func init(hitpoints: int, cs3D: CollisionShape3D):
 		if node is MeterProgressBar:
 			meters[node.Type] = node
 			
-	set_gun_pistol()
+	set_gun_shotgun()
 
 var space_hold: float = 0.0
 func input_update(deltaTime: float):
@@ -95,6 +102,8 @@ func input_update(deltaTime: float):
 		
 	if Input.is_action_just_pressed("shoot") and $"../../CanvasLayer/Meters/Zapometer".value >= 100 and $"../..".game_start:
 		SignalBus.shoot.emit(self, bullet_speed, bullet_amount, scatter, bullet_despawn_ticks)
+		recoil_direction = -(transform.basis * Vector3(0, 0, -1)).normalized()
+		recoil_friction = 1
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (event is InputEventMouseMotion):
@@ -155,19 +164,33 @@ func physics_control(delta: float):
 		# As good practice, you should replace UI actions with custom gameplay acations.
 		# ^ why haven't you changed this?
 		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if direction && !(Input.is_action_pressed("ui_accept") && is_on_floor() && ready_to_jump):
-			velocity.x = direction.x * Constants.SPEED
-			velocity.z = direction.z * Constants.SPEED
+		move_vel = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if move_vel && !(Input.is_action_pressed("ui_accept") && is_on_floor() && ready_to_jump):
+			move_vel.x = move_vel.x * Constants.SPEED
+			move_vel.z = move_vel.z * Constants.SPEED
 		else:
-			velocity.x = move_toward(velocity.x, 0, Constants.SPEED)
-			velocity.z = move_toward(velocity.z, 0, Constants.SPEED)
+			move_vel.x = move_toward(move_vel.x, 0, Constants.SPEED)
+			move_vel.z = move_toward(move_vel.z, 0, Constants.SPEED)
 		
 		# if on floor and jump cooldown is on, sets jump cooldown to false and resets jump tihng
 		if is_on_floor():
 			if not Input.is_action_pressed("ui_accept"):
 				jump_velocity = Constants.REGULAR_JUMP_VELOCITY
 				ready_to_jump = false
+				
+		if recoil_direction:
+			velocity.x = (recoil_direction.x * recoil_amount * recoil_friction) + move_vel.x
+			velocity.z = (recoil_direction.z * recoil_amount * recoil_friction) + move_vel.z
+		else:
+			velocity.x = move_vel.x
+			velocity.z = move_vel.z
+			
+		#friction calculation	
+		if recoil_friction:
+			if on_high_jump:
+				recoil_friction /= exp(3 * delta)
+			else:
+				recoil_friction /= exp(10 * delta)
 				
 		move_and_slide()
 	
@@ -195,6 +218,7 @@ func set_gun_pistol():
 	bullet_speed = 45
 	scatter = 0
 	bullet_despawn_ticks = 1
+	recoil_amount = 0
 	
 func set_gun_shotgun():
 	reload_speed = 50
@@ -202,3 +226,4 @@ func set_gun_shotgun():
 	bullet_speed = 90
 	scatter = .3
 	bullet_despawn_ticks = .25
+	recoil_amount = 50
