@@ -3,12 +3,18 @@ extends CharacterBody3D
 var damage_sound: AudioStream = preload("res://Sounds/Bite.wav")
 var death_sound: AudioStream = preload("res://universfield-dramatic-death-collapse-352720.mp3")
 
-var SPEED = randf_range(3, 15)#5.0
+var SPEED = randf_range(4.5, 23)#5.0
 var speed_backup = SPEED
 const JUMP_VELOCITY = 7
 var jump = false
 var movement_decision: Vector2
 var health = 100
+
+func _ready() -> void:
+	if SPEED >= 15:
+		var material = $MeshInstance3D.get_active_material(0)
+#		if material:
+		material.albedo_color = Color.RED
 
 func _physics_process(delta: float) -> void:
 	#if die, die
@@ -75,7 +81,7 @@ func _physics_process(delta: float) -> void:
 		
 		#if thing im colliding with is in enemy folder, take damage as player
 		if collider.name == "Body":
-			if not collider.ground_pound:
+			if not collider.ground_pound and not collider.on_high_jump:
 				collider.health -= 1
 			#if randf_range(0, 10) < 1:
 				#HEALTH -= 10
@@ -104,6 +110,7 @@ func take_damage() -> void:
 	health -= 25
 
 func die() -> void:
+	SignalBus.enemy_died.emit()
 	SoundSystem.play_audiostream(death_sound, .17)
 	queue_free() # Replace with function body.
 	

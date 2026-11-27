@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://yocfv8u58ni5"]
+
+[ext_resource type="FontFile" uid="uid://cvtpu8548y1kk" path="res://Jokerman.otf" id="1_m7tcn"]
+[ext_resource type="Script" uid="uid://0fpll1nh7wun" path="res://announcer.gd" id="2_1xtbs"]
+
+[node name="Announcer" type="Label" unique_id=580621755]
+offset_right = 854.0
+offset_bottom = 308.0
+theme_override_fonts/font = ExtResource("1_m7tcn")
+theme_override_font_sizes/font_size = 24
+text = "sdfgsdfg"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_1xtbs")
+
+[node name="HideTimer" type="Timer" parent="." unique_id=1855612491]
+
+[node name="ColorChangeTimer" type="Timer" parent="." unique_id=660381486]
+wait_time = 0.05
+autostart = true
+
+[connection signal="timeout" from="HideTimer" to="." method="_on_hide_timer_timeout"]
+[connection signal="timeout" from="ColorChangeTimer" to="." method="_on_color_change_timer_timeout"]

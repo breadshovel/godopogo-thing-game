@@ -14,4 +14,4 @@ func _process(delta: float) -> void:
 		$".".set_paused(true)
 		
 func start_pizza_timer():
-	start(15)
+	start(30)

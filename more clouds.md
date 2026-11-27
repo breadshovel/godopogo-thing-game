@@ -52,13 +52,41 @@
 
 
 
-restore bvlack wave transtion for first 1, 
+~~restore bvlack wave transtion for first 1,~~
 
-add timer feature, 
+~~add timer feature,~~
 
-add pizzaria system as you envision it
+~~add pizzaria system as you envision it~~
+
+~~make it so you heal every round based on how quickly you defeated the guys~~
+
+~~add pizzas as an item~~
+
+
+
+~~combo system~~
+
+~~add money (egg shells)~~
+
+~~reworked announcement system~~
 
 add inventory system
+
+add shotgun
+
+
+
+add ammo
+
+add ammo shop
+
+add enemy varients and bosses
+
+make world bigger
+
+
+
+expand upon
 
 
 
@@ -327,4 +355,161 @@ when you go to a pizzeria it takes time to pick up the pizza, and the enemies ca
 when yyou go into pizzeria, outsidetimer keeps going but slows, but intense music changes to something simple. like the netrual final boss in undertale when you heal.
 you must complete randomly selected parkour inside to get pizza
 Pogoliminance
+
+ADD DANGER METER
+
+
+
+shotgun with recoil
+
+
+
+
+
+
+
+
+
+
+
+shops speratically pop up,
+
+
+
+when kill enemies get egg shells, buy stuff at shops
+
+
+
+you get more health aND egg shells back  the quicker you complete a wave
+
+
+
+jumping is recoil from shooting down with a shotgun
+
+
+
+
+
+POSSIBLE IDEA: all movement is shotgun recoil
+
+
+
+
+
+change charge system to be holding space down to charge
+
+
+
+
+
+open world with obstacales to cross, which you can do by charging jumps
+
+
+
+
+
+calm relaxing ambient piano-y music, but when approaching an enemy, the amen break/beatcore beat and bass synth dynamically come in
+
+
+
+
+
+in bottom right, detecated pizza slot you can use to heal with right click, on bottom, hotbar you can scroll thru for items
+
+
+
+an item that seals everyone in a bubble temporarily
+
+
+
+an up=sideown jetpack (essentially functions as the groundpound did)
+
+
+
+
+
+
+
+
+
+
+
+get more money from speed bonuses and combos
+
+
+
+combos add time to timer
+
+
+
+
+
+
+
+after every wave is done, the item shop pops up right infront of you
+
+
+
+
+
+
+
+ITEM IDEAS:
+
+
+
+shotgun
+
+something that speeds you up
+
+something that makes charge take less time to charge
+
+something that makes shots fire quicker
+
+an upgrade that makes you able to chain ground pounds, by making you auto jump again after a groundpound as long as you hit something
+
+item to seal all enemys below you in a forcefield for a while
+
+direction shield
+
+healthbar expansion (adds golden bar already implemented, wouldn't be there at beginning)
+
+dodgeball (long cooldown and/or disposable, but kills all enemies in a certain direction)
+
+propeller / jetpack????
+
+rpg???
+
+
+
+
+
+IDEAS FOR ENEMYS:
+
+
+blue: standard
+
+yellow: moves quickly, less health
+
+red: movves quickly, same health as standard
+
+gray: moves slowly, has alot of health, does alot of damage
+
+white: standard, but shoots bullets at you
+
+pink: maybe flies????
+
+
+
+
+
+
+
+pogoliminacne make teh background glitchy and flashing in and out of black screens
+
+
+
+
+
+character rotating on titlescreen, option to select charcater
 

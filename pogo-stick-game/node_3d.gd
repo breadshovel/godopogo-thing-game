@@ -7,6 +7,7 @@ var game_start
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	start()
+	$"CanvasLayer/GAME START SCREEN".visible = true
 	
 func start() -> void:
 	$"START GAME TIMER/Timer".start()
@@ -15,7 +16,7 @@ func start() -> void:
 	timer.start() # Replace with function body.
 	
 	#stupid way of getting chargometer to refill every wave
-	$CanvasLayer/Chargeometer.start()
+	$CanvasLayer/Meters/Chargeometer.start()
 	
 	
 var wave := 1
@@ -23,6 +24,7 @@ var wave := 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if timer.time_left <= 3 and timer.time_left >= 2:
+		$"CanvasLayer/GAME START SCREEN".visible = true
 		$"CanvasLayer/GAME START SCREEN/Label".visible = true
 		$"CanvasLayer/GAME START SCREEN/Label3".visible = false
 	if timer.time_left <= 2 and timer.time_left >= 1:
