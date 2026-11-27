@@ -6,6 +6,7 @@ signal announcer_signal
 signal enemy_died
 signal combo_started
 signal combo_ended
+signal shoot
 
 var player_teleport_position
 

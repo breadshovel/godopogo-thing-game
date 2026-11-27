@@ -68,7 +68,7 @@
 
 ~~add money (egg shells)~~
 
-reworked announcement system
+~~reworked announcement system~~
 
 add inventory system
 
@@ -468,15 +468,17 @@ something that makes shots fire quicker
 
 an upgrade that makes you able to chain ground pounds, by making you auto jump again after a groundpound as long as you hit something
 
-propeller????
-
-rpg???
-
 item to seal all enemys below you in a forcefield for a while
 
 direction shield
 
 healthbar expansion (adds golden bar already implemented, wouldn't be there at beginning)
+
+dodgeball (long cooldown and/or disposable, but kills all enemies in a certain direction)
+
+propeller / jetpack????
+
+rpg???
 
 
 
@@ -494,4 +496,20 @@ red: movves quickly, same health as standard
 gray: moves slowly, has alot of health, does alot of damage
 
 white: standard, but shoots bullets at you
+
+pink: maybe flies????
+
+
+
+
+
+
+
+pogoliminacne make teh background glitchy and flashing in and out of black screens
+
+
+
+
+
+character rotating on titlescreen, option to select charcater
 

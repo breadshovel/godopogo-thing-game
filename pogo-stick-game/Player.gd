@@ -1,6 +1,6 @@
 class_name Player extends Node3D
 
-var controller: PlayerController
+var controller
 var ran_out_of_time = false
 var pizza_amount = 0
 var egg_shells = 0

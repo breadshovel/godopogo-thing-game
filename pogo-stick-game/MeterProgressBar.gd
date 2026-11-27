@@ -25,8 +25,8 @@ func update_bar(newValue: float):
 	value = newValue
 	value_float = newValue
 
-func update_progressive_zap(deltaTime: float):
-	value_float += 500*deltaTime;
+func update_progressive_zap(increase, deltaTime: float):
+	value_float += increase*deltaTime;
 	value = ceil(value_float)
 
 func update_progressive_charge(increase: bool, deltaTime: float):
